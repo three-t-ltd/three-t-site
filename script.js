@@ -59,6 +59,8 @@ if (scrambleEl && !prefersReduced) {
     }
   };
   setTimeout(() => requestAnimationFrame(run), 900);
+  // RAFが停止していても（バックグラウンドタブ等）必ず最終テキストに確定させる
+  setTimeout(() => { scrambleEl.textContent = finalText; }, 4000);
 }
 
 /* ---------- custom cursor ---------- */
