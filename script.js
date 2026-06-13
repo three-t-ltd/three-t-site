@@ -489,6 +489,63 @@ if (modal) {
   });
 }
 
+/* ---------- note blog: fetch latest articles ---------- */
+const blogGrid = document.getElementById("blog-grid");
+if (blogGrid) {
+  const RSS = "https://note.com/three_t_ltd/rss";
+  // RSSはCORS不可のため公開プロキシ経由で取得。失敗時はHTMLのフォールバックを残す
+  const PROXIES = [
+    (u) => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+    (u) => `https://corsproxy.io/?url=${encodeURIComponent(u)}`
+  ];
+
+  const fmtDate = (str) => {
+    const d = new Date(str);
+    if (Number.isNaN(d.getTime())) return "";
+    const p = (n) => String(n).padStart(2, "0");
+    return `${d.getFullYear()}.${p(d.getMonth() + 1)}.${p(d.getDate())}`;
+  };
+
+  const extractThumb = (item) => {
+    const media = item.querySelector("thumbnail, *|thumbnail");
+    if (media && media.getAttribute("url")) return media.getAttribute("url");
+    const enc = item.querySelector("enclosure");
+    if (enc && enc.getAttribute("url")) return enc.getAttribute("url");
+    const content = item.textContent || "";
+    const m = content.match(/https?:\/\/assets\.st-note\.com\/[^\s"'<>)]+\.(?:png|jpe?g|webp)[^\s"'<>)]*/i);
+    return m ? m[0] : "";
+  };
+
+  const render = (items) => {
+    blogGrid.innerHTML = items.slice(0, 6).map((it, i) => {
+      const title = (it.querySelector("title")?.textContent || "").trim();
+      const link = (it.querySelector("link")?.textContent || "").trim();
+      const date = fmtDate(it.querySelector("pubDate")?.textContent || "");
+      let thumb = extractThumb(it);
+      if (thumb) thumb = thumb.replace(/width=\d+/, "width=600");
+      return `<a class="blog-card reveal in-view" href="${link}" target="_blank" rel="noopener" data-hover>
+        <div class="blog-thumb">${thumb ? `<img src="${thumb}" alt="" loading="lazy">` : ""}</div>
+        <div class="blog-body"><time>${date}</time><h3>${title}</h3><span class="blog-more">noteで読む ↗</span></div>
+      </a>`;
+    }).join("");
+  };
+
+  const tryFetch = async () => {
+    for (const proxy of PROXIES) {
+      try {
+        const res = await fetch(proxy(RSS), { signal: AbortSignal.timeout ? AbortSignal.timeout(8000) : undefined });
+        if (!res.ok) continue;
+        const text = await res.text();
+        const doc = new DOMParser().parseFromString(text, "text/xml");
+        const items = [...doc.querySelectorAll("item")];
+        if (items.length) { render(items); return; }
+      } catch (e) { /* 次のプロキシへ */ }
+    }
+    // すべて失敗 → HTMLのフォールバックをそのまま使用
+  };
+  tryFetch();
+}
+
 /* ---------- contact form ---------- */
 const form = document.getElementById("contact-form");
 if (form) {
