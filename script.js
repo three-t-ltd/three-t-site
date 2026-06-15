@@ -440,34 +440,171 @@ const SERVICE_DATA = {
   }
 };
 
+/* ---------- problem (課題) modal data ---------- */
+const PROBLEM_DATA = {
+  stuck: {
+    index: "課題 01",
+    title: "やりたいことはある。でも、進まない。",
+    desc: "新規事業、DX、採用、組織づくり。重要だと分かっているのに、目の前の業務に追われて構想が頭の中に留まったまま。「いつかやる」が積み上がり、会社の未来に必要な一手が動き出さない状態です。",
+    pointsTitle: "よくある状況",
+    points: [
+      "アイデアはメモやスライドにあるが、着手されないまま数か月が過ぎている",
+      "自分が動かないと何も進まず、通常業務との両立で手が回らない",
+      "「重要だが緊急ではない」テーマが、毎回後回しになる"
+    ],
+    solveTitle: "three.Tの打ち手",
+    solve: [
+      "構想を言語化し、取り組む順番・担当・期限まで一緒に決める",
+      "経営参謀として実務を推進し、計画を「動くプロジェクト」に変える",
+      "進捗を見える化し、社長が動かなくても前進する状態をつくる"
+    ]
+  },
+  migi: {
+    index: "課題 02",
+    title: "参謀役がいない",
+    desc: "経営者の意図を正しく汲み取り、判断の背景まで理解したうえで実行まで担える人材が社内にいない。だから重要な意思決定や推進を、結局すべて社長一人が抱えてしまう状態です。",
+    pointsTitle: "よくある状況",
+    points: [
+      "相談できる相手がおらず、経営判断を一人で背負っている",
+      "指示を出しても意図が伝わりきらず、自分でやり直すことが多い",
+      "右腕候補を採用・育成する時間も仕組みもない"
+    ],
+    solveTitle: "three.Tの打ち手",
+    solve: [
+      "No.3＝経営参謀として、意図を理解したうえで実行まで担う",
+      "経営者と現場のあいだに入り、判断を現場で動く形に翻訳する",
+      "属人化させず、社内に参謀機能が残る仕組みづくりまで伴走"
+    ]
+  },
+  saiyo: {
+    index: "課題 03",
+    title: "採用できない",
+    desc: "欲しい人材像が言語化できていなかったり、求人を出しても応募が集まらなかったり。採用活動そのものを回す人手と知見が不足し、組織拡大のボトルネックになっている状態です。",
+    pointsTitle: "よくある状況",
+    points: [
+      "求める人物像や要件が曖昧なまま募集している",
+      "求人を出しても応募が集まらない／ミスマッチが多い",
+      "選考・面接・フォローまで手が回らず、採用活動が止まりがち"
+    ],
+    solveTitle: "three.Tの打ち手",
+    solve: [
+      "採用要件の整理と、魅力が伝わる求人設計",
+      "母集団形成と選考フローの構築・運用支援",
+      "採用後の育成・定着まで見据えた設計"
+    ]
+  },
+  dx: {
+    index: "課題 04",
+    title: "DXが進まない",
+    desc: "ツールを導入したものの現場に定着しない、属人化が解消されない、何から手をつければいいか分からない。「導入」がゴールになってしまい、業務が本当に楽になっていない状態です。",
+    pointsTitle: "よくある状況",
+    points: [
+      "ツールを入れたが一部の人しか使わず、結局元の業務に戻っている",
+      "業務が属人化していて、担当者しか分からない作業が多い",
+      "何から着手し、どう社内に広めればいいか分からない"
+    ],
+    solveTitle: "three.Tの打ち手",
+    solve: [
+      "現状業務を可視化し、課題の優先順位をつける",
+      "ノーコードツール・SaaS（kintone・Notion等）の選定と導入",
+      "運用定着まで伴走し、属人化を解消する"
+    ]
+  },
+  shinki: {
+    index: "課題 05",
+    title: "新規事業を進めたい",
+    desc: "新しい挑戦の必要性は感じているが、既存業務が優先されて時間が割けない。任せられる責任者もおらず、アイデアが検証や事業化のフェーズまで進まない状態です。",
+    pointsTitle: "よくある状況",
+    points: [
+      "アイデアはあるが、既存業務に押し戻されて検証まで進まない",
+      "新規事業を任せられる責任者・推進役がいない",
+      "何をどの順番で進めれば形になるのか整理できていない"
+    ],
+    solveTitle: "three.Tの打ち手",
+    solve: [
+      "アイデアの言語化と、事業仮説の検証設計",
+      "事業設計・収支計画づくりの伴走",
+      "初期営業・販路開拓まで一緒に手を動かして推進"
+    ]
+  },
+  ai: {
+    index: "課題 06",
+    title: "AIを活用したい",
+    desc: "生成AIに興味はあるが、何から始め、どう自社の業務に組み込めばいいか分からない。情報が多すぎて、結局「使えていない」状態のまま時間だけが過ぎていく。",
+    pointsTitle: "よくある状況",
+    points: [
+      "AIを試したいが、自社の業務にどう活かせるか分からない",
+      "情報や新ツールが多すぎて、何が自社に合うか判断できない",
+      "一部で使い始めたが、社内に広がらず定着しない"
+    ],
+    solveTitle: "three.Tの打ち手",
+    solve: [
+      "自社の業務に合わせたAI活用の型を設計",
+      "生成AIの業務組み込みと、社内向け研修・浸透支援",
+      "時間短縮・品質向上につながる形まで伴走（ADP・Gensparkでの知見を活用）"
+    ]
+  }
+};
+
 const modal = document.getElementById("service-modal");
 if (modal) {
   const titleEl = document.getElementById("modal-title");
   const indexEl = document.getElementById("modal-index");
   const descEl = document.getElementById("modal-desc");
+  const pointsTitleEl = document.getElementById("modal-points-title");
   const pointsEl = document.getElementById("modal-points");
+  const casesTitleEl = document.getElementById("modal-cases-title");
   const casesEl = document.getElementById("modal-cases");
   const caseBlock = document.getElementById("modal-case-block");
+  const ctaEl = modal.querySelector(".modal-cta");
   let lastFocus = null;
 
-  const openModal = (key) => {
-    const data = SERVICE_DATA[key];
-    if (!data) return;
-    lastFocus = document.activeElement;
-    indexEl.textContent = `SERVICE ${data.index}`;
-    titleEl.textContent = data.title;
-    descEl.textContent = data.desc;
-    pointsEl.innerHTML = data.points.map((p) => `<li>${p}</li>`).join("");
-    if (data.cases.length) {
+  const fillModal = (cfg) => {
+    indexEl.textContent = cfg.index;
+    titleEl.textContent = cfg.title;
+    descEl.textContent = cfg.desc;
+    pointsTitleEl.textContent = cfg.pointsTitle;
+    pointsEl.innerHTML = cfg.points.map((p) => `<li>${p}</li>`).join("");
+    if (cfg.subItems && cfg.subItems.length) {
       caseBlock.hidden = false;
-      casesEl.innerHTML = data.cases.map((c) => `<li>${c}</li>`).join("");
+      casesTitleEl.textContent = cfg.subTitle;
+      casesEl.innerHTML = cfg.subItems.map((c) => `<li>${c}</li>`).join("");
     } else {
       caseBlock.hidden = true;
     }
+    ctaEl.firstChild.textContent = cfg.ctaLabel;
+  };
+
+  const open = (cfg) => {
+    if (!cfg) return;
+    lastFocus = document.activeElement;
+    fillModal(cfg);
     modal.hidden = false;
     requestAnimationFrame(() => requestAnimationFrame(() => modal.classList.add("is-open")));
     document.body.classList.add("modal-open");
     modal.querySelector(".modal-close").focus();
+  };
+
+  const openService = (key) => {
+    const d = SERVICE_DATA[key];
+    if (!d) return;
+    open({
+      index: `SERVICE ${d.index}`, title: d.title, desc: d.desc,
+      pointsTitle: "支援内容", points: d.points,
+      subTitle: "支援例", subItems: d.cases,
+      ctaLabel: "この内容で話を聞いてみる "
+    });
+  };
+
+  const openProblem = (key) => {
+    const d = PROBLEM_DATA[key];
+    if (!d) return;
+    open({
+      index: d.index, title: d.title, desc: d.desc,
+      pointsTitle: d.pointsTitle, points: d.points,
+      subTitle: d.solveTitle, subItems: d.solve,
+      ctaLabel: "この課題を相談してみる "
+    });
   };
 
   const closeModal = () => {
@@ -478,12 +615,18 @@ if (modal) {
   };
 
   document.querySelectorAll(".service-card[data-service]").forEach((card) => {
-    card.addEventListener("click", () => openModal(card.dataset.service));
+    card.addEventListener("click", () => openService(card.dataset.service));
+  });
+  document.querySelectorAll(".problem-card[data-problem]").forEach((card) => {
+    card.addEventListener("click", () => openProblem(card.dataset.problem));
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProblem(card.dataset.problem); }
+    });
   });
   modal.querySelectorAll("[data-modal-close]").forEach((el) => {
     el.addEventListener("click", closeModal);
   });
-  modal.querySelector(".modal-cta").addEventListener("click", closeModal);
+  ctaEl.addEventListener("click", closeModal);
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !modal.hidden) closeModal();
   });
