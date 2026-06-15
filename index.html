@@ -118,34 +118,40 @@
           <p class="section-lead reveal">日々の判断と緊急対応に追われるほど、会社の未来に必要な仕事は後回しになります。問題は、やる気ではなく「推進する人」と「進む仕組み」が足りないことです。</p>
         </div>
         <div class="problem-grid">
-          <article class="glass-card tilt problem-card problem-large reveal" data-hover>
+          <article class="glass-card tilt problem-card problem-large reveal" data-problem="stuck" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
             <span class="card-number">01</span>
             <div class="stall-anim" aria-hidden="true"><span></span><span></span><span></span><b>→</b></div>
             <h3>やりたいことはある。<br>でも、進まない。</h3>
             <p>構想が日常業務に埋もれている</p>
+            <span class="problem-more">詳しく見る →</span>
           </article>
-          <article class="glass-card tilt problem-card reveal" data-hover>
+          <article class="glass-card tilt problem-card reveal" data-problem="migi" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
             <span class="card-number">02</span><div class="line-icon">◇</div>
             <h3>参謀役がいない</h3><p>判断を理解し、実行まで担う人がいない</p>
+            <span class="problem-more">詳しく見る →</span>
           </article>
-          <article class="glass-card tilt problem-card reveal" data-hover>
+          <article class="glass-card tilt problem-card reveal" data-problem="saiyo" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
             <span class="card-number">03</span><div class="line-icon">◎</div>
             <h3>採用できない</h3><p>欲しい人材に届かず、採用活動も回らない</p>
+            <span class="problem-more">詳しく見る →</span>
           </article>
-          <article class="glass-card tilt problem-card reveal" data-hover>
+          <article class="glass-card tilt problem-card reveal" data-problem="dx" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
             <span class="card-number">04</span><div class="line-icon">⌘</div>
             <h3>DXが進まない</h3><p>ツール導入で止まり、現場に定着しない</p>
+            <span class="problem-more">詳しく見る →</span>
           </article>
-          <article class="glass-card tilt problem-card reveal" data-hover>
+          <article class="glass-card tilt problem-card reveal" data-problem="shinki" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
             <span class="card-number">05</span><div class="line-icon">＋</div>
             <h3>新規事業を進めたい</h3><p>既存業務が優先され、責任者も不足している</p>
+            <span class="problem-more">詳しく見る →</span>
           </article>
-          <article class="glass-card tilt problem-card problem-wide reveal" data-hover>
+          <article class="glass-card tilt problem-card problem-wide reveal" data-problem="ai" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
             <span class="card-number">06</span>
             <div>
               <div class="line-icon">✦</div>
               <h3>AIを活用したい</h3>
               <p>何から始め、どう業務に組み込むか分からない</p>
+              <span class="problem-more">詳しく見る →</span>
             </div>
             <div class="ai-flow" aria-hidden="true"><span>INPUT</span><i></i><strong>AI</strong><i></i><span>IMPACT</span></div>
           </article>
@@ -267,14 +273,14 @@
         <h3 id="modal-title"></h3>
         <p class="modal-desc" id="modal-desc"></p>
         <div class="modal-block">
-          <p class="modal-block-title">支援内容</p>
+          <p class="modal-block-title" id="modal-points-title">支援内容</p>
           <ul id="modal-points"></ul>
         </div>
         <div class="modal-block" id="modal-case-block">
-          <p class="modal-block-title">支援例</p>
+          <p class="modal-block-title" id="modal-cases-title">支援例</p>
           <ul id="modal-cases"></ul>
         </div>
-        <a class="button button-primary magnetic modal-cta" href="#contact" data-hover>このテーマで話を聞いてみる <span>↗</span></a>
+        <a class="button button-primary magnetic modal-cta" href="#contact" data-hover>この内容で話を聞いてみる <span>↗</span></a>
       </div>
     </div>
 
