@@ -397,7 +397,11 @@
           <h2 class="contact-title reveal-mask"><span class="w"><i>社長一人で、</i></span><br><span class="w"><em>悩まない。</em></span></h2>
           <p class="reveal">止まっている課題を整理し、次の一歩を一緒に決めます。<br>まずは60分、経営の「進まない」をお聞かせください。</p>
         </div>
-        <form class="contact-form glass-card reveal" id="contact-form" novalidate data-endpoint="">
+        <form class="contact-form glass-card reveal" id="contact-form" novalidate data-endpoint="https://api.web3forms.com/submit">
+          <input type="hidden" name="access_key" value="ba82f4d0-8109-4460-b963-dcbbfa7015e3">
+          <input type="hidden" name="subject" value="【three.T】サイトから新規のお問い合わせ">
+          <input type="hidden" name="from_name" value="three.T お問い合わせフォーム">
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-status" role="status" aria-live="polite"></div>
           <div class="form-grid">
             <label><span>お名前 <b>必須</b></span><input type="text" name="name" autocomplete="name" required placeholder="山田 太郎"><small class="field-error"></small></label>
