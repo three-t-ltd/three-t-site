@@ -841,6 +841,60 @@ body.is-loaded .hero-meta { opacity: 1; transform: none; }
 .form-status.is-success { background: rgba(183, 255, 42, 0.1); border: 1px solid rgba(183, 255, 42, 0.4); color: var(--accent); }
 .form-status.is-error { background: rgba(255, 107, 107, 0.08); border: 1px solid rgba(255, 107, 107, 0.4); color: var(--error); }
 
+/* =================== SUBPAGE (会社概要・プライバシー) =================== */
+.subpage-main { padding-top: 140px; }
+.subpage-hero { padding: clamp(40px, 6vw, 80px) 0 clamp(30px, 4vw, 50px); position: relative; }
+.subpage-hero .section-index { margin-bottom: 18px; }
+.subpage-hero h1 {
+  font-size: clamp(34px, 5.5vw, 60px); font-weight: 800; line-height: 1.2; letter-spacing: 0.01em;
+}
+.subpage-hero h1 em { font-style: normal; color: var(--accent); }
+.subpage-hero p { color: var(--text-sub); margin-top: 18px; max-width: 640px; }
+.subpage-body { padding: clamp(20px, 3vw, 40px) 0 clamp(90px, 12vw, 160px); }
+.subpage-body .container { max-width: 880px; }
+
+/* 会社概要テーブル */
+.company-table {
+  border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+}
+.company-table dl { display: grid; grid-template-columns: 220px 1fr; }
+.company-table dt, .company-table dd {
+  padding: 20px 26px; border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.company-table dt {
+  font-weight: 600; font-size: 14.5px; color: var(--text); background: rgba(255, 255, 255, 0.02);
+}
+.company-table dd { color: var(--text-sub); font-size: 14.5px; }
+.company-table dl:last-of-type dt, .company-table dl:last-of-type dd { border-bottom: 0; }
+.company-table a { color: var(--accent); }
+
+/* 法務テキスト */
+.legal { color: var(--text-sub); line-height: 1.9; }
+.legal h2 {
+  font-size: clamp(20px, 2.4vw, 26px); color: var(--text); font-weight: 700;
+  margin: 48px 0 16px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.legal h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.legal p { margin-bottom: 16px; font-size: 15px; }
+.legal ul { margin: 0 0 16px; padding-left: 22px; }
+.legal li { margin-bottom: 8px; font-size: 15px; }
+.legal a { color: var(--accent); }
+.legal .legal-meta { margin-top: 48px; font-size: 13px; color: var(--text-muted); }
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 50px;
+  color: var(--accent); font-weight: 600; font-size: 14.5px;
+}
+.back-link span { transition: transform 0.3s var(--ease-out); }
+.back-link:hover span { transform: translateX(-4px); }
+
+@media (max-width: 767px) {
+  .subpage-main { padding-top: 96px; }
+  .company-table dl { grid-template-columns: 1fr; }
+  .company-table dt { border-bottom: 0; padding-bottom: 4px; }
+  .company-table dt, .company-table dd { padding-inline: 20px; }
+}
+
 /* =================== FOOTER =================== */
 .site-footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 70px 0 110px;
