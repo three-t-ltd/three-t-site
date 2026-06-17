@@ -771,8 +771,13 @@ if (form) {
     try {
       const data = new FormData(form);
       data.set("topics", [...form.querySelectorAll('input[name="topic"]:checked')].map((b) => b.value).join(", "));
-      const res = await fetch(endpoint, { method: "POST", body: data });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data
+      });
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok || result.success === false) throw new Error(result.message || `HTTP ${res.status}`);
       form.reset();
       form.querySelectorAll(".is-valid").forEach((el) => el.classList.remove("is-valid"));
       showStatus("success", "お問い合わせありがとうございます。内容を確認のうえ、2営業日以内にご連絡します。");
