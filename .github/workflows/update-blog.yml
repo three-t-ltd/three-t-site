@@ -1,0 +1,35 @@
+name: Update note blog feed
+
+on:
+  schedule:
+    - cron: "0 */3 * * *"   # 3時間ごと
+  workflow_dispatch:          # 手動実行も可能
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-blog
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Refresh blog.json from note RSS
+        run: node scripts/update-blog.mjs
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain assets/blog.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add assets/blog.json
+            git commit -m "chore: refresh note blog feed"
+            git push
+          else
+            echo "No changes in blog.json"
+          fi
