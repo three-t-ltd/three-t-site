@@ -13,8 +13,12 @@ const pick = (block, tag) => {
 const fmtDate = (str) => {
   const d = new Date(str);
   if (Number.isNaN(d.getTime())) return "";
-  const z = (n) => String(n).padStart(2, "0");
-  return `${d.getFullYear()}.${z(d.getMonth() + 1)}.${z(d.getDate())}`;
+  // 日本時間(JST)基準で表示（実行環境のUTCに依存しない）
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit"
+  }).formatToParts(d);
+  const get = (t) => parts.find((p) => p.type === t)?.value || "";
+  return `${get("year")}.${get("month")}.${get("day")}`;
 };
 
 const res = await fetch(RSS, { headers: { "User-Agent": "Mozilla/5.0 (three.T blog updater)" } });
