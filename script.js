@@ -632,11 +632,13 @@ if (modal) {
   });
 }
 
-/* ---------- note blog: fetch latest articles ---------- */
+/* ---------- note blog: 最新記事を表示 ----------
+   1次: 同一ドメインの assets/blog.json（GitHub Actionsが定期更新。CORS/プロキシ不要で全員に安定表示）
+   2次: 公開プロキシ経由でnote RSSを直接取得（blog.json欠落時のバックアップ）
+   3次: HTMLに焼き込んだ記事をそのまま表示                                  */
 const blogGrid = document.getElementById("blog-grid");
 if (blogGrid) {
   const RSS = "https://note.com/three_t_ltd/rss";
-  // RSSはCORS不可のため公開プロキシ経由で取得。失敗時はHTMLのフォールバックを残す
   const PROXIES = [
     (u) => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
     (u) => `https://corsproxy.io/?url=${encodeURIComponent(u)}`
@@ -649,6 +651,18 @@ if (blogGrid) {
     return `${d.getFullYear()}.${p(d.getMonth() + 1)}.${p(d.getDate())}`;
   };
 
+  const cardHtml = ({ title, url, date, thumb }) =>
+    `<a class="blog-card reveal in-view" href="${url}" target="_blank" rel="noopener" data-hover>
+      <div class="blog-thumb">${thumb ? `<img src="${thumb}" alt="" loading="lazy">` : ""}</div>
+      <div class="blog-body"><time>${date}</time><h3>${title}</h3><span class="blog-more">noteで読む ↗</span></div>
+    </a>`;
+
+  const renderItems = (items) => {
+    if (!items.length) return false;
+    blogGrid.innerHTML = items.slice(0, 6).map(cardHtml).join("");
+    return true;
+  };
+
   const extractThumb = (item) => {
     const media = item.querySelector("thumbnail, *|thumbnail");
     if (media && media.getAttribute("url")) return media.getAttribute("url");
@@ -659,34 +673,41 @@ if (blogGrid) {
     return m ? m[0] : "";
   };
 
-  const render = (items) => {
-    blogGrid.innerHTML = items.slice(0, 6).map((it, i) => {
-      const title = (it.querySelector("title")?.textContent || "").trim();
-      const link = (it.querySelector("link")?.textContent || "").trim();
-      const date = fmtDate(it.querySelector("pubDate")?.textContent || "");
-      let thumb = extractThumb(it);
-      if (thumb) thumb = thumb.replace(/width=\d+/, "width=600");
-      return `<a class="blog-card reveal in-view" href="${link}" target="_blank" rel="noopener" data-hover>
-        <div class="blog-thumb">${thumb ? `<img src="${thumb}" alt="" loading="lazy">` : ""}</div>
-        <div class="blog-body"><time>${date}</time><h3>${title}</h3><span class="blog-more">noteで読む ↗</span></div>
-      </a>`;
-    }).join("");
+  // 1次: 同一ドメインの blog.json
+  const fromJson = async () => {
+    try {
+      const res = await fetch(`./assets/blog.json?ts=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) return false;
+      const data = await res.json();
+      return Array.isArray(data) && renderItems(data);
+    } catch (e) { return false; }
   };
 
-  const tryFetch = async () => {
+  // 2次: プロキシ経由でRSSを直接
+  const fromProxy = async () => {
     for (const proxy of PROXIES) {
       try {
         const res = await fetch(proxy(RSS), { signal: AbortSignal.timeout ? AbortSignal.timeout(8000) : undefined });
         if (!res.ok) continue;
         const text = await res.text();
         const doc = new DOMParser().parseFromString(text, "text/xml");
-        const items = [...doc.querySelectorAll("item")];
-        if (items.length) { render(items); return; }
+        const items = [...doc.querySelectorAll("item")].slice(0, 6).map((it) => ({
+          title: (it.querySelector("title")?.textContent || "").trim(),
+          url: (it.querySelector("link")?.textContent || "").trim(),
+          date: fmtDate(it.querySelector("pubDate")?.textContent || ""),
+          thumb: (extractThumb(it) || "").replace(/width=\d+/, "width=600")
+        }));
+        if (renderItems(items)) return true;
       } catch (e) { /* 次のプロキシへ */ }
     }
-    // すべて失敗 → HTMLのフォールバックをそのまま使用
+    return false;
   };
-  tryFetch();
+
+  (async () => {
+    if (await fromJson()) return;
+    if (await fromProxy()) return;
+    // どちらも失敗 → HTMLの焼き込み記事をそのまま表示
+  })();
 }
 
 /* ---------- contact form ---------- */
