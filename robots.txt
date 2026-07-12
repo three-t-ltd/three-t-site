@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# AI / LLM crawlers（AIO: 生成AIの検索・要約での引用を許可）
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://three-t-ltd.com/sitemap.xml

@@ -654,11 +654,13 @@ if (blogGrid) {
     return `${get("year")}.${get("month")}.${get("day")}`;
   };
 
-  const cardHtml = ({ title, url, date, thumb }) =>
-    `<a class="blog-card reveal in-view" href="${url}" target="_blank" rel="noopener" data-hover>
-      <div class="blog-thumb">${thumb ? `<img src="${thumb}" alt="" loading="lazy">` : ""}</div>
+  const cardHtml = ({ title, url, date, thumb }) => {
+    const altText = `ブログ記事「${String(title || "").replace(/"/g, "&quot;")}」のサムネイル`;
+    return `<a class="blog-card reveal in-view" href="${url}" target="_blank" rel="noopener" data-hover>
+      <div class="blog-thumb">${thumb ? `<img src="${thumb}" alt="${altText}" loading="lazy">` : ""}</div>
       <div class="blog-body"><time>${date}</time><h3>${title}</h3><span class="blog-more">noteで読む ↗</span></div>
     </a>`;
+  };
 
   const renderItems = (items) => {
     if (!items.length) return false;
