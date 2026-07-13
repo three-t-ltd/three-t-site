@@ -632,6 +632,47 @@ if (modal) {
   });
 }
 
+/* ---------- 試し読み（漫画）ライトボックス ---------- */
+const lightbox = document.getElementById("lightbox");
+if (lightbox) {
+  const lbImg = document.getElementById("lightbox-img");
+  const thumbs = [...document.querySelectorAll(".manga-thumb")];
+  const sources = thumbs.map((t) => t.dataset.full);
+  let current = 0;
+  let lbLastFocus = null;
+
+  const show = (i) => {
+    current = (i + sources.length) % sources.length;
+    lbImg.src = sources[current];
+  };
+  const openLb = (i) => {
+    lbLastFocus = document.activeElement;
+    show(i);
+    lightbox.hidden = false;
+    requestAnimationFrame(() => requestAnimationFrame(() => lightbox.classList.add("is-open")));
+    document.body.classList.add("modal-open");
+    lightbox.querySelector(".lightbox-close").focus();
+  };
+  const closeLb = () => {
+    lightbox.classList.remove("is-open");
+    document.body.classList.remove("modal-open");
+    setTimeout(() => { lightbox.hidden = true; lbImg.src = ""; }, 350);
+    if (lbLastFocus) lbLastFocus.focus();
+  };
+
+  thumbs.forEach((t, i) => t.addEventListener("click", () => openLb(i)));
+  lightbox.querySelector(".lightbox-close").addEventListener("click", closeLb);
+  lightbox.querySelector(".lightbox-prev").addEventListener("click", () => show(current - 1));
+  lightbox.querySelector(".lightbox-next").addEventListener("click", () => show(current + 1));
+  lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLb(); });
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.hidden) return;
+    if (e.key === "Escape") closeLb();
+    if (e.key === "ArrowLeft") show(current - 1);
+    if (e.key === "ArrowRight") show(current + 1);
+  });
+}
+
 /* ---------- note blog: 最新記事を表示 ----------
    1次: 同一ドメインの assets/blog.json（GitHub Actionsが定期更新。CORS/プロキシ不要で全員に安定表示）
    2次: 公開プロキシ経由でnote RSSを直接取得（blog.json欠落時のバックアップ）
@@ -654,13 +695,11 @@ if (blogGrid) {
     return `${get("year")}.${get("month")}.${get("day")}`;
   };
 
-  const cardHtml = ({ title, url, date, thumb }) => {
-    const altText = `ブログ記事「${String(title || "").replace(/"/g, "&quot;")}」のサムネイル`;
-    return `<a class="blog-card reveal in-view" href="${url}" target="_blank" rel="noopener" data-hover>
-      <div class="blog-thumb">${thumb ? `<img src="${thumb}" alt="${altText}" loading="lazy">` : ""}</div>
+  const cardHtml = ({ title, url, date, thumb }) =>
+    `<a class="blog-card reveal in-view" href="${url}" target="_blank" rel="noopener" data-hover>
+      <div class="blog-thumb">${thumb ? `<img src="${thumb}" alt="" loading="lazy">` : ""}</div>
       <div class="blog-body"><time>${date}</time><h3>${title}</h3><span class="blog-more">noteで読む ↗</span></div>
     </a>`;
-  };
 
   const renderItems = (items) => {
     if (!items.length) return false;
