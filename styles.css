@@ -1007,6 +1007,39 @@ body.is-loaded .hero-meta { opacity: 1; transform: none; }
   .lightbox-next { right: 8px; }
 }
 
+/* =================== MIND GRAPH =================== */
+.mind { background: var(--bg-sub); overflow: hidden; }
+.pc-only { display: inline; }
+.mind-stage {
+  position: relative; border: 1px solid var(--border); border-radius: 26px;
+  background:
+    radial-gradient(80% 60% at 50% 40%, rgba(183, 255, 42, 0.04), transparent 70%),
+    rgba(255, 255, 255, 0.015);
+  overflow: hidden;
+}
+#mind-canvas {
+  display: block; width: 100%; height: clamp(420px, 62vh, 640px);
+  cursor: grab; touch-action: none;
+}
+#mind-canvas.is-dragging { cursor: grabbing; }
+#mind-canvas.is-pointing { cursor: pointer; }
+.mind-hint {
+  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; color: var(--text-muted);
+  background: rgba(10, 15, 35, 0.65); border: 1px solid var(--border); border-radius: 999px;
+  padding: 7px 16px; backdrop-filter: blur(8px); pointer-events: none;
+}
+.mind-hint-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+  box-shadow: 0 0 8px rgba(183, 255, 42, 0.8);
+}
+@media (max-width: 767px) {
+  .pc-only { display: none; }
+  #mind-canvas { height: 420px; }
+  .mind-hint { font-size: 9.5px; padding: 6px 12px; }
+}
+
 /* =================== BLOG =================== */
 .blog { background: var(--bg); }
 .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }

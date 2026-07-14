@@ -695,13 +695,11 @@ if (blogGrid) {
     return `${get("year")}.${get("month")}.${get("day")}`;
   };
 
-  const cardHtml = ({ title, url, date, thumb }) => {
-    const altText = `ブログ記事「${String(title || "").replace(/"/g, "&quot;")}」のサムネイル`;
-    return `<a class="blog-card reveal in-view" href="${url}" target="_blank" rel="noopener" data-hover>
-      <div class="blog-thumb">${thumb ? `<img src="${thumb}" alt="${altText}" loading="lazy">` : ""}</div>
+  const cardHtml = ({ title, url, date, thumb }) =>
+    `<a class="blog-card reveal in-view" href="${url}" target="_blank" rel="noopener" data-hover>
+      <div class="blog-thumb">${thumb ? `<img src="${thumb}" alt="" loading="lazy">` : ""}</div>
       <div class="blog-body"><time>${date}</time><h3>${title}</h3><span class="blog-more">noteで読む ↗</span></div>
     </a>`;
-  };
 
   const renderItems = (items) => {
     if (!items.length) return false;
@@ -855,4 +853,264 @@ if (form) {
       submitButton.innerHTML = '話を聞いてみる <span>↗</span>';
     }
   });
+}
+
+/* ---------- mind graph: three.Tの頭の中（Obsidian風グラフビュー） ---------- */
+const mindCanvas = document.getElementById("mind-canvas");
+if (mindCanvas) {
+  const ctx = mindCanvas.getContext("2d");
+
+  // ノード定義: c=center, h=hub, l=leaf
+  const N = (id, label, type, hub, url) => ({ id, label, type, hub, url });
+  const NODES = [
+    N("core", "three.T / ウエツ", "c", null, "#profile"),
+    // hubs
+    N("no3", "No.3代行", "h", null, "#about"),
+    N("svc", "サービス", "h", null, "#services"),
+    N("mind", "理念", "h", null, null),
+    N("ceo", "複業CEO", "h", null, null),
+    N("ai", "AI", "h", null, null),
+    N("out", "発信", "h", null, "#blog"),
+    N("bg", "経歴", "h", null, "#results"),
+    // No.3代行
+    N("tri", "トライアングル", "l", "no3", "#about"),
+    N("sanbo", "経営参謀", "l", "no3", null),
+    N("seiri", "課題整理", "l", "no3", null),
+    N("jikko", "実行伴走", "l", "no3", null),
+    N("shikumi", "仕組み化", "l", "no3", null),
+    N("juyo", "緊急でないが重要", "l", "no3", "#problems"),
+    // サービス
+    N("dx", "DX推進", "l", "svc", "#services"),
+    N("eigyo", "営業支援", "l", "svc", "#services"),
+    N("saiyo2", "採用支援", "l", "svc", "#services"),
+    N("hojo", "補助金", "l", "svc", "#services"),
+    N("shinki2", "新規事業", "l", "svc", "#services"),
+    N("keikaku2", "経営計画", "l", "svc", "#services"),
+    N("team", "チームコンサル", "l", "svc", "#services"),
+    // 理念
+    N("ttt", "Total Trust with Teams", "l", "mind", null),
+    N("dot3", "3つ目の点", "l", "mind", "#about"),
+    N("otona", "かっこいい大人", "l", "mind", null),
+    // 複業CEO
+    N("c10", "10社以上を伴走", "l", "ceo", "#results"),
+    N("izon", "一社に依存しない", "l", "ceo", null),
+    N("para", "パラレルワーク", "l", "ceo", null),
+    // AI
+    N("adp", "ADP共同運営", "l", "ai", null),
+    N("gs", "Gensparkアンバサダー", "l", "ai", null),
+    N("sem", "セミナー150回+", "l", "ai", null),
+    // 発信
+    N("note", "note 毎朝更新", "l", "out", "#blog"),
+    N("book2", "書籍", "l", "out", "#book"),
+    N("sfm", "stand.fm", "l", "out", null),
+    N("x", "X", "l", "out", null),
+    // 経歴
+    N("maker", "機械メーカー12年", "l", "bg", "#results"),
+    N("travel", "旅行会社8年", "l", "bg", "#results"),
+    N("indep", "独立6年", "l", "bg", "#results")
+  ];
+  const LINKS = [];
+  NODES.forEach((n) => {
+    if (n.type === "h") LINKS.push([n.id, "core", 150]);
+    if (n.type === "l") LINKS.push([n.id, n.hub, 82]);
+  });
+  // クロスリンク（頭の中はつながっている）
+  [["book2", "no3", 150], ["ai", "svc", 170], ["ceo", "bg", 160], ["mind", "no3", 160], ["tri", "dot3", 130], ["sem", "svc", 170]]
+    .forEach((l) => LINKS.push(l));
+
+  const nodeById = {};
+  NODES.forEach((n) => { nodeById[n.id] = n; });
+  const neighbors = {};
+  LINKS.forEach(([a, b]) => {
+    (neighbors[a] = neighbors[a] || new Set()).add(b);
+    (neighbors[b] = neighbors[b] || new Set()).add(a);
+  });
+
+  let W = 0, H = 0, DPR = 1;
+  const radius = (n) => (n.type === "c" ? 15 : n.type === "h" ? 9.5 : 5);
+
+  // 初期配置: ハブを円周、リーフをその外側に
+  const hubs = NODES.filter((n) => n.type === "h");
+  const seed = (w, h) => {
+    const cx = w / 2, cy = h / 2;
+    NODES.forEach((n) => { n.vx = 0; n.vy = 0; });
+    nodeById.core.x = cx; nodeById.core.y = cy;
+    hubs.forEach((hub, i) => {
+      const a = (i / hubs.length) * Math.PI * 2 - Math.PI / 2;
+      hub.x = cx + Math.cos(a) * Math.min(w, h) * 0.26;
+      hub.y = cy + Math.sin(a) * Math.min(w, h) * 0.26;
+      const leaves = NODES.filter((n) => n.hub === hub.id);
+      leaves.forEach((leaf, j) => {
+        const b = a + ((j - (leaves.length - 1) / 2) * 0.5);
+        leaf.x = cx + Math.cos(b) * Math.min(w, h) * 0.42;
+        leaf.y = cy + Math.sin(b) * Math.min(w, h) * 0.42;
+      });
+    });
+  };
+
+  const resize = () => {
+    const rect = mindCanvas.getBoundingClientRect();
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    const oldW = W, oldH = H;
+    W = rect.width; H = rect.height;
+    mindCanvas.width = W * DPR; mindCanvas.height = H * DPR;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    if (oldW > 0 && nodeById.core.x !== undefined) {
+      NODES.forEach((n) => { n.x *= W / oldW; n.y *= H / oldH; });
+    } else {
+      seed(W, H);
+    }
+  };
+  resize();
+  window.addEventListener("resize", resize);
+
+  let hovered = null;
+  let dragged = null;
+  let pointerDown = null;
+  let t = 0;
+
+  const tick = () => {
+    t += 1;
+    const cx = W / 2, cy = H / 2;
+    // 反発
+    for (let i = 0; i < NODES.length; i += 1) {
+      const a = NODES[i];
+      for (let j = i + 1; j < NODES.length; j += 1) {
+        const b = NODES[j];
+        let dx = a.x - b.x, dy = a.y - b.y;
+        let d2 = dx * dx + dy * dy;
+        if (d2 < 1) d2 = 1;
+        if (d2 > 90000) continue;
+        const f = 1400 / d2;
+        const d = Math.sqrt(d2);
+        dx /= d; dy /= d;
+        a.vx += dx * f; a.vy += dy * f;
+        b.vx -= dx * f; b.vy -= dy * f;
+      }
+    }
+    // ばね
+    LINKS.forEach(([ai, bi, rest]) => {
+      const a = nodeById[ai], b = nodeById[bi];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const d = Math.max(Math.sqrt(dx * dx + dy * dy), 1);
+      const f = (d - rest * Math.min(W, H) / 640) * 0.012;
+      a.vx += (dx / d) * f; a.vy += (dy / d) * f;
+      b.vx -= (dx / d) * f; b.vy -= (dy / d) * f;
+    });
+    // 中心重力 + ゆらぎ + 減衰 + 移動
+    NODES.forEach((n, i) => {
+      n.vx += (cx - n.x) * (n.type === "c" ? 0.02 : 0.0022);
+      n.vy += (cy - n.y) * (n.type === "c" ? 0.02 : 0.0022);
+      if (!prefersReduced) {
+        n.vx += Math.sin(t * 0.008 + i * 2.7) * 0.008;
+        n.vy += Math.cos(t * 0.01 + i * 1.9) * 0.008;
+      }
+      if (n === dragged) { n.vx = 0; n.vy = 0; return; }
+      n.vx *= 0.86; n.vy *= 0.86;
+      n.x += n.vx; n.y += n.vy;
+      const pad = 26;
+      n.x = Math.max(pad, Math.min(W - pad, n.x));
+      n.y = Math.max(pad, Math.min(H - pad, n.y));
+    });
+  };
+
+  const ACC = "183, 255, 42";
+  const draw = () => {
+    ctx.clearRect(0, 0, W, H);
+    const hl = hovered ? new Set([hovered.id, ...(neighbors[hovered.id] || [])]) : null;
+    // エッジ
+    LINKS.forEach(([ai, bi]) => {
+      const a = nodeById[ai], b = nodeById[bi];
+      const lit = hl && hl.has(ai) && hl.has(bi) && (ai === hovered.id || bi === hovered.id);
+      ctx.strokeStyle = lit ? `rgba(${ACC}, 0.75)` : hl ? "rgba(245,247,250,0.05)" : "rgba(245,247,250,0.14)";
+      ctx.lineWidth = lit ? 1.6 : 1;
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+    });
+    // ノード
+    NODES.forEach((n) => {
+      const r = radius(n);
+      const isHl = !hl || hl.has(n.id);
+      const isCore = n.type === "c";
+      const accNode = isCore || n.type === "h";
+      if ((hovered && n.id === hovered.id) || isCore) {
+        ctx.beginPath(); ctx.arc(n.x, n.y, r + 7, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${ACC}, ${isCore ? 0.12 : 0.16})`; ctx.fill();
+      }
+      ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = accNode
+        ? `rgba(${ACC}, ${isHl ? 0.95 : 0.25})`
+        : `rgba(245, 247, 250, ${isHl ? 0.85 : 0.2})`;
+      ctx.fill();
+      // ラベル
+      const fs = isCore ? 13.5 : n.type === "h" ? 12 : 10.5;
+      ctx.font = `${isCore || n.type === "h" ? "700" : "400"} ${fs}px "Noto Sans JP", sans-serif`;
+      ctx.textAlign = "center";
+      ctx.fillStyle = accNode
+        ? `rgba(${ACC}, ${isHl ? 1 : 0.25})`
+        : `rgba(200, 208, 232, ${isHl ? 0.9 : 0.18})`;
+      ctx.fillText(n.label, n.x, n.y + r + fs + 2);
+    });
+  };
+
+  const findNode = (x, y) => {
+    for (let i = NODES.length - 1; i >= 0; i -= 1) {
+      const n = NODES[i];
+      const dx = x - n.x, dy = y - n.y;
+      if (dx * dx + dy * dy < Math.pow(radius(n) + 12, 2)) return n;
+    }
+    return null;
+  };
+  const pos = (e) => {
+    const r = mindCanvas.getBoundingClientRect();
+    return { x: e.clientX - r.left, y: e.clientY - r.top };
+  };
+
+  mindCanvas.addEventListener("pointerdown", (e) => {
+    const p = pos(e);
+    const n = findNode(p.x, p.y);
+    pointerDown = { x: p.x, y: p.y, node: n, moved: false };
+    if (n) { dragged = n; mindCanvas.classList.add("is-dragging"); mindCanvas.setPointerCapture(e.pointerId); }
+  });
+  mindCanvas.addEventListener("pointermove", (e) => {
+    const p = pos(e);
+    if (dragged) {
+      dragged.x = p.x; dragged.y = p.y;
+      if (pointerDown && Math.hypot(p.x - pointerDown.x, p.y - pointerDown.y) > 5) pointerDown.moved = true;
+    } else {
+      hovered = findNode(p.x, p.y);
+      mindCanvas.classList.toggle("is-pointing", !!(hovered && hovered.url));
+    }
+    if (prefersReduced) { tick(); draw(); }
+  });
+  const release = () => {
+    if (pointerDown && pointerDown.node && !pointerDown.moved && pointerDown.node.url) {
+      const target = document.querySelector(pointerDown.node.url);
+      if (target) target.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth" });
+    }
+    dragged = null; pointerDown = null;
+    mindCanvas.classList.remove("is-dragging");
+  };
+  mindCanvas.addEventListener("pointerup", release);
+  mindCanvas.addEventListener("pointercancel", release);
+  mindCanvas.addEventListener("pointerleave", () => { if (!dragged) hovered = null; });
+
+  // 表示中のみ描画ループを回す
+  let running = false;
+  const loop = () => {
+    if (!running) return;
+    tick(); draw();
+    requestAnimationFrame(loop);
+  };
+  if (prefersReduced) {
+    for (let i = 0; i < 320; i += 1) tick();
+    draw();
+  } else {
+    const mio = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting && !running) { running = true; loop(); }
+        else if (!en.isIntersecting) { running = false; }
+      });
+    }, { threshold: 0.05 });
+    mio.observe(mindCanvas);
+  }
 }
