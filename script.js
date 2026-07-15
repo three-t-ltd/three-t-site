@@ -927,7 +927,7 @@ if (mindCanvas) {
   });
 
   let W = 0, H = 0, DPR = 1;
-  const radius = (n) => (n.type === "c" ? 15 : n.type === "h" ? 9.5 : 5);
+  const radius = (n) => (n.type === "c" ? 15 : n.type === "h" ? 9.5 : n.type === "n" ? 4 : 5);
 
   // 初期配置: ハブを円周、リーフをその外側に
   const hubs = NODES.filter((n) => n.type === "h");
@@ -1042,7 +1042,7 @@ if (mindCanvas) {
         : `rgba(245, 247, 250, ${isHl ? 0.85 : 0.2})`;
       ctx.fill();
       // ラベル
-      const fs = isCore ? 13.5 : n.type === "h" ? 12 : 10.5;
+      const fs = isCore ? 13.5 : n.type === "h" ? 12 : n.type === "n" ? 9.5 : 10.5;
       ctx.font = `${isCore || n.type === "h" ? "700" : "400"} ${fs}px "Noto Sans JP", sans-serif`;
       ctx.textAlign = "center";
       ctx.fillStyle = accNode
@@ -1084,8 +1084,13 @@ if (mindCanvas) {
   });
   const release = () => {
     if (pointerDown && pointerDown.node && !pointerDown.moved && pointerDown.node.url) {
-      const target = document.querySelector(pointerDown.node.url);
-      if (target) target.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth" });
+      const u = pointerDown.node.url;
+      if (u.startsWith("http")) {
+        window.open(u, "_blank", "noopener");
+      } else {
+        const target = document.querySelector(u);
+        if (target) target.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth" });
+      }
     }
     dragged = null; pointerDown = null;
     mindCanvas.classList.remove("is-dragging");
@@ -1093,6 +1098,31 @@ if (mindCanvas) {
   mindCanvas.addEventListener("pointerup", release);
   mindCanvas.addEventListener("pointercancel", release);
   mindCanvas.addEventListener("pointerleave", () => { if (!dragged) hovered = null; });
+
+  // note最新記事を「発信 > note」の先に自動でぶら下げる
+  // （assets/blog.json はGitHub Actionsが3時間ごとに更新 → グラフも自動で育つ）
+  const addArticleNodes = (items) => {
+    const base = nodeById.note;
+    items.slice(0, 3).forEach((it, i) => {
+      if (!it || !it.title) return;
+      const id = `art${i}`;
+      const label = it.title.length > 11 ? `${it.title.slice(0, 11)}…` : it.title;
+      const a = (i / 3) * Math.PI * 2 + 0.6;
+      const n = {
+        id, label, type: "n", hub: "note", url: it.url,
+        x: base.x + Math.cos(a) * 46, y: base.y + Math.sin(a) * 46, vx: 0, vy: 0
+      };
+      NODES.push(n); nodeById[id] = n;
+      LINKS.push([id, "note", 52]);
+      (neighbors[id] = neighbors[id] || new Set()).add("note");
+      neighbors.note.add(id);
+    });
+    if (prefersReduced) { for (let i = 0; i < 120; i += 1) tick(); draw(); }
+  };
+  fetch("./assets/blog.json", { cache: "no-store" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((d) => { if (Array.isArray(d)) addArticleNodes(d); })
+    .catch(() => {});
 
   // 表示中のみ描画ループを回す
   let running = false;
