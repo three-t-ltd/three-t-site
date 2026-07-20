@@ -21,6 +21,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://three-t-ltd.com/column/komon-seika-ga-denai.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://three-t-ltd.com/column/keiei-komon-consul-chigai.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://three-t-ltd.com/column/kengen-ijou-tejun.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://three-t-ltd.com/company.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
