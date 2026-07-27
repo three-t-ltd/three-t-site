@@ -32,16 +32,54 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "three.T合同会社",
-    "alternateName": "three.T Ltd.",
-    "description": "経営の伴走者・No.3として重要課題を前進させるNo.3代行",
-    "slogan": "Total Trust with Teams",
-    "founder": { "@type": "Person", "name": "上津原 研介", "alternateName": "Kensuke Uetsuhara" },
-    "foundingDate": "2020-05-13",
-    "address": { "@type": "PostalAddress", "addressRegion": "神奈川県", "addressLocality": "厚木市", "addressCountry": "JP" },
-    "areaServed": "JP",
-    "serviceType": ["No.3代行", "チームコンサルティング", "経営計画策定", "DX推進", "AI活用支援", "営業支援", "採用支援", "新規事業立上げ", "補助金支援"]
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://three-t-ltd.com/#organization",
+        "name": "three.T合同会社",
+        "alternateName": "three.T Ltd.",
+        "url": "https://three-t-ltd.com/",
+        "logo": "https://three-t-ltd.com/assets/ogp.png",
+        "slogan": "Total Trust with Teams",
+        "description": "経営の伴走者・No.3として重要課題を前進させるNo.3代行",
+        "founder": { "@type": "Person", "name": "上津原 研介", "alternateName": "Kensuke Uetsuhara" },
+        "foundingDate": "2020-05-13",
+        "address": { "@type": "PostalAddress", "addressRegion": "神奈川県", "addressLocality": "厚木市", "addressCountry": "JP" },
+        "sameAs": ["https://note.com/three_t_ltd", "https://x.com/threetno3"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://three-t-ltd.com/#website",
+        "url": "https://three-t-ltd.com/",
+        "name": "three.T合同会社",
+        "inLanguage": "ja",
+        "publisher": { "@id": "https://three-t-ltd.com/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://three-t-ltd.com/#webpage",
+        "url": "https://three-t-ltd.com/",
+        "name": "No.3代行｜経営の「進まない」を「進む」に変える｜three.T",
+        "isPartOf": { "@id": "https://three-t-ltd.com/#website" },
+        "about": { "@id": "https://three-t-ltd.com/#organization" },
+        "inLanguage": "ja"
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://three-t-ltd.com/#service",
+        "name": "three.T合同会社",
+        "alternateName": "three.T Ltd.",
+        "description": "経営の伴走者・No.3として重要課題を前進させるNo.3代行",
+        "slogan": "Total Trust with Teams",
+        "url": "https://three-t-ltd.com/",
+        "parentOrganization": { "@id": "https://three-t-ltd.com/#organization" },
+        "founder": { "@type": "Person", "name": "上津原 研介", "alternateName": "Kensuke Uetsuhara" },
+        "foundingDate": "2020-05-13",
+        "address": { "@type": "PostalAddress", "addressRegion": "神奈川県", "addressLocality": "厚木市", "addressCountry": "JP" },
+        "areaServed": "JP",
+        "serviceType": ["No.3代行", "チームコンサルティング", "経営計画策定", "DX推進", "AI活用支援", "営業支援", "採用支援", "新規事業立上げ", "補助金支援"]
+      }
+    ]
   }
   </script>
 </head>
@@ -523,11 +561,51 @@
     </section>
 
     <!-- ============ BLOG ============ -->
+    <!-- ============ COLUMN ============ -->
+    <section class="section column-teaser" id="column">
+      <div class="container">
+        <div class="section-head services-head">
+          <div>
+            <p class="section-index">10 — COLUMN</p>
+            <h2 class="reveal-mask"><span class="w"><i>経営の実践知を、</i></span><span class="w"><i>記事にしています。</i></span></h2>
+          </div>
+          <p class="section-lead reveal">外部人材の使い方、権限移譲、AI活用・DX。現場で使える進め方を、No.3代行の視点でまとめています。</p>
+        </div>
+        <div class="blog-grid">
+          <a class="blog-card col-teaser-card reveal" href="/column/komon-seika-ga-denai.html" data-hover>
+            <div class="blog-body">
+              <span class="ct-tag">外部人材</span>
+              <time datetime="2026-07-20">2026.07.20</time>
+              <h3>顧問・コンサルの成果が出ないとき、何が起きているのか</h3>
+              <span class="blog-more">続きを読む →</span>
+            </div>
+          </a>
+          <a class="blog-card col-teaser-card reveal" href="/column/keiei-komon-consul-chigai.html" data-hover>
+            <div class="blog-body">
+              <span class="ct-tag">外部人材</span>
+              <time datetime="2026-07-20">2026.07.20</time>
+              <h3>社外CxO・顧問・コンサル・業務委託・No.3代行は、何が違うのか</h3>
+              <span class="blog-more">続きを読む →</span>
+            </div>
+          </a>
+          <a class="blog-card col-teaser-card reveal" href="/column/kengen-ijou-tejun.html" data-hover>
+            <div class="blog-body">
+              <span class="ct-tag">経営・組織</span>
+              <time datetime="2026-07-20">2026.07.20</time>
+              <h3>社長が現場から抜けられない会社の、権限移譲の実務手順</h3>
+              <span class="blog-more">続きを読む →</span>
+            </div>
+          </a>
+        </div>
+        <a class="button button-secondary magnetic blog-all" href="/column/" data-hover>コラムを全て見る <span>→</span></a>
+      </div>
+    </section>
+
     <section class="section blog" id="blog">
       <div class="container">
         <div class="section-head services-head">
           <div>
-            <p class="section-index">10 — REPRESENTATIVE BLOG</p>
+            <p class="section-index">11 — REPRESENTATIVE BLOG</p>
             <h2 class="reveal-mask"><span class="w"><i>代表が、毎朝</i></span><span class="w"><i>書いています。</i></span></h2>
           </div>
           <p class="section-lead reveal">経営、AI活用、複業、挑戦の記録。代表・上津原がnoteで日々の気づきを発信しています。</p>
@@ -555,7 +633,7 @@
     <section class="section faq" id="faq">
       <div class="container faq-layout">
         <div class="faq-intro">
-          <p class="section-index">11 — FAQ</p>
+          <p class="section-index">12 — FAQ</p>
           <h2 class="reveal-mask"><span class="w"><i>よくある質問</i></span></h2>
           <p class="section-lead reveal">ここにない疑問も、初回相談で率直にお聞かせください。</p>
           <a class="text-link reveal" href="#contact" data-hover>聞いてみる <span>↗</span></a>
@@ -577,7 +655,7 @@
       <div class="contact-orb" aria-hidden="true"></div>
       <div class="container">
         <div class="contact-heading">
-          <p class="section-index">12 — LET'S MOVE FORWARD</p>
+          <p class="section-index">13 — LET'S MOVE FORWARD</p>
           <h2 class="contact-title reveal-mask"><span class="w"><i>社長一人で、</i></span><br><span class="w"><em>悩まない。</em></span></h2>
           <p class="reveal">止まっている課題を整理し、次の一歩を一緒に決めます。<br>まずは60分、経営の「進まない」をお聞かせください。</p>
         </div>
