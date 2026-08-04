@@ -1413,3 +1413,26 @@ body.modal-open { overflow: hidden; }
   .story-panel { opacity: 1; transform: none; }
   .cursor, .cursor-dot, .page-noise { display: none; }
 }
+
+/* ---------- TOPICS（検索ニーズ別のQ&A） ---------- */
+.topics { background: var(--bg-sub); }
+.topic-list { border-top: 1px solid var(--border); }
+.topic-item {
+  display: grid; grid-template-columns: clamp(46px, 6vw, 76px) 1fr;
+  gap: clamp(4px, 1.4vw, 18px);
+  padding: clamp(26px, 3.2vw, 40px) 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.35s var(--ease-out);
+}
+.topic-item:hover { background: rgba(183, 255, 42, 0.035); }
+.topic-num {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+  color: var(--accent); padding-top: 5px;
+}
+.topic-body h3 { font-size: clamp(17px, 2vw, 21px); line-height: 1.6; margin: 0; color: var(--text); }
+.topic-body p { margin: 14px 0 0; font-size: 14.5px; line-height: 1.95; color: var(--text-sub); max-width: 720px; }
+.topic-body .text-link { margin-top: 18px; }
+@media (max-width: 640px) {
+  .topic-item { grid-template-columns: 34px 1fr; }
+  .topic-body p { font-size: 14px; }
+}
