@@ -211,6 +211,9 @@ body.menu-open .mobile-nav .button { opacity: 1; }
 .button-primary:hover { box-shadow: 0 0 42px rgba(183, 255, 42, 0.35); }
 .button-secondary { border-color: var(--border); color: var(--text); background: transparent; }
 .button-secondary:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.3); }
+/* コラム本文のリンク色（.column-article a）がCTAボタンの文字色を上書きしないようにする */
+.column-article a.button-primary { color: var(--ink); }
+.column-article a.button-secondary { color: var(--text); }
 
 /* =================== TYPO HELPERS =================== */
 .eyebrow {
