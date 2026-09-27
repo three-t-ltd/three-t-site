@@ -41,7 +41,7 @@ header nav{display:flex;gap:22px;font-family:var(--display);font-weight:700;font
 header nav a{text-decoration:none}
 header nav a:hover{color:var(--blue-deep)}
 header .btn{padding:.55em 1.2em;font-size:14px;box-shadow:0 3px 0 var(--ink)}
-@media (max-width:760px){header .wrap{height:auto;flex-wrap:wrap;padding-block:8px;row-gap:4px}header nav{order:3;width:100%;overflow-x:auto;gap:18px;padding-bottom:4px;white-space:nowrap;scrollbar-width:none}header nav::-webkit-scrollbar{display:none}header nav a{flex:none}}
+@media (max-width:760px){header .wrap{height:auto;flex-wrap:wrap;padding-block:8px;row-gap:4px}header nav{order:3;width:100%;overflow-x:auto;gap:14px;padding-bottom:4px;padding-right:28px;white-space:nowrap;scrollbar-width:none;font-size:13px;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}header nav::-webkit-scrollbar{display:none}header nav a{flex:none}}
 
 /* ヒーロー */
 .hero{padding-block:48px 0;text-align:center}

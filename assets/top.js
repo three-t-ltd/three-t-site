@@ -27,7 +27,7 @@
   function closeIntro(){
     if(closing||intro.hidden) return; closing=true; markSeen();
     intro.classList.add('out'); document.body.classList.remove('intro-open');
-    var main=document.querySelector('main'); if(main) main.inert=false; clearTimeout(window.__introGuard);
+    ['main','header','footer'].forEach(function(t){ var el=document.querySelector(t); if(el) el.inert=false; }); clearTimeout(window.__introGuard);
     hero.classList.remove('wait');
     setTimeout(function(){ iv.pause(); intro.hidden=true; intro.classList.remove('out'); closing=false; },900);
   }
@@ -36,7 +36,7 @@
   function openIntro(withSound){
     if(!iv.getAttribute('src')){ iv.poster=portrait?'/assets/reel-poster-v.jpg':'/assets/reel-poster.jpg'; iv.src=portrait?'/assets/reel-v.mp4':'/assets/reel.mp4'; }
     intro.hidden=false; document.body.classList.add('intro-open'); hero.classList.add('wait');
-    var main=document.querySelector('main'); if(main) main.inert=true;
+    ['main','header','footer'].forEach(function(t){ var el=document.querySelector(t); if(el) el.inert=true; });
     // 4秒たっても再生が始まらない（回線が遅い等）ときは、待たせずに本文へ
     clearTimeout(window.__introGuard); window.__introGuard=setTimeout(function(){ if(iv.currentTime<0.1) closeIntro(); },4000);
     iv.currentTime=0; iv.muted=!withSound;
