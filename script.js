@@ -866,11 +866,11 @@ if (mindCanvas) {
     N("core", "three.T / ウエツ", "c", null, "#profile"),
     // hubs
     N("no3", "No.3代行", "h", null, "#about"),
-    N("svc", "サービス", "h", null, "#services"),
+    N("svc", "サービス", "h", null, "/services.html"),
     N("mind", "理念", "h", null, null),
     N("ceo", "複業CEO", "h", null, null),
     N("ai", "AI", "h", null, null),
-    N("out", "発信", "h", null, "#blog"),
+    N("out", "発信", "h", null, "/#blog"),
     N("bg", "経歴", "h", null, "#results"),
     // No.3代行
     N("tri", "トライアングル", "l", "no3", "#about"),
@@ -880,13 +880,13 @@ if (mindCanvas) {
     N("shikumi", "仕組み化", "l", "no3", null),
     N("juyo", "緊急でないが重要", "l", "no3", "#problems"),
     // サービス
-    N("dx", "DX推進", "l", "svc", "#services"),
-    N("eigyo", "営業支援", "l", "svc", "#services"),
-    N("saiyo2", "採用支援", "l", "svc", "#services"),
-    N("hojo", "補助金", "l", "svc", "#services"),
-    N("shinki2", "新規事業", "l", "svc", "#services"),
-    N("keikaku2", "経営計画", "l", "svc", "#services"),
-    N("team", "チームコンサル", "l", "svc", "#services"),
+    N("dx", "DX推進", "l", "svc", "/services.html"),
+    N("eigyo", "営業支援", "l", "svc", "/services.html"),
+    N("saiyo2", "採用支援", "l", "svc", "/services.html"),
+    N("hojo", "補助金", "l", "svc", "/services.html"),
+    N("shinki2", "新規事業", "l", "svc", "/services.html"),
+    N("keikaku2", "経営計画", "l", "svc", "/services.html"),
+    N("team", "チームコンサル", "l", "svc", "/services.html"),
     // 理念
     N("ttt", "Total Trust with Teams", "l", "mind", null),
     N("dot3", "3つ目の点", "l", "mind", "#about"),
@@ -900,7 +900,7 @@ if (mindCanvas) {
     N("gs", "Gensparkアンバサダー", "l", "ai", null),
     N("sem", "セミナー150回+", "l", "ai", null),
     // 発信
-    N("note", "note 毎朝更新", "l", "out", "#blog"),
+    N("note", "note 毎朝更新", "l", "out", "/#blog"),
     N("book2", "書籍", "l", "out", "#book"),
     N("sfm", "stand.fm", "l", "out", null),
     N("x", "X", "l", "out", null),
@@ -1087,6 +1087,8 @@ if (mindCanvas) {
       const u = pointerDown.node.url;
       if (u.startsWith("http")) {
         window.open(u, "_blank", "noopener");
+      } else if (u.startsWith("/")) {
+        location.href = u;
       } else {
         const target = document.querySelector(u);
         if (target) target.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth" });
