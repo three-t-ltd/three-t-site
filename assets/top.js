@@ -40,8 +40,15 @@
     // 4秒たっても再生が始まらない（回線が遅い等）ときは、待たせずに本文へ
     clearTimeout(window.__introGuard); window.__introGuard=setTimeout(function(){ if(iv.currentTime<0.1) closeIntro(); },4000);
     iv.currentTime=0; iv.muted=!withSound;
-    isound.textContent=iv.muted?'音を出す':'音を消す'; isound.setAttribute('aria-pressed',String(!iv.muted));
-    var p=iv.play(); if(p&&p.catch) p.catch(function(){ closeIntro(); });  // 自動再生が止められたら、すぐホームページへ
+    function label(){ isound.textContent=iv.muted?'音を出す':'音を消す'; isound.setAttribute('aria-pressed',String(!iv.muted)); isound.classList.toggle('pulse',iv.muted); }
+    label();
+    // 音つきで再生を試す → ブラウザに止められたら音なしで続け、「音を出す」を点滅 → それも止められたらホームページへ
+    var p=iv.play();
+    if(p&&p.catch) p.catch(function(){
+      if(iv.muted){ closeIntro(); return; }
+      iv.muted=true; label();
+      var p2=iv.play(); if(p2&&p2.catch) p2.catch(function(){ closeIntro(); });
+    });
     iskip.focus({preventScroll:true});
   }
   iv.addEventListener('ended',closeIntro);
@@ -52,13 +59,13 @@
   iv.addEventListener('timeupdate',function(){ if(iv.duration) ibar.style.width=(iv.currentTime/iv.duration*100)+'%'; });
   intro.addEventListener('click',function(e){ if(e.target===isound) return; closeIntro(); });
   isound.addEventListener('click',function(e){
-    e.stopPropagation(); iv.muted=!iv.muted;
+    e.stopPropagation(); iv.muted=!iv.muted; isound.classList.remove('pulse');
     isound.textContent=iv.muted?'音を出す':'音を消す'; isound.setAttribute('aria-pressed',String(!iv.muted));
   });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!intro.hidden) closeIntro(); });
   document.getElementById('replayIntro').addEventListener('click',function(){ window.scrollTo(0,0); openIntro(true); });
   // 1回の訪問で1回だけ。ページ内リンクで来たとき・動きを減らす設定のときは流さない
-  if(!reduce && !seen() && !location.hash){ openIntro(false); }
+  if(!reduce && !seen() && !location.hash){ openIntro(true); }
 
 
   // ===== noteの最新3件（GitHub Actionsが毎日更新する /assets/blog.json） =====

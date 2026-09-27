@@ -324,3 +324,6 @@ img{max-width:100%}
 .faq-sub{margin-top:28px;font-size:20px}
 .faq-sub-lead{color:var(--ink-sub);font-size:14px;margin-bottom:4px}
 .faq-note{margin-top:14px;text-align:center;color:var(--ink-sub);font-size:14px}
+.ibtn.pulse{background:#B7FF2A;color:#0A1030;border-color:#B7FF2A;animation:ipulse 1.2s ease-in-out infinite}
+@keyframes ipulse{50%{box-shadow:0 0 0 8px rgba(183,255,42,.25)}}
+@media (prefers-reduced-motion:reduce){.ibtn.pulse{animation:none}}
