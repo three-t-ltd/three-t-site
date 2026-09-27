@@ -9,7 +9,7 @@
   --lime-deep:#5E8F00;
   --sun:#FFD447;
   --blue:#8EC5FF;
-  --blue-deep:#3F7FD6;
+  --blue-deep:#2B62BD;
   --line:#CFDDF2;
   --display:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;
   --body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
@@ -41,7 +41,7 @@ header nav{display:flex;gap:22px;font-family:var(--display);font-weight:700;font
 header nav a{text-decoration:none}
 header nav a:hover{color:var(--blue-deep)}
 header .btn{padding:.55em 1.2em;font-size:14px;box-shadow:0 3px 0 var(--ink)}
-@media (max-width:760px){header nav{display:none}}
+@media (max-width:760px){header .wrap{height:auto;flex-wrap:wrap;padding-block:8px;row-gap:4px}header nav{order:3;width:100%;overflow-x:auto;gap:18px;padding-bottom:4px;white-space:nowrap;scrollbar-width:none}header nav::-webkit-scrollbar{display:none}header nav a{flex:none}}
 
 /* ヒーロー */
 .hero{padding-block:48px 0;text-align:center}
@@ -296,7 +296,7 @@ img{max-width:100%}
 .card.cols{cursor:default}
 .card.cols:hover{transform:none}
 .col-list-top{list-style:none;margin:0;padding:0;display:grid;gap:2px}
-.col-list-top a{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline;text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.5}
+.col-list-top a{display:grid;grid-template-columns:auto auto 1fr;gap:10px;align-items:baseline;text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.5}
 .col-list-top a:hover .cl-title{color:var(--blue-deep);text-decoration:underline}
 .cl-cat{font-family:var(--display);font-weight:700;font-size:11px;background:var(--sky);border-radius:999px;padding:.1em .7em;white-space:nowrap}
 .blog-top{margin-top:20px;background:var(--paper);border-radius:28px;padding:24px;display:grid;gap:12px}
@@ -318,3 +318,9 @@ img{max-width:100%}
 .foot p{margin:0}
 .faq-more{display:inline-block;margin:0 0 18px;font-family:var(--display);font-weight:700;font-size:14px;color:var(--blue-deep);text-decoration:none}
 .faq-more:hover{text-decoration:underline}
+.cl-date{font-size:12px;color:var(--ink-sub);font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:760px){.col-list-top a{grid-template-columns:auto 1fr}.col-list-top .cl-title{grid-column:1/-1}}
+.card.cols p,.blog-top p{font-size:14px;color:var(--ink-sub)}
+.faq-sub{margin-top:28px;font-size:20px}
+.faq-sub-lead{color:var(--ink-sub);font-size:14px;margin-bottom:4px}
+.faq-note{margin-top:14px;text-align:center;color:var(--ink-sub);font-size:14px}

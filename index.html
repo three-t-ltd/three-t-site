@@ -366,13 +366,13 @@
   </script>
 </head>
 <body>
-<div id="intro" class="intro" hidden role="dialog" aria-label="オープニング動画。クリックでスキップします">
+<div id="intro" class="intro" hidden role="dialog" aria-modal="true" aria-label="オープニング動画。クリックでスキップします">
   <video id="introVideo" muted playsinline preload="auto"></video>
   <div class="intro-ui">
     <button type="button" id="introSound" class="ibtn">音を出す</button>
     <button type="button" id="introSkip" class="ibtn skip">スキップ →</button>
   </div>
-  <p class="intro-hint">クリックでホームページへ</p>
+  <p class="intro-hint" id="introHint">クリックでホームページへ</p>
   <span class="intro-bar"><i id="introBar"></i></span>
 </div>
 
@@ -515,7 +515,6 @@
         <p class="eyebrow">経営者のみなさん</p>
         <h2>「緊急じゃないけど重要なこと」<br>進んでますか？</h2>
       </div>
-      <!-- 青きち窓広告の机を動かしたもの：緊急の書類が積み上がり、重要なファイルは後回し。No.3の手がそれを引き取って進める -->
       <svg class="desk" viewBox="0 0 900 520" role="img" aria-label="机が4マスに分かれている。緊急の書類が次々に積み上がり、緊急でないが重要な黄色いファイルは後回しのまま。そこへNo.3の手が伸びてファイルを引き取り、前に進める">
         <rect width="900" height="520" fill="#EAF3FF"/>
         <text x="295" y="58" text-anchor="middle" class="axis">緊急</text>
@@ -602,7 +601,7 @@
         <h2>「3番目」がいる会社の話。</h2>
         <p>ある町工場の社長と右腕のところに、No.3がやってきました。</p>
       </div>
-      <div class="manga" tabindex="0" aria-label="漫画。横にスクロールできます">
+      <div class="manga" tabindex="0" role="region" aria-label="漫画。横にスクロールできます">
         <figure><img src="/assets/manga1-thumb.webp" alt="漫画1ページ目。社長「右腕はいるのに、なぜか会社が前に進まねえんだ…」右腕「私も毎日いっぱいいっぱいで…」No.3「社長、それはたぶん“3番目”ですよ」" loading="lazy"><figcaption><b>1</b>右腕はいるのに、進まない。</figcaption></figure>
         <figure><img src="/assets/manga2-thumb.webp" alt="漫画2ページ目。社長と右腕が言い合いになり、No.3が「まあまあ、二人とも会社想いゆえですよ」「外側にいる私だから、橋渡しできるんです」と間に入る" loading="lazy"><figcaption><b>2</b>外側にいるから、橋渡しできる。</figcaption></figure>
         <figure><img src="/assets/manga3-thumb.webp" alt="漫画3ページ目。若手社員「ウエツさんって、なんでお金もらえてるんですか？社員でもないのに不思議で…」ウエツ「いい質問だね。答えはシンプルなんだ」" loading="lazy"><figcaption><b>3</b><span>社員でもないのに、なぜ？<br>答えは「課題解決の量」。</span></figcaption></figure>
@@ -619,7 +618,7 @@
       </div>
       <div class="duo">
         <div class="panel">
-          <svg viewBox="0 0 340 220" aria-label="社長と右腕の2点を結ぶ線が、ぐらぐら揺れている図">
+          <svg viewBox="0 0 340 220" role="img" aria-label="社長と右腕の2点を結ぶ線が、ぐらぐら揺れている図">
             <g class="wobble">
               <line x1="80" y1="120" x2="260" y2="120" stroke="#14204A" stroke-width="6" stroke-linecap="round"/>
               <circle cx="80" cy="120" r="26" fill="#14204A"/><text x="80" y="126" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-weight="900" font-size="15" fill="#FFFFFF">社長</text>
@@ -632,7 +631,7 @@
         </div>
         <div class="arrow" aria-hidden="true">→</div>
         <div class="panel after">
-          <svg id="tri" viewBox="0 0 340 220" aria-label="3つ目の点としてNo.3が加わり、安定した三角形になる図">
+          <svg id="tri" viewBox="0 0 340 220" role="img" aria-label="3つ目の点としてNo.3が加わり、安定した三角形になる図">
             <path class="tri-fill" d="M80 180 L260 180 L170 50 Z" fill="#B7FF2A" opacity=".25"/>
             <path d="M80 180 L260 180 L170 50 Z" fill="none" stroke="#B7FF2A" stroke-width="6" stroke-linejoin="round"/>
             <circle cx="80" cy="180" r="26" fill="#FFFFFF"/><text x="80" y="186" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-weight="900" font-size="15" fill="#14204A">社長</text>
@@ -755,24 +754,26 @@
           <span class="go">試し読みする →</span>
         </a>
         <div class="card cols">
-          <h3>コラム</h3>
+          <h3>経営の実践知を、記事にしています。</h3>
+          <p>外部人材の使い方、権限移譲、経営計画の回し方、AI活用・DX。現場で使える進め方を、No.3代行の視点でまとめています。</p>
           <ul class="col-list-top">
-            <li><a href="/column/dx-suishin-shanai-chousei.html"><span class="cl-cat">AI・DX</span><span class="cl-title">DX推進の時間が社内調整に消えるのは、異常ではありません</span></a></li>
-            <li><a href="/column/chusho-kigyo-tomaru-pattern.html"><span class="cl-cat">経営・組織</span><span class="cl-title">社外のNo.3として見てきた、中小企業が止まる4つの共通パターン</span></a></li>
-            <li><a href="/column/dx-suishin-tantou-inai.html"><span class="cl-cat">AI・DX</span><span class="cl-title">DXの推進担当がいない会社は、何から決めればいいのか</span></a></li>
-            <li><a href="/column/zokujinka-manual-igai.html"><span class="cl-cat">仕組み化</span><span class="cl-title">業務の属人化は、マニュアルを作っても解消しない</span></a></li>
-            <li><a href="/column/keiei-keikaku-jikkou.html"><span class="cl-cat">経営・組織</span><span class="cl-title">経営計画が「絵に描いた餅」で終わる会社と、終わらない会社</span></a></li>
-            <li><a href="/column/komon-seika-ga-denai.html"><span class="cl-cat">外部人材</span><span class="cl-title">顧問・コンサルの成果が出ないとき、何が起きているのか</span></a></li>
-            <li><a href="/column/keiei-komon-consul-chigai.html"><span class="cl-cat">外部人材</span><span class="cl-title">社外CxO・顧問・コンサル・業務委託・No.3代行は、何が違うのか</span></a></li>
-            <li><a href="/column/kengen-ijou-tejun.html"><span class="cl-cat">経営・組織</span><span class="cl-title">社長が現場から抜けられない会社の、権限移譲の実務手順</span></a></li>
-            <li><a href="/column/chusho-kigyo-keiei-sanbo.html"><span class="cl-cat">経営・組織</span><span class="cl-title">中小企業の「経営参謀」の見つけ方</span></a></li>
-            <li><a href="/column/chusho-kigyo-ai-dx-hajimekata.html"><span class="cl-cat">AI・DX</span><span class="cl-title">中小企業のAI活用・DXの始め方</span></a></li>
+            <li><a href="/column/dx-suishin-shanai-chousei.html"><span class="cl-cat">AI・DX</span><time class="cl-date">2026.09.24</time><span class="cl-title">DX推進の時間が社内調整に消えるのは、異常ではありません</span></a></li>
+            <li><a href="/column/chusho-kigyo-tomaru-pattern.html"><span class="cl-cat">経営・組織</span><time class="cl-date">2026.09.14</time><span class="cl-title">社外のNo.3として見てきた、中小企業が止まる4つの共通パターン</span></a></li>
+            <li><a href="/column/dx-suishin-tantou-inai.html"><span class="cl-cat">AI・DX</span><time class="cl-date">2026.09.01</time><span class="cl-title">DXの推進担当がいない会社は、何から決めればいいのか</span></a></li>
+            <li><a href="/column/zokujinka-manual-igai.html"><span class="cl-cat">仕組み化</span><time class="cl-date">2026.08.17</time><span class="cl-title">業務の属人化は、マニュアルを作っても解消しない</span></a></li>
+            <li><a href="/column/keiei-keikaku-jikkou.html"><span class="cl-cat">経営・組織</span><time class="cl-date">2026.08.07</time><span class="cl-title">経営計画が「絵に描いた餅」で終わる会社と、終わらない会社</span></a></li>
+            <li><a href="/column/komon-seika-ga-denai.html"><span class="cl-cat">外部人材</span><time class="cl-date">2026.07.20</time><span class="cl-title">顧問・コンサルの成果が出ないとき、何が起きているのか</span></a></li>
+            <li><a href="/column/keiei-komon-consul-chigai.html"><span class="cl-cat">外部人材</span><time class="cl-date">2026.07.20</time><span class="cl-title">社外CxO・顧問・コンサル・業務委託・No.3代行は、何が違うのか</span></a></li>
+            <li><a href="/column/kengen-ijou-tejun.html"><span class="cl-cat">経営・組織</span><time class="cl-date">2026.07.20</time><span class="cl-title">社長が現場から抜けられない会社の、権限移譲の実務手順</span></a></li>
+            <li><a href="/column/chusho-kigyo-keiei-sanbo.html"><span class="cl-cat">経営・組織</span><time class="cl-date">2026.07.14</time><span class="cl-title">中小企業の「経営参謀」の見つけ方</span></a></li>
+            <li><a href="/column/chusho-kigyo-ai-dx-hajimekata.html"><span class="cl-cat">AI・DX</span><time class="cl-date">2026.07.13</time><span class="cl-title">中小企業のAI活用・DXの始め方</span></a></li>
           </ul>
           <a class="go" href="/column/">コラムをすべて見る →</a>
         </div>
       </div>
       <div class="blog-top" id="blog">
-        <h3>毎日のnote</h3>
+        <h3>代表が、毎朝書いています。</h3>
+        <p>経営、AI活用、複業、挑戦の記録。代表・上津原がnoteで日々の気づきを発信しています。</p>
         <ul class="blog-list" id="blogList"></ul>
         <a class="go" href="https://note.com/three_t_ltd" target="_blank" rel="noopener">noteで毎日発信しています →</a>
       </div>
@@ -793,11 +794,14 @@
         <details><summary>支援料金はいくらですか？</summary><p>支援範囲と関与頻度に応じて個別にお見積りします。初回相談後、ご契約前に内容と費用を明確にご提示します。</p></details>
         <details><summary>全国から相談できますか？</summary><p>はい。オンラインを中心に全国対応しています。必要に応じて訪問対応もご相談いただけます。</p></details>
         <details><summary>相談したら契約しなければなりませんか？</summary><p>いいえ。初回相談では課題整理を行い、three.Tがお役に立てる場合のみ支援内容をご提案します。</p></details>
+        <h3 class="faq-sub">その「進まない」は、だいたいこの5つ。</h3>
+        <p class="faq-sub-lead">経営者からよく寄せられる問いに、No.3代行の視点で先に答えます。詳しい手順は各コラムにまとめました。</p>
         <details><summary>中小企業の「経営参謀」とは、何をする人か</summary><p>経営者の構想を、実行できる計画に翻訳する役割です。方向を決めるのは社長ですが、優先順位をつけ、誰がいつ何をするかまで分解し、進捗を管理するところを担います。確保の仕方は、社内で育てる・外部に相談する・外部に実行まで任せる、の3つです。</p><a class="faq-more" href="/column/chusho-kigyo-keiei-sanbo.html">コラムでくわしく読む →</a></details>
         <details><summary>経営顧問・経営コンサル・社外CxO・業務委託は、何が違うのか</summary><p>違いは「何に対して払うか」です。顧問は時間、コンサルタントは成果物、業務委託は作業範囲、社外CxOは特定機能の責任者という役割に対して払います。No.3代行は推進役という役割に対して払い、提案の後の実行・社内調整・仕組み化までを一体で担います。</p><a class="faq-more" href="/column/keiei-komon-consul-chigai.html">コラムでくわしく読む →</a></details>
         <details><summary>社長が現場から抜けられないとき、権限移譲は何から始めるか</summary><p>人を探す前に、業務を分けるところからです。連続した3営業日、現場の判断に入らない期間をつくると、何が止まって何が止まらないかが分かります。止まった業務のうち、発生頻度が高く判断が軽いものが、最初に渡す候補になります。</p><a class="faq-more" href="/column/kengen-ijou-tejun.html">コラムでくわしく読む →</a></details>
         <details><summary>中小企業のDX・AI活用は、なぜ進まないのか</summary><p>情報でも意欲でもなく、推進する人と時間が足りないためです。ツール選びから入ると定着しません。業務の棚卸し、優先順位づけ、小さく試す、展開、仕組み化の順で進め、旧来のやり方を止めるところまで決めると現場に残ります。</p><a class="faq-more" href="/column/chusho-kigyo-ai-dx-hajimekata.html">コラムでくわしく読む →</a></details>
         <details><summary>外部人材に頼んでも成果が出ないのは、なぜか</summary><p>多くは相手の力量ではなく、受け入れ側の設計に原因があります。窓口が社長ひとりだけ、一緒に手を動かす社員がいない、打ち合わせが月1回。このいずれかに当てはまる場合、相手を変えても結果は変わりません。</p><a class="faq-more" href="/column/komon-seika-ga-denai.html">コラムでくわしく読む →</a></details>
+        <p class="faq-note">ここにない疑問も、初回相談で率直にお聞かせください。</p>
       </div>
     </div>
   </section>

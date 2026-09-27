@@ -1087,6 +1087,8 @@ if (mindCanvas) {
       const u = pointerDown.node.url;
       if (u.startsWith("http")) {
         window.open(u, "_blank", "noopener");
+      } else if (u.startsWith("/")) {
+        location.href = u;
       } else {
         const target = document.querySelector(u);
         if (target) target.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth" });

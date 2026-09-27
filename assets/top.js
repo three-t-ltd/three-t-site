@@ -27,21 +27,28 @@
   function closeIntro(){
     if(closing||intro.hidden) return; closing=true; markSeen();
     intro.classList.add('out'); document.body.classList.remove('intro-open');
+    var main=document.querySelector('main'); if(main) main.inert=false; clearTimeout(window.__introGuard);
     hero.classList.remove('wait');
     setTimeout(function(){ iv.pause(); intro.hidden=true; intro.classList.remove('out'); closing=false; },900);
   }
   // 縦長の画面（スマホ縦持ち）では縦型、それ以外は横型
   var portrait=window.matchMedia('(max-aspect-ratio: 4/5)').matches;
-  iv.poster=portrait?'/assets/reel-poster-v.jpg':'/assets/reel-poster.jpg';
-  iv.src=portrait?'/assets/reel-v.mp4':'/assets/reel.mp4';
   function openIntro(withSound){
+    if(!iv.getAttribute('src')){ iv.poster=portrait?'/assets/reel-poster-v.jpg':'/assets/reel-poster.jpg'; iv.src=portrait?'/assets/reel-v.mp4':'/assets/reel.mp4'; }
     intro.hidden=false; document.body.classList.add('intro-open'); hero.classList.add('wait');
+    var main=document.querySelector('main'); if(main) main.inert=true;
+    // 4秒たっても再生が始まらない（回線が遅い等）ときは、待たせずに本文へ
+    clearTimeout(window.__introGuard); window.__introGuard=setTimeout(function(){ if(iv.currentTime<0.1) closeIntro(); },4000);
     iv.currentTime=0; iv.muted=!withSound;
     isound.textContent=iv.muted?'音を出す':'音を消す'; isound.setAttribute('aria-pressed',String(!iv.muted));
     var p=iv.play(); if(p&&p.catch) p.catch(function(){ closeIntro(); });  // 自動再生が止められたら、すぐホームページへ
     iskip.focus({preventScroll:true});
   }
   iv.addEventListener('ended',closeIntro);
+  // 再生途中で8秒以上止まったら本文へ
+  var stallT; iv.addEventListener('waiting',function(){ clearTimeout(stallT); stallT=setTimeout(function(){ if(!intro.hidden) closeIntro(); },8000); });
+  iv.addEventListener('playing',function(){ clearTimeout(stallT); });
+  if(window.matchMedia('(pointer: coarse)').matches){ document.getElementById('introHint').textContent='タップでホームページへ'; }
   iv.addEventListener('timeupdate',function(){ if(iv.duration) ibar.style.width=(iv.currentTime/iv.duration*100)+'%'; });
   intro.addEventListener('click',function(e){ if(e.target===isound) return; closeIntro(); });
   isound.addEventListener('click',function(e){
