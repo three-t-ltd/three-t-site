@@ -1,0 +1,22 @@
+/* 下層ページをトップ（明るい朝の配色）にそろえる上書き。各ページの </head> 直前で読む */
+body { background: #EAF3FF; color: #14204A; }
+h1, h2, h3, .section-title, .contact-title, .subpage-hero h1 { font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif; font-weight: 900; }
+.column-article a, .col-body a { color: #2B62BD; }
+.column-article a.button-primary { color: #14204A; }
+.section-index, .eyebrow { color: #2B62BD; }
+.page-noise, .cursor, .cursor-dot { display: none !important; }
+.glass-card, .problem-card, .service-card, .col-card { background: #FFFFFF; box-shadow: 0 2px 0 rgba(20, 32, 74, 0.06), 0 12px 32px rgba(20, 32, 74, 0.06); }
+/* ヘッダー：トップと同じ空色のバー */
+.site-header, .site-header.is-solid, .site-header.is-scrolled { background: rgba(234, 243, 255, 0.9); backdrop-filter: blur(8px); border-bottom: 1px solid #CFDDF2; }
+.site-header .logo, .site-header .desktop-nav a { color: #14204A; }
+.site-header .logo span { color: #5E8F00; }
+.menu-button span { background: #14204A; }
+.mobile-nav { background: #EAF3FF; }
+.button-primary { background: #B7FF2A; color: #14204A; box-shadow: 0 4px 0 #14204A; }
+.button-primary:hover { box-shadow: 0 6px 0 #14204A; }
+/* フッター：トップと同じ濃紺の帯 */
+.site-footer { background: #14204A; color: #E9EDF4; --text: #E9EDF4; --text-sub: #C9D3F0; --text-muted: #9AA4C8; --border: rgba(233, 237, 244, 0.16); }
+.site-footer a, .site-footer .logo { color: #E9EDF4; }
+.site-footer .logo span { color: #B7FF2A; }
+.footer-giant span { color: rgba(233, 237, 244, 0.06); -webkit-text-stroke: 0; }
+.mobile-fixed-cta { background: #B7FF2A; color: #14204A; }
