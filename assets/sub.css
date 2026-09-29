@@ -70,9 +70,9 @@
 .v2-do h3 { font-size: 22px; }
 .v2-do p:last-child { color: var(--ink-sub); font-size: 15px; }
 .v2 .gear { transform-box: fill-box; transform-origin: center; }
-.v2 .in .gear, .v2-do.in .gear { animation: spin 6s linear infinite; }
+.v2 .in .gear, .v2-do.in .gear { animation: spin 6s linear 2; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.v2-do.in .loop { transform-box: fill-box; transform-origin: center; animation: spin 4s linear infinite; }
+.v2-do.in .loop { transform-box: fill-box; transform-origin: center; animation: spin 4s linear 2; }
 
 /* 3. 比較 */
 .v2-cmp { display: grid; gap: 16px; }
@@ -92,43 +92,53 @@
 .mt-bars i.on { background: #3F7FD6; }
 td.us .mt-bars i.on { background: #4E7A00; }
 .mt-mark { font-size: 13px; color: var(--ink-sub); width: 1em; }
-.cmp-legend { font-size: 13px; color: var(--ink-sub); }
+.cmp-legend { font-size: 13px; color: var(--ink-sub); display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.cmp-legend > span { display: inline-flex; align-items: center; gap: 6px; }
+.cmp-legend .mt-bars i { width: 10px; height: 8px; }
 .v2-cmp.play .mt-bars i.on { animation: bar .5s var(--back) both; }
 .v2-cmp.play .mt-bars i.on:nth-child(2) { animation-delay: .12s; }
 .v2-cmp.play .mt-bars i.on:nth-child(3) { animation-delay: .24s; }
 @keyframes bar { from { transform: scaleX(0); } to { transform: none; } }
 
-/* 4. フィルター */
-.v2-filter { display: grid; grid-template-columns: 1fr 1.3fr; gap: 28px; align-items: center; }
-@media (max-width: 760px) { .v2-filter { grid-template-columns: 1fr; } }
-.flt-svg { width: 100%; height: auto; }
-.flt-svg .lbl text { font-family: var(--display); font-weight: 900; font-size: 15px; fill: #14204A; text-anchor: middle; }
-.flt-svg .road { stroke-width: 4; stroke-dasharray: 8 8; }
-.flt-svg .road.bad { stroke: #CFDDF2; }
-.flt-svg .road.good { stroke: #4E7A00; }
-.flt-svg .who circle { fill: #FFE1C6; stroke: #14204A; stroke-width: 3; }
-.flt-svg .funnel { fill: #FFD9CC; stroke: #D9573B; stroke-width: 3; }
-.flt-svg .cap { font-size: 13px; fill: #4A5680; text-anchor: middle; font-weight: 700; }
-.flt-svg .cap.good { fill: #4E7A00; }
-.flt-svg .say { font-size: 11px; fill: #14204A; text-anchor: middle; }
-.flt-svg .no3 rect { fill: #B7FF2A; stroke: #14204A; stroke-width: 3; }
-.flt-svg .no3 text { font-family: var(--display); font-weight: 900; font-size: 14px; fill: #14204A; text-anchor: middle; }
-.flt-svg .msg rect { fill: #14204A; }
-.flt-svg .msg text { fill: #FFFFFF; font-size: 12px; font-weight: 700; text-anchor: middle; }
-.flt-svg .m-bad { transform: translate(46px, 80px); }
-.flt-svg .m-good { transform: translate(46px, 200px); }
-.v2-filter.in .m-bad { animation: bad 5s ease-in-out infinite; }
-.v2-filter.in .m-good { animation: good 5s ease-in-out infinite; }
-@keyframes bad {
-  0% { transform: translate(46px, 80px) scale(1); opacity: 1; }
-  35% { transform: translate(178px, 80px) scale(.9); opacity: 1; }
-  60% { transform: translate(316px, 80px) scale(.55, .45); opacity: .8; }
-  85%, 100% { transform: translate(462px, 80px) scale(.35, .3); opacity: .25; }
+/* 4. フィルター（HTML版） */
+.v2-filter { display: grid; grid-template-columns: 1fr 1.4fr; gap: 28px; align-items: center; }
+@media (max-width: 860px) { .v2-filter { grid-template-columns: 1fr; } }
+.nflow { display: grid; gap: 14px; }
+.nflow-row { position: relative; border-radius: 20px; padding: 14px 12px 12px; }
+.nflow-row.bad { background: #FFF5F1; }
+.nflow-row.good { background: #F4FFDF; }
+.nflow-tag { font-family: var(--display); font-weight: 700; font-size: 13px; margin-bottom: 8px !important; }
+.nflow-row.bad .nflow-tag { color: #B8452B; }
+.nflow-row.good .nflow-tag { color: var(--lime-deep); }
+.nflow-line { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; position: relative; }
+.nflow-line::before { content: ""; position: absolute; left: 12%; right: 12%; top: 21px; border-top: 3px dashed #CFDDF2; }
+.nflow-row.good .nflow-line::before { border-top: 3px solid var(--lime-deep); }
+.nflow-line li { position: relative; display: grid; justify-items: center; align-content: start; gap: 4px; text-align: center; }
+.nflow-line .face { width: 44px; height: 44px; border-radius: 50%; background: #FFE1C6; border: 3px solid var(--ink); }
+.nflow-line .funnel { width: 44px; height: 44px; background: #FFD9CC; border: 3px solid #D9573B; clip-path: polygon(0 0, 100% 0, 62% 100%, 38% 100%); }
+.nflow-line .n3pill { display: grid; place-items: center; height: 44px; padding: 0 10px; border-radius: 22px; background: var(--lime); border: 3px solid var(--ink); font-family: var(--display); font-weight: 900; font-size: 13px; white-space: nowrap; }
+.nflow-line b { font-family: var(--display); font-size: 14px; white-space: nowrap; }
+.nflow-line small.ok { white-space: nowrap; }
+.cmp tbody th .ph { white-space: nowrap; }
+.nflow-line q { quotes: "「" "」"; font-size: 12px; line-height: 1.45; color: var(--ink); }
+.nflow-line small { font-size: 12px; line-height: 1.45; color: #B8452B; font-weight: 700; }
+.nflow-line small.ok { color: var(--lime-deep); }
+@media (max-width: 420px) { .nflow-line q, .nflow-line small { font-size: 11.5px; } .nflow-line .n3pill { font-size: 11px; padding: 0 7px; } .nflow-line { gap: 4px; } }
+/* 「本音」のチップ：止まっているときは最終の位置（上＝社長の手前で小さく薄い／下＝社長に届いている） */
+.nflow .chip { position: absolute; top: 56px; z-index: 2; font-size: 11px; font-weight: 700; color: #FFFFFF; background: var(--ink); border-radius: 999px; padding: .1em .6em; pointer-events: none; }
+.nflow-row.bad .chip { left: calc(87.5% - 60px); transform: scale(.55); opacity: .35; }
+.nflow-row.good .chip { left: calc(87.5% - 64px); }
+.v2-filter.in .nflow-row.bad .chip { animation: chipbad 4.5s ease-in-out 2 both; }
+.v2-filter.in .nflow-row.good .chip { animation: chipgood 4.5s ease-in-out 2 both; }
+@keyframes chipbad {
+  0% { left: calc(12.5% - 22px); transform: none; opacity: 1; }
+  35% { left: calc(37.5% - 22px); transform: scale(.9); opacity: 1; }
+  60% { left: calc(62.5% - 22px); transform: scale(.6, .5); opacity: .7; }
+  85%, 100% { left: calc(87.5% - 60px); transform: scale(.55); opacity: .35; }
 }
-@keyframes good {
-  0% { transform: translate(46px, 200px); }
-  45% { transform: translate(260px, 200px); }
-  85%, 100% { transform: translate(462px, 200px); }
+@keyframes chipgood {
+  0% { left: calc(12.5% - 22px); }
+  85%, 100% { left: calc(87.5% - 64px); }
 }
 
 /* くわしく読む */
@@ -165,4 +175,13 @@ td.us .mt-bars i.on { background: #4E7A00; }
 
 @media (prefers-reduced-motion: reduce) {
   .v2 *, .v2 *::before { animation: none !important; transition: none !important; }
+}
+/* スマホ：「本音」は社長の顔の上に乗って止まる（No.3代行のラベルと重ならないように） */
+@media (max-width: 560px) {
+  .nflow .chip { top: 30px; }
+  .nflow-row.bad .chip, .nflow-row.good .chip { left: calc(87.5% - 19px); }
+  .v2-filter.in .nflow-row.bad .chip { animation-name: chipbad-m; }
+  .v2-filter.in .nflow-row.good .chip { animation-name: chipgood-m; }
+  @keyframes chipbad-m { 0% { left: calc(12.5% - 19px); transform: none; opacity: 1; } 35% { left: calc(37.5% - 19px); transform: scale(.9); opacity: 1; } 60% { left: calc(62.5% - 19px); transform: scale(.6, .5); opacity: .7; } 85%, 100% { left: calc(87.5% - 19px); transform: scale(.55); opacity: .35; } }
+  @keyframes chipgood-m { 0% { left: calc(12.5% - 19px); } 85%, 100% { left: calc(87.5% - 19px); } }
 }
