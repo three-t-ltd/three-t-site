@@ -115,7 +115,7 @@ td.us .mt-bars i.on { background: #4E7A00; }
 .nflow-row.good .nflow-line::before { border-top: 3px solid var(--lime-deep); }
 .nflow-line li { position: relative; display: grid; justify-items: center; align-content: start; gap: 4px; text-align: center; }
 .nflow-line .face { width: 44px; height: 44px; border-radius: 50%; background: #FFE1C6; border: 3px solid var(--ink); }
-.nflow-line .funnel { width: 44px; height: 44px; background: #FFD9CC; border: 3px solid #D9573B; clip-path: polygon(0 0, 100% 0, 62% 100%, 38% 100%); }
+.nflow-line .funnel { width: 44px; height: 44px; }
 .nflow-line .n3pill { display: grid; place-items: center; height: 44px; padding: 0 10px; border-radius: 22px; background: var(--lime); border: 3px solid var(--ink); font-family: var(--display); font-weight: 900; font-size: 13px; white-space: nowrap; }
 .nflow-line b { font-family: var(--display); font-size: 14px; white-space: nowrap; }
 .nflow-line small.ok { white-space: nowrap; }
@@ -182,6 +182,11 @@ td.us .mt-bars i.on { background: #4E7A00; }
   .nflow-row.bad .chip, .nflow-row.good .chip { left: calc(87.5% - 19px); }
   .v2-filter.in .nflow-row.bad .chip { animation-name: chipbad-m; }
   .v2-filter.in .nflow-row.good .chip { animation-name: chipgood-m; }
-  @keyframes chipbad-m { 0% { left: calc(12.5% - 19px); transform: none; opacity: 1; } 35% { left: calc(37.5% - 19px); transform: scale(.9); opacity: 1; } 60% { left: calc(62.5% - 19px); transform: scale(.6, .5); opacity: .7; } 85%, 100% { left: calc(87.5% - 19px); transform: scale(.55); opacity: .35; } }
-  @keyframes chipgood-m { 0% { left: calc(12.5% - 19px); } 85%, 100% { left: calc(87.5% - 19px); } }
 }
+@keyframes chipbad-m { 0% { left: calc(12.5% - 19px); transform: none; opacity: 1; } 35% { left: calc(37.5% - 19px); transform: scale(.9); opacity: 1; } 60% { left: calc(62.5% - 19px); transform: scale(.6, .5); opacity: .7; } 85%, 100% { left: calc(87.5% - 19px); transform: scale(.55); opacity: .35; } }
+@keyframes chipgood-m { 0% { left: calc(12.5% - 19px); } 85%, 100% { left: calc(87.5% - 19px); } }
+/* 図解の終わりの相談ボタン（トップと同じ形） */
+.v2-cta { text-align: center; }
+.v2-btn { display: inline-flex; align-items: center; gap: .5em; font-family: var(--display); font-weight: 700; text-decoration: none; border-radius: 999px; padding: .9em 1.8em; background: #B7FF2A; color: #14204A; box-shadow: 0 5px 0 #14204A; transition: transform .2s, box-shadow .2s; }
+.v2-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 #14204A; }
+.v2-btn:focus-visible { outline: 3px solid #2B62BD; outline-offset: 3px; }

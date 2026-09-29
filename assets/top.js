@@ -71,7 +71,7 @@
   // ===== noteの最新3件（GitHub Actionsが毎日更新する /assets/blog.json） =====
   fetch('/assets/blog.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(list){
     var ul=document.getElementById('blogList'); if(!ul||!Array.isArray(list)) return;
-    list.slice(0,3).forEach(function(p){
+    list.slice(0,6).forEach(function(p){
       var li=document.createElement('li'), a=document.createElement('a');
       a.href=p.url; a.target='_blank'; a.rel='noopener';
       if(p.thumb){ var img=document.createElement('img'); img.src=p.thumb; img.alt=''; img.loading='lazy'; a.appendChild(img); }
