@@ -303,7 +303,7 @@ img{max-width:100%}
 .blog-top h3{font-size:19px}
 .blog-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .blog-list:empty{display:none}
-@media (max-width:760px){.blog-list{grid-template-columns:1fr}}
+@media (max-width:760px){.blog-list{grid-template-columns:repeat(2,1fr);gap:12px}.blog-list a{font-size:13px}}
 .blog-list a{display:grid;gap:6px;text-decoration:none;font-size:14px;line-height:1.5}
 .blog-list img{width:100%;aspect-ratio:1200/630;object-fit:cover;border-radius:12px;background:var(--sky)}
 .blog-list time{font-size:12px;color:var(--ink-sub);font-variant-numeric:tabular-nums}
@@ -327,3 +327,14 @@ img{max-width:100%}
 .ibtn.pulse{background:#B7FF2A;color:#0A1030;border-color:#B7FF2A;animation:ipulse 1.2s ease-in-out infinite}
 @keyframes ipulse{50%{box-shadow:0 0 0 8px rgba(183,255,42,.25)}}
 @media (prefers-reduced-motion:reduce){.ibtn.pulse{animation:none}}
+/* 詳細ページへの入口 */
+.go-detail{margin-top:32px;text-align:center}
+.go-detail.left{text-align:left;margin-top:22px}
+@media (max-width:760px){.go-detail.left{text-align:center}}
+.go-detail a{display:inline-flex;align-items:center;gap:.5em;font-family:var(--display);font-weight:700;font-size:15px;color:var(--ink);text-decoration:none;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:.7em 1.5em;transition:background .2s,transform .2s}
+.go-detail a:hover{background:var(--lime);transform:translateY(-2px)}
+.go-detail a span{transition:transform .2s}
+.go-detail a:hover span{transform:translateX(4px)}
+.go-detail.on-dark a{background:transparent;color:#fff;border-color:var(--lime)}
+.go-detail.on-dark a:hover{background:var(--lime);color:var(--ink)}
+.more{align-items:start}

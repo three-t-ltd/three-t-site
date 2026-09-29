@@ -79,6 +79,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
   <link rel="stylesheet" href="/assets/light.css">
+  <link rel="stylesheet" href="/assets/sub.css">
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"><i id="scroll-progress-fill"></i></div>
@@ -123,11 +124,118 @@
       </div>
     </section>
 
+    <!-- ============ ABOUT（図解版） ============ -->
+    <section class="v2 v2-about" id="about">
+      <div class="v2-wrap">
+        <div class="v2-head">
+          <p class="v2-eyebrow">WHAT IS NO.3?</p>
+          <h2><span class="ph">コンサルでも、</span><span class="ph">業務代行でもない。</span><br><em><span class="ph">経営者と現場をつなぐ、</span><span class="ph">No.3。</span></em></h2>
+          <p>点と点を繋げると、線が生まれる。そこに3つ目の点を加えると、はじめて「カタチ」になる。three.Tはその3つ目の点として、経営参謀の視点で課題を整理し、現場で実行できる形に翻訳します。必要な時は自ら手を動かし、最終的には社内で回る仕組みに変えます。</p>
+        </div>
+
+        <!-- 1. 三角形 -->
+        <div class="v2-card v2-tri">
+          <svg class="tri-svg" viewBox="0 0 420 300" role="img" aria-label="社長（NO.1・リーダー）と右腕（NO.2）を結ぶ一本の線に、No.3代行（NO.3・three.T）が3つ目の点として加わり、三角形になる図">
+            <g class="tri-shape">
+              <path class="tri-fill" d="M90 250 L330 250 L210 60 Z"/>
+              <path class="tri-edge e1" d="M90 250 L210 60"/>
+              <path class="tri-edge e2" d="M330 250 L210 60"/>
+            </g>
+            <path class="tri-base" d="M90 250 L330 250"/>
+            <g class="node n1"><circle cx="90" cy="250" r="34"/><text x="90" y="244" class="nk">NO.1</text><text x="90" y="262" class="nv">社長</text></g>
+            <g class="node n2"><circle cx="330" cy="250" r="34"/><text x="330" y="244" class="nk">NO.2</text><text x="330" y="262" class="nv">右腕</text></g>
+            <g class="node n3"><circle cx="210" cy="60" r="40"/><text x="210" y="54" class="nk">NO.3</text><text x="210" y="72" class="nv">No.3代行</text></g>
+          </svg>
+          <div class="v2-note">
+            <h3><span class="ph">三角形だから、</span><em class="ph">倒れない。</em></h3>
+            <p><b>社長</b>と<b>右腕</b>だけでは、関係は「一本の線」。切れたら、支えを失います。</p>
+            <p>そこに<b>No.3</b>という3つ目の点が加わると、組織は<b>三角形</b>になり、驚くほど安定します。</p>
+            <ul class="v2-roles"><li><small>NO.1</small>リーダー／社長</li><li><small>NO.2</small>右腕／ナンバー2</li><li><small>NO.3</small>No.3代行／three.T</li></ul>
+          </div>
+        </div>
+
+        <!-- 2. やること -->
+        <div class="v2-three">
+          <div class="v2-card v2-do">
+            <svg viewBox="0 0 80 80" aria-hidden="true"><rect x="16" y="10" width="48" height="60" rx="8" class="s-paper"/><path d="M26 28 h28 M26 40 h28 M26 52 h16" class="s-line"/><circle cx="60" cy="58" r="12" class="s-lime"/><path d="M54 58 l5 5 8 -10" class="s-check"/></svg>
+            <p class="v2-num">01</p><h3>整理する</h3><p>頭の中にある課題と構想を言語化し、優先順位を決める。</p>
+          </div>
+          <div class="v2-card v2-do">
+            <svg viewBox="0 0 80 80" aria-hidden="true"><g class="gear"><circle cx="40" cy="40" r="16" class="s-lime"/><path d="M40 12 v10 M40 58 v10 M12 40 h10 M58 40 h10 M20 20 l7 7 M53 53 l7 7 M60 20 l-7 7 M27 53 l-7 7" class="s-line thick"/></g><circle cx="40" cy="40" r="6" class="s-ink"/></svg>
+            <p class="v2-num">02</p><h3>動かす</h3><p>計画だけで終わらせず、必要な実務と調整を推進する。</p>
+          </div>
+          <div class="v2-card v2-do">
+            <svg viewBox="0 0 80 80" aria-hidden="true"><g class="loop"><path d="M58 30 A20 20 0 1 0 60 46" class="s-line thick" fill="none"/><path d="M52 22 l8 8 -9 5" class="s-line thick" fill="none"/></g><rect x="30" y="34" width="20" height="14" rx="3" class="s-lime"/></svg>
+            <p class="v2-num">03</p><h3>仕組みにする</h3><p>属人的な動きを、社内で継続できる状態に変える。</p>
+          </div>
+        </div>
+
+        <!-- 3. 比較 -->
+        <div class="v2-card v2-cmp">
+          <h3><span class="ph">コンサルとも、</span><span class="ph">業務代行とも、</span><span class="ph">ここが違う。</span></h3>
+          <div class="cmp-scroll">
+            <table class="cmp">
+              <thead><tr><th scope="col"><span class="sr">項目</span></th><th scope="col"><span class="ph">一般的な</span><br><span class="ph">コンサル</span></th><th scope="col"><span class="ph">一般的な</span><br><span class="ph">業務代行</span></th><th scope="col" class="us"><span class="ph">three.T</span><br><span class="ph">No.3代行</span></th></tr></thead>
+              <tbody>
+              <tr><th scope="row">課題整理</th><td><span class="mt" data-n="2"><span class="mt-bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class=""></i></span><span class="mt-mark" aria-hidden="true">○</span><span class="sr">対応</span></span></td><td><span class="mt" data-n="1"><span class="mt-bars" aria-hidden="true"><i class="on"></i><i class=""></i><i class=""></i></span><span class="mt-mark" aria-hidden="true">△</span><span class="sr">一部</span></span></td><td class="us"><span class="mt" data-n="3"><span class="mt-bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="mt-mark" aria-hidden="true">●</span><span class="sr">対応（中心）</span></span></td></tr>
+              <tr><th scope="row">戦略提案</th><td><span class="mt" data-n="2"><span class="mt-bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class=""></i></span><span class="mt-mark" aria-hidden="true">○</span><span class="sr">対応</span></span></td><td><span class="mt" data-n="1"><span class="mt-bars" aria-hidden="true"><i class="on"></i><i class=""></i><i class=""></i></span><span class="mt-mark" aria-hidden="true">△</span><span class="sr">一部</span></span></td><td class="us"><span class="mt" data-n="3"><span class="mt-bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="mt-mark" aria-hidden="true">●</span><span class="sr">対応（中心）</span></span></td></tr>
+              <tr><th scope="row">実務推進</th><td><span class="mt" data-n="1"><span class="mt-bars" aria-hidden="true"><i class="on"></i><i class=""></i><i class=""></i></span><span class="mt-mark" aria-hidden="true">△</span><span class="sr">一部</span></span></td><td><span class="mt" data-n="2"><span class="mt-bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class=""></i></span><span class="mt-mark" aria-hidden="true">○</span><span class="sr">対応</span></span></td><td class="us"><span class="mt" data-n="3"><span class="mt-bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="mt-mark" aria-hidden="true">●</span><span class="sr">対応（中心）</span></span></td></tr>
+              <tr><th scope="row">社内調整</th><td><span class="mt" data-n="1"><span class="mt-bars" aria-hidden="true"><i class="on"></i><i class=""></i><i class=""></i></span><span class="mt-mark" aria-hidden="true">△</span><span class="sr">一部</span></span></td><td><span class="mt" data-n="1"><span class="mt-bars" aria-hidden="true"><i class="on"></i><i class=""></i><i class=""></i></span><span class="mt-mark" aria-hidden="true">△</span><span class="sr">一部</span></span></td><td class="us"><span class="mt" data-n="3"><span class="mt-bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="mt-mark" aria-hidden="true">●</span><span class="sr">対応（中心）</span></span></td></tr>
+              <tr><th scope="row"><span class="ph">仕組み化・</span><span class="ph">自走支援</span></th><td><span class="mt" data-n="1"><span class="mt-bars" aria-hidden="true"><i class="on"></i><i class=""></i><i class=""></i></span><span class="mt-mark" aria-hidden="true">△</span><span class="sr">一部</span></span></td><td><span class="mt" data-n="0"><span class="mt-bars" aria-hidden="true"><i class=""></i><i class=""></i><i class=""></i></span><span class="mt-mark" aria-hidden="true">×</span><span class="sr">対応しない</span></span></td><td class="us"><span class="mt" data-n="3"><span class="mt-bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="mt-mark" aria-hidden="true">●</span><span class="sr">対応（中心）</span></span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="cmp-legend" aria-hidden="true"><span><span class="mt-bars"><i class="on"></i><i class="on"></i><i class="on"></i></span>● 中心</span><span><span class="mt-bars"><i class="on"></i><i class="on"></i><i class=""></i></span>○ 対応</span><span><span class="mt-bars"><i class="on"></i><i class=""></i><i class=""></i></span>△ 一部</span><span><span class="mt-bars"><i class=""></i><i class=""></i><i class=""></i></span>× 対応しない</span></p>
+        </div>
+
+        <!-- 4. フィルター -->
+        <div class="v2-card v2-filter">
+          <div class="v2-note">
+            <h3><span class="ph">現場の声は、</span><span class="ph">まっすぐ届かない</span></h3>
+            <p>社員の本音は、<b>フィルター</b>で歪められて社長へ届く。</p>
+            <p><b>No.3代行</b>は、社長と現場の“あいだ”に入り、この<b>フィルターをなくす</b>。現場の本音が、まっすぐ社長に届くようになります。</p>
+          </div>
+          <div class="nflow">
+            <div class="nflow-row bad">
+              <p class="nflow-tag">いま</p>
+              <ol class="nflow-line">
+                <li><span class="face" aria-hidden="true"></span><b>社員</b><q>新しい提案があります！</q></li>
+                <li><span class="face" aria-hidden="true"></span><b>部長</b><q>内容を整理して伝えよう…</q></li>
+                <li class="fl"><svg class="funnel" viewBox="0 0 44 44" aria-hidden="true"><path d="M3 5 H41 L27 40 H17 Z" fill="#FFD9CC" stroke="#D9573B" stroke-width="3" stroke-linejoin="round"/></svg><b>フィルター</b><small>情報が削られ、変わる</small></li>
+                <li><span class="face" aria-hidden="true"></span><b>社長</b><q>現場の本当の声が見えないな…</q></li>
+              </ol>
+              <span class="chip" aria-hidden="true">本音</span>
+            </div>
+            <div class="nflow-row good">
+              <p class="nflow-tag">No.3代行が“あいだ”に入ると</p>
+              <ol class="nflow-line">
+                <li><span class="face" aria-hidden="true"></span><b>社員</b></li>
+                <li><span class="face" aria-hidden="true"></span><b>部長</b></li>
+                <li class="n3"><span class="n3pill">No.3代行</span></li>
+                <li><span class="face" aria-hidden="true"></span><b>社長</b><small class="ok">まっすぐ届く</small></li>
+              </ol>
+              <span class="chip" aria-hidden="true">本音</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="v2-cta"><a class="v2-btn" href="/contact.html">話を聞いてみる →</a></p>
+
+        <nav class="v2-more" aria-label="このページのくわしい内容">
+          <p class="v2-eyebrow">くわしく読む</p>
+          <div class="v2-chips">
+            <a href="#problems">よくある「進まない」</a><a href="#beforeafter">2人から3人へ</a><a href="#story">課題が仕組みになるまで</a><a href="#book">書籍</a><a href="#results">経歴</a><a href="#profile">代表プロフィール</a><a href="#mind">頭の中</a>
+          </div>
+        </nav>
+      </div>
+    </section>
+
+
     <!-- ============ PROBLEMS ============ -->
     <section class="section problems" id="problems">
       <div class="container">
         <div class="section-head">
-          <p class="section-index">01 — THE BOTTLENECK</p>
+          <p class="section-index">THE BOTTLENECK</p>
           <h2 class="reveal-mask"><span class="w"><i>社長の頭の中だけで、</i></span><br><span class="w"><i>止まっていることは</i></span><span class="w"><i>ありませんか。</i></span></h2>
           <p class="section-lead reveal">日々の判断と緊急対応に追われるほど、会社の未来に必要な仕事は後回しになります。問題は、やる気ではなく「推進する人」と「進む仕組み」が足りないことです。</p>
         </div>
@@ -236,7 +344,7 @@
     <section class="story" id="story">
       <div class="story-sticky">
         <div class="story-header container">
-          <p class="section-index">02 — FROM STUCK TO SCALE</p>
+          <p class="section-index">FROM STUCK TO SCALE</p>
           <h2>課題を、<em>成長の仕組み</em>に変える。</h2>
         </div>
         <div class="story-track" id="story-track">
@@ -275,67 +383,6 @@
       </div>
     </section>
 
-    <!-- ============ ABOUT ============ -->
-    <section class="section about" id="about">
-      <span class="giant-ghost" aria-hidden="true">NO.3</span>
-      <div class="container">
-        <div class="section-head">
-          <p class="section-index">03 — WHAT IS NO.3?</p>
-          <h2 class="reveal-mask"><span class="w"><i>コンサルでも、</i></span><span class="w"><i>業務代行でもない。</i></span><br><span class="w"><em>経営者と現場をつなぐ、</em></span><span class="w"><em>No.3。</em></span></h2>
-          <p class="section-lead reveal">点と点を繋げると、線が生まれる。そこに3つ目の点を加えると、はじめて「カタチ」になる。three.Tはその3つ目の点として、経営参謀の視点で課題を整理し、現場で実行できる形に翻訳します。必要な時は自ら手を動かし、最終的には社内で回る仕組みに変えます。</p>
-        </div>
-
-        <div class="triangle-block reveal">
-          <div class="triangle-diagram">
-            <svg class="triangle-lines" viewBox="0 0 560 470" preserveAspectRatio="none" aria-hidden="true">
-              <path class="tline" d="M280,64 L86,404"/>
-              <path class="tline" d="M280,64 L474,404"/>
-              <path class="tline tline-base" d="M86,404 L474,404"/>
-            </svg>
-            <div class="tri-node tri-1"><small>NO.1</small><b>リーダー</b><span>社長</span></div>
-            <div class="tri-node tri-2"><small>NO.2</small><b>右腕</b><span>ナンバー2</span></div>
-            <div class="tri-node tri-3"><small>NO.3</small><b>No.3代行</b><span>three.T</span></div>
-            <div class="tri-center" aria-hidden="true"><span>三角形だから、</span><strong>倒れない。</strong></div>
-          </div>
-          <div class="triangle-note">
-            <p><b>社長</b>と<b>右腕</b>だけでは、関係は「一本の線」。切れたら、支えを失います。</p>
-            <p>そこに<b class="accent">No.3</b>という3つ目の点が加わると、組織は<b>三角形</b>になり、驚くほど安定します。</p>
-          </div>
-        </div>
-
-        <div class="comparison reveal">
-          <div class="comparison-row comparison-head"><span></span><span>一般的な<br>コンサル</span><span>一般的な<br>業務代行</span><strong>three.T<br>No.3代行</strong></div>
-          <div class="comparison-row"><span>課題整理</span><span>○</span><span>△</span><strong>●</strong></div>
-          <div class="comparison-row"><span>戦略提案</span><span>○</span><span>△</span><strong>●</strong></div>
-          <div class="comparison-row"><span>実務推進</span><span>△</span><span>○</span><strong>●</strong></div>
-          <div class="comparison-row"><span>社内調整</span><span>△</span><span>△</span><strong>●</strong></div>
-          <div class="comparison-row"><span>仕組み化・自走支援</span><span>△</span><span>×</span><strong>●</strong></div>
-        </div>
-        <div class="three-promises">
-          <article class="promise tilt reveal" data-hover><span>01</span><h3>整理する</h3><p>頭の中にある課題と構想を言語化し、優先順位を決める。</p></article>
-          <article class="promise tilt reveal" data-hover><span>02</span><h3>動かす</h3><p>計画だけで終わらせず、必要な実務と調整を推進する。</p></article>
-          <article class="promise tilt reveal" data-hover><span>03</span><h3>仕組みにする</h3><p>属人的な動きを、社内で継続できる状態に変える。</p></article>
-        </div>
-
-        <div class="filter-diagram reveal">
-          <div class="fd-head">
-            <p class="ei-label">現場の声は、まっすぐ届かない</p>
-            <h3>社員の本音は、<em>フィルター</em>で歪められて社長へ届く。</h3>
-          </div>
-          <div class="fd-flow">
-            <div class="fd-node"><small>社員</small><span class="fd-bubble">新しい提案が<br>あります！</span></div>
-            <i class="fd-arrow">→</i>
-            <div class="fd-node"><small>部長</small><span class="fd-bubble">内容を整理して<br>伝えよう…</span></div>
-            <i class="fd-arrow">→</i>
-            <div class="fd-node fd-filter"><small>フィルター</small><span class="fd-bars" aria-hidden="true"></span><span class="fd-filter-note">情報が削られ、変わる</span></div>
-            <i class="fd-arrow">→</i>
-            <div class="fd-node"><small>社長</small><span class="fd-bubble">現場の本当の声が<br>見えないな…</span></div>
-          </div>
-          <p class="fd-note"><b class="accent">No.3代行</b>は、社長と現場の“あいだ”に入り、この<b>フィルターをなくす</b>。<br>現場の本音が、まっすぐ社長に届くようになります。</p>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ BOOK ============ -->
     <section class="section book" id="book">
       <div class="container book-layout">
@@ -346,7 +393,7 @@
           <div class="book-badge" aria-hidden="true"><small>NEW</small><b>BOOK</b></div>
         </div>
         <div class="book-copy">
-          <p class="section-index">06 — PUBLICATION</p>
+          <p class="section-index">PUBLICATION</p>
           <h2 class="reveal-mask"><span class="w"><i>No.3代行を、</i></span><br><span class="w"><em>一冊にまとめました。</em></span></h2>
           <p class="book-title reveal">『No.3が、会社を前に進める』<span>社長と右腕の「次」を担う No.3代行という仕事</span></p>
           <p class="book-desc reveal">「社長と右腕の二人で、なんとか回している」——それでも会社が前に進まない。その正体は<b>“3番目”の不在</b>です。ある町工場の物語を通して、No.3という役割の力と、No.3代行という働き方をやさしく解き明かす一冊。「No.3代行ってどんな仕事？」がまるごと分かります。</p>
@@ -391,7 +438,7 @@
     <section class="section results" id="results">
       <div class="container">
         <div class="section-head">
-          <p class="section-index">07 — EXPERIENCE</p>
+          <p class="section-index">EXPERIENCE</p>
           <h2 class="reveal-mask"><span class="w"><i>現場と経営、</i></span><span class="w"><i>両方を知っている。</i></span></h2>
         </div>
         <div class="results-grid">
@@ -413,7 +460,7 @@
           <div class="profile-stamp" aria-hidden="true"><span>MISSION</span><strong>MOVE<br>FORWARD.</strong></div>
         </div>
         <div class="profile-copy">
-          <p class="section-index">08 — FOUNDER</p>
+          <p class="section-index">FOUNDER</p>
           <h2 class="reveal-mask"><span class="w"><i>経営者の考えを、</i></span><br><span class="w"><i>現場で動く形に</i></span><span class="w"><i>変える。</i></span></h2>
           <div class="profile-name reveal"><div><strong>上津原 研介</strong><span>UETSUHARA KENSUKE</span></div><small>three.T合同会社 代表</small></div>
           <p class="profile-text reveal">大手機械メーカーで営業9年・営業企画3年、旅行会社8年、独立6年。大手企業での営業・企画経験と、独立後の中小企業支援を通じて、経営参謀として経営者の構想を具体的な行動へ変える役割を担ってきました。</p>
@@ -427,7 +474,7 @@
     <section class="section mind" id="mind">
       <div class="container">
         <div class="section-head centered">
-          <p class="section-index">09 — INSIDE THE MIND</p>
+          <p class="section-index">INSIDE THE MIND</p>
           <h2 class="reveal-mask"><span class="w"><i>頭の中を、</i></span><span class="w"><em>覗いてみる。</em></span></h2>
           <p class="section-lead reveal">three.Tの頭の中では、経営・チーム・AI・発信——すべてが繋がっています。<br class="pc-only">ノードをつかんで動かしたり、触れて繋がりを辿ってみてください。</p>
         </div>
@@ -473,5 +520,6 @@
 
   <a class="mobile-fixed-cta" href="/contact.html">話を聞いてみる <span>↗</span></a>
   <script src="/script.js"></script>
+  <script src="/assets/sub.js"></script>
 </body>
 </html>
