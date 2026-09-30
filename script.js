@@ -857,7 +857,7 @@ if (form) {
       showStatus("error", "送信に失敗しました。時間をおいて再度お試しください。");
     } finally {
       submitButton.disabled = false;
-      submitButton.innerHTML = '話を聞いてみる <span>↗</span>';
+      submitButton.innerHTML = '話を聞いてみる <span aria-hidden="true">→</span>';
     }
   });
 }

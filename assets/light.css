@@ -115,3 +115,34 @@ main:has(.column-toc) .subpage-hero .container, main:has(.column-toc) .subpage-b
 .ei-cell small, .ei-cell b { color: #3A4570; }
 .contact-form label > span b, .contact-form legend b { font-size: 12px; }
 .contact-heading p { text-wrap: pretty; }
+/* 5周目：「No.3代行とは」の旧スタイルの4マスを、トップと同じ紺×ライムの平らな絵柄に */
+.ei-cell { background: #14204A; border: 0; border-radius: 16px; box-shadow: none; }
+.ei-cell b { color: #FFFFFF; font-size: 16px; }
+.ei-cell small { color: #C9D3F0; font-size: 13px; }
+.ei-cell.ei-dim { background: #2A3766; opacity: 1; }
+.ei-cell.ei-dim b { color: #E9EDF4; }
+.ei-cell.ei-dim small { color: #AEB8DA; }
+.ei-cell.ei-focus { background: #FFE27A; border: 3px solid #14204A; box-shadow: 6px 6px 0 #14204A; }
+.ei-cell.ei-focus b, .ei-cell.ei-focus small { color: #14204A; }
+.ei-badge { font-size: 12px; background: #B7FF2A; color: #14204A; border-radius: 999px; }
+.ei-colh, .ei-rowh { font-size: 14px; font-weight: 700; color: #14204A; }
+/* BEFORE→AFTER もトップの2枚カードと同じ見た目に */
+.ba-card { background: #FFFFFF; border: 0; border-radius: 28px; box-shadow: none; }
+.ba-card:last-child { background: #14204A; color: #FFFFFF; }
+.ba-card:last-child .ba-head, .ba-card:last-child .ba-text { color: #E9EDF4; }
+.ba-head { font-size: 14px; }
+.ba-text { font-size: 16px; }
+/* 入力欄は16px（旧デザインの指定より強く） */
+.contact-form input[type="text"], .contact-form input[type="email"], .contact-form input[type="tel"], .contact-form select, .contact-form textarea { font-size: 16px; }
+/* 会社概要の表に濃淡 */
+.company-table dl, .company-table { background: #FFFFFF; }
+.company-table dt { background: #EAF3FF; color: #14204A; font-weight: 700; }
+.company-table dd { color: #14204A; }
+/* 横スクロール区間はさらに短く */
+.story { height: 170vh; }
+.service-graphic .core-tri { width: 100%; max-width: 220px; height: auto; margin: 8px auto; display: block; }
+.service-graphic { display: block; }
+.ba-after .ba-dot { background: #FFFFFF; color: #14204A; border-color: #FFFFFF; }
+.ba-after .ba-dot.ba-accent { background: #B7FF2A; color: #14204A; }
+.ba-after b, .ba-after b.accent { color: #B7FF2A; }
+.ba-before .ba-dot { background: #EAF3FF; color: #14204A; }

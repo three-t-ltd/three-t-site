@@ -14,9 +14,11 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !drawer.hidden) { set(false); btn.focus(); } });
     window.addEventListener('resize', function () { if (window.innerWidth > 980 && !drawer.hidden) set(false); });
   }
-  var here = location.pathname.replace(/index\.html$/, '');
+  var norm = function (u) { return u.replace(/index\.html$/, '').replace(/\.html$/, ''); };
+  var here = norm(location.pathname);
   document.querySelectorAll('.gh-nav a').forEach(function (a) {
-    var p = a.getAttribute('href').split('#')[0];
+    var href = a.getAttribute('href'); if (href.indexOf('#') !== -1) return;
+    var p = norm(href);
     if (p && p !== '/' && (here === p || (p === '/column/' && here.indexOf('/column/') === 0))) a.setAttribute('aria-current', 'page');
   });
 })();
@@ -31,4 +33,12 @@
   }
   document.addEventListener('focusin', function (e) { if (e.target.matches('input, textarea, select')) document.body.classList.add('typing'); });
   document.addEventListener('focusout', function () { document.body.classList.remove('typing'); });
+})();
+
+(function () {
+  var last = window.scrollY;
+  window.addEventListener('scroll', function () {
+    var y = window.scrollY;
+    if (Math.abs(y - last) > 6) { document.body.classList.toggle('scroll-up', y < last); last = y; }
+  }, { passive: true });
 })();

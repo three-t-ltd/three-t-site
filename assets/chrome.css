@@ -88,3 +88,11 @@ body.no-fixed-cta { padding-bottom: 0 !important; }
 @keyframes ghItem { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 body.gh-open .gh-cta { visibility: hidden; }
 @media (prefers-reduced-motion: reduce) { .gh-drawer:not([hidden]), .gh-drawer:not([hidden]) > a { animation: none; } }
+
+/* 5周目：日本語の改行（見出しは行の長さをそろえ、本文は最後の1文字だけの行を避ける） */
+h1, h2, h3, summary, .lead, .desk-lead, .gcta h2 { text-wrap: balance; }
+p, li, dd, figcaption { text-wrap: pretty; }
+p, summary, li, figcaption, q { word-break: auto-phrase; }
+/* 5周目：追従ボタンは上へ戻る間は隠す */
+body.scroll-up .mobile-fixed-cta { transform: translateY(140%) !important; }
+.mobile-fixed-cta { transition: transform .3s ease-out; }

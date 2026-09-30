@@ -27,6 +27,7 @@
   function closeIntro(e){
     var ended = e && e.type === 'ended';
     if(closing||intro.hidden) return; closing=true; markSeen();
+    try{ iv.pause(); }catch(_){}
     var sc=document.querySelector('.hero .scene'), rr=sc&&sc.getBoundingClientRect(), vw=window.innerWidth, vh=window.innerHeight;
     if(rr && rr.top < vh-80 && rr.height > 60){
       intro.classList.add('to-frame');
