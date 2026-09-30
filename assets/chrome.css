@@ -73,3 +73,18 @@ body.gh-open .mobile-fixed-cta { display: none !important; }
 body.no-fixed-cta .mobile-fixed-cta, body.gcta-visible .mobile-fixed-cta, body.typing .mobile-fixed-cta { transform: translateY(140%) !important; pointer-events: none; }
 body.no-fixed-cta { padding-bottom: 0 !important; }
 .gf-slogan { font-size: 12.5px; }
+
+/* 4周目：スマホメニューの補助リンクと開く動き */
+.gh-drawer-sub { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 18px 0 0; }
+.gh-drawer .gh-drawer-sub a { font-size: 14px; min-height: 44px; border: 0; justify-content: flex-start; font-weight: 700; color: #4A5680; }
+.gh-drawer .gh-drawer-sub a::after { content: none; }
+.gh-drawer:not([hidden]) { animation: ghFade .25s ease both; }
+.gh-drawer:not([hidden]) > a { animation: ghItem .35s cubic-bezier(.16, 1, .3, 1) both; }
+.gh-drawer:not([hidden]) > a:nth-child(2) { animation-delay: .04s; } .gh-drawer:not([hidden]) > a:nth-child(3) { animation-delay: .08s; }
+.gh-drawer:not([hidden]) > a:nth-child(4) { animation-delay: .12s; } .gh-drawer:not([hidden]) > a:nth-child(5) { animation-delay: .16s; }
+.gh-drawer:not([hidden]) > a:nth-child(6) { animation-delay: .2s; } .gh-drawer:not([hidden]) > a:nth-child(7) { animation-delay: .24s; }
+.gh-drawer:not([hidden]) > a:nth-child(8) { animation-delay: .28s; }
+@keyframes ghFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ghItem { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+body.gh-open .gh-cta { visibility: hidden; }
+@media (prefers-reduced-motion: reduce) { .gh-drawer:not([hidden]), .gh-drawer:not([hidden]) > a { animation: none; } }

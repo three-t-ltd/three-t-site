@@ -102,3 +102,16 @@ body .col-note a { text-decoration: underline; text-underline-offset: 3px; }
 }
 .contact-heading .column-breadcrumb { font-size: 12.5px; margin-bottom: 14px; }
 .contact-form input, .contact-form select, .contact-form textarea { font-size: 16px; }
+/* 4周目 */
+.service-icon { display: block; height: 48px; }
+.service-card .line-icon, .problem-card .line-icon { height: 44px; }
+.story { height: 200vh; }
+.story + .section { padding-top: 24px; }
+@media (min-width: 761px) { .section p, .subpage-hero p, .subpage-body p, .column-article p, .story-panel p, .problem-card p, .service-card p { font-size: 16px; line-height: 1.9; } }
+/* 記事：本文とタイトルの幅・左端をそろえ、1行の長さを読みやすく（約40字） */
+main:has(.column-toc) .subpage-hero .container, main:has(.column-toc) .subpage-body .container { max-width: 760px; }
+/* 4マス図の「重要でない」側は薄さでなく背景色で */
+.ei-cell.ei-dim, .ei-cell[class*="low"] { opacity: 1; background: #E3EAF7; }
+.ei-cell small, .ei-cell b { color: #3A4570; }
+.contact-form label > span b, .contact-form legend b { font-size: 12px; }
+.contact-heading p { text-wrap: pretty; }

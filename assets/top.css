@@ -343,7 +343,7 @@ h1,h2,h3,h4{word-break:keep-all;overflow-wrap:anywhere}
 .blog-list a{position:relative}
 .blog-list img{filter:grayscale(1) contrast(1.08) brightness(1.04);transition:filter .4s}
 .blog-list a:hover img,.blog-list a:focus-visible img{filter:none}
-.blog-list li a{background:transparent}
+
 @media (max-width:560px){.desk .axis{font-size:30px}}
 
 /* 2周目：漫画は「本の中の世界」として紺の帯に */
@@ -385,3 +385,16 @@ h1,h2,h3,h4{word-break:keep-all;overflow-wrap:anywhere}
 .col-toggle{justify-self:start;background:none;border:0;padding:6px 0;font-family:var(--display);font-weight:700;font-size:14px;color:var(--blue-deep);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 /* 3周目：オープニングが絵の枠へ縮んで収まる */
 .intro.to-frame{pointer-events:none}
+
+/* 4周目：noteは写真をやめて、日付＋タイトルの文字カード */
+.blog-list a{background:var(--sky);border-radius:18px;padding:18px 18px 18px 22px;position:relative;min-height:96px;align-content:start;transition:background .2s,transform .2s}
+.blog-list a::before{content:"";position:absolute;left:0;top:18px;width:4px;height:28px;border-radius:0 3px 3px 0;background:var(--lime)}
+.blog-list a:hover{background:#DFEBFB;transform:translateY(-2px)}
+.blog-list time{font-family:var(--display);font-weight:700;color:var(--blue-deep)}
+.blog-list span{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.55;color:var(--ink)}
+@media (max-width:760px){.blog-list span{font-size:15px}.blog-list a{min-height:0}}
+/* 4周目：左右のカードの上端をそろえる／本文16px（PC） */
+.duo{align-items:stretch}
+@media (min-width:761px){.sec-head p,.desk-lead,.hero .lead{font-size:17px}.panel p,.stop p,.card p,.area p,.faq details p{font-size:16px}}
+/* 4周目：オープニングのボタンを押しやすく */
+.ibtn{min-height:44px;padding:.6em 1.1em}

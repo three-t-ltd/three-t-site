@@ -990,7 +990,7 @@ if (mindCanvas) {
         if (d2 > 90000) continue;
         // ラベルが横に重なりそうな距離なら、追加で引き離す
         const narrow = W < 768;
-        const f = (narrow ? 700 : 2600) / d2 + ((!narrow && Math.abs(dy) < 22 && Math.abs(dx) < 84) ? 0.4 : 0);
+        const f = (narrow ? 700 : 2600) / d2 + ((!narrow && Math.abs(dy) < 26 && Math.abs(dx) < 110) ? 0.6 : 0);
         const d = Math.sqrt(d2);
         dx /= d; dy /= d;
         a.vx += dx * f; a.vy += dy * f;
@@ -1051,7 +1051,7 @@ if (mindCanvas) {
         : `rgba(${FG_RGB}, ${isHl ? 0.85 : 0.2})`;
       ctx.fill();
       // ラベル
-      const fs = isCore ? 13.5 : n.type === "h" ? 12 : n.type === "n" ? 9.5 : 10.5;
+      const fs = isCore ? 14 : n.type === "h" ? 13 : 12;
       ctx.font = `${isCore || n.type === "h" ? "700" : "400"} ${fs}px "Noto Sans JP", sans-serif`;
       ctx.textAlign = "center";
       ctx.fillStyle = accNode

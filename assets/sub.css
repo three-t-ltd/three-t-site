@@ -196,3 +196,6 @@ h1,h2,h3,h4{word-break:keep-all;overflow-wrap:anywhere}
 @media (max-width: 560px) { .nflow-row.bad .chip { background: #C9D3F0; color: #14204A; } }
 .v2-inline { background: transparent; padding-block: 0 40px; }
 .v2-inline .v2-wrap { width: 100%; }
+
+/* 4周目：図解の枠も本文と同じ 1104px にそろえる */
+.v2-wrap { width: min(1104px, 100% - 40px); }
