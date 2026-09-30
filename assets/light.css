@@ -43,3 +43,14 @@ body .company-table a { color: #2B62BD; }
 .contact .contact-title { font-size: clamp(26px, 3.4vw, 40px); }
 .section-index, .eyebrow { font-size: 12px; letter-spacing: .14em; }
 .service-arrow { font-size: 18px; }
+/* 1周目：横スクロール区間を短く、読んでいないカードも読める濃さに／セクションの余白をそろえる */
+.story { height: 240vh; }
+.story-panel { opacity: .72; }
+.section { padding-block: clamp(72px, 9vw, 120px); }
+/* 1周目：記事の図解はスマホで縮めすぎない（図だけ横にスクロール） */
+@media (max-width: 640px) {
+  .figure { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+  .figure svg { min-width: 620px; }
+  .figure figcaption { position: sticky; left: 0; max-width: calc(100vw - 40px); }
+  .figure::before { content: "← 図は横にスクロールできます →"; display: block; font-size: 12px; color: #535D84; margin-bottom: 6px; position: sticky; left: 0; }
+}

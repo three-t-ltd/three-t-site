@@ -24,12 +24,13 @@
   function seen(){ try{ return sessionStorage.getItem('introSeen')==='1'; }catch(e){ return false; } }
   function markSeen(){ try{ sessionStorage.setItem('introSeen','1'); }catch(e){} }
   var closing=false;
-  function closeIntro(){
+  function closeIntro(e){
+    var ended = e && e.type === 'ended';
     if(closing||intro.hidden) return; closing=true; markSeen();
-    intro.classList.add('out'); document.body.classList.remove('intro-open');
+    intro.classList.add(ended ? 'out-fade' : 'out-up'); document.body.classList.remove('intro-open');
     ['main','header','footer'].forEach(function(t){ var el=document.querySelector(t); if(el) el.inert=false; }); clearTimeout(window.__introGuard);
     hero.classList.remove('wait');
-    setTimeout(function(){ iv.pause(); intro.hidden=true; intro.classList.remove('out'); closing=false; },900);
+    setTimeout(function(){ iv.pause(); intro.hidden=true; intro.classList.remove('out-fade','out-up'); closing=false; },900);
   }
   // 縦長の画面（スマホ縦持ち）では縦型、それ以外は横型
   var portrait=window.matchMedia('(max-aspect-ratio: 4/5)').matches;
