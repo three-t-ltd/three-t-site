@@ -1,5 +1,5 @@
 /* 明るい配色（styles-light.css）のページでは、キャンバスの描画色を濃い色に切り替える */
-const LIGHT_THEME = !!document.querySelector('link[href*="styles-light"]');
+const LIGHT_THEME = !!document.querySelector('link[href*="styles-light"], link[href*="site.bundle"]');
 const FG_RGB = LIGHT_THEME ? "20,32,74" : "245,247,245";
 const FG2_RGB = LIGHT_THEME ? "74,86,128" : "200,208,232";
 const GREEN_RGB = LIGHT_THEME ? "78,122,0" : "183,255,42";
@@ -988,7 +988,8 @@ if (mindCanvas) {
         let d2 = dx * dx + dy * dy;
         if (d2 < 1) d2 = 1;
         if (d2 > 90000) continue;
-        const f = 1400 / d2;
+        // ラベルが横に重なりそうな距離なら、追加で引き離す
+        const f = 2600 / d2 + ((Math.abs(dy) < 22 && Math.abs(dx) < 84) ? 0.4 : 0);
         const d = Math.sqrt(d2);
         dx /= d; dy /= d;
         a.vx += dx * f; a.vy += dy * f;
@@ -1017,7 +1018,7 @@ if (mindCanvas) {
       n.x += n.vx; n.y += n.vy;
       const pad = 26;
       n.x = Math.max(pad, Math.min(W - pad, n.x));
-      n.y = Math.max(pad, Math.min(H - pad, n.y));
+      n.y = Math.max(pad, Math.min(H - pad - 56, n.y));   // 下の操作説明の帯に隠れないように
     });
   };
 
