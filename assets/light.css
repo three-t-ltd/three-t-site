@@ -139,10 +139,18 @@ main:has(.column-toc) .subpage-hero .container, main:has(.column-toc) .subpage-b
 .company-table dt { background: #EAF3FF; color: #14204A; font-weight: 700; }
 .company-table dd { color: #14204A; }
 /* 横スクロール区間はさらに短く */
-@media (min-width: 1024px) { .story { height: 170vh; } }
+@media (min-width: 1024px) { .story:not(.story-static) { height: 170vh; } }
 .service-graphic .core-tri { width: 100%; max-width: 220px; height: auto; margin: 8px auto; display: block; }
 .service-graphic { display: block; }
 .ba-after .ba-dot { background: #FFFFFF; color: #14204A; border-color: #FFFFFF; }
 .ba-after .ba-dot.ba-accent { background: #B7FF2A; color: #14204A; }
 .ba-after b, .ba-after b.accent { color: #B7FF2A; }
 .ba-before .ba-dot { background: #EAF3FF; color: #14204A; }
+/* 畳んだ3つの帯：見出しは左ぞろえ、帯どうしの間を詰める */
+.fold > summary .ei-head { text-align: left; margin: 0; }
+.fold > summary .ei-head h3 { font-size: clamp(20px, 2.6vw, 28px); }
+.section:has(+ .fold-sec) { padding-bottom: 14px; }
+.fold-sec { padding-block: 14px; }
+.fold-sec + .section:not(.fold-sec) { padding-top: 72px; }
+#matrix { margin-top: 28px; }
+@media (max-width: 760px) { .fold > summary { flex-direction: column; align-items: flex-start; gap: 12px; } }

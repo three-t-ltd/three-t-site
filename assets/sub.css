@@ -199,3 +199,24 @@ h1,h2,h3,h4{word-break:keep-all;overflow-wrap:anywhere}
 
 /* 4周目：図解の枠も本文と同じ 1104px にそろえる */
 .v2-wrap { width: min(1104px, 100% - 40px); }
+
+/* 同じ図の繰り返しは「くわしく見る」で畳む（文章は残す） */
+.fold { max-width: 1104px; margin: 0 auto; background: #FFFFFF; border: 2px solid #CFDDF2; border-radius: 24px; overflow: hidden; }
+.fold > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 26px; }
+.fold > summary::-webkit-details-marker { display: none; }
+.fold > summary h2, .fold > summary h3 { margin: 0; font-size: clamp(20px, 2.6vw, 28px); }
+.fold > summary .section-index, .fold > summary .ei-label { margin: 0 0 6px; }
+.fold-more { flex: none; font-family: "Zen Maru Gothic", sans-serif; font-weight: 700; font-size: 14px; color: #14204A; background: #B7FF2A; border-radius: 999px; padding: .45em 1.1em; }
+.fold-more::after { content: " ＋"; }
+.fold[open] .fold-more::after { content: " −"; }
+.fold[open] > summary { border-bottom: 2px solid #EAF3FF; }
+.fold > :not(summary) { margin: 24px 26px 28px; }
+.fold:hover { border-color: #14204A; }
+.fold > summary:focus-visible { outline: 3px solid #2B62BD; outline-offset: -3px; }
+.fold-sec { padding-block: 20px; }
+/* 畳んだ中の4段階は縦（2列）に並べる */
+.story-static .story-sticky { position: static; height: auto; overflow: visible; display: block; }
+.story-static .story-track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; transform: none !important; width: auto; padding: 0 !important; }
+.story-static .story-panel { width: auto; min-height: 0; opacity: 1; transform: none; }
+.story-static .story-progress { display: none; }
+@media (max-width: 760px) { .story-static .story-track { grid-template-columns: 1fr; } .fold > summary { padding: 18px; } .fold > :not(summary) { margin: 18px; } }

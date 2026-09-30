@@ -95,7 +95,7 @@
 
   // ===== FAQの残りを開く =====
   var ft=document.querySelector('.faq-toggle'), fr=document.getElementById('faqRest');
-  if(ft&&fr) ft.addEventListener('click',function(){ var open=!fr.classList.contains('open'); fr.classList.toggle('open',open); ft.setAttribute('aria-expanded',String(open)); ft.textContent=open?'閉じる':'残り3問を見る'; });
+  if(ft&&fr) ft.addEventListener('click',function(){ var open=!fr.classList.contains('open'); fr.classList.toggle('open',open); ft.setAttribute('aria-expanded',String(open)); ft.textContent=open?'閉じる':'残り8問を見る'; });
 
   // ===== コラム一覧の開閉 =====
   var ct=document.querySelector('.col-toggle'), cl=document.querySelector('.col-list-top');
