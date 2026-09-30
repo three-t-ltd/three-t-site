@@ -1,3 +1,8 @@
+/* 明るい配色（styles-light.css）のページでは、キャンバスの描画色を濃い色に切り替える */
+const LIGHT_THEME = !!document.querySelector('link[href*="styles-light"]');
+const FG_RGB = LIGHT_THEME ? "20,32,74" : "245,247,245";
+const FG2_RGB = LIGHT_THEME ? "74,86,128" : "200,208,232";
+const GREEN_RGB = LIGHT_THEME ? "78,122,0" : "183,255,42";
 /* three.T — Kinetic Edition */
 const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -125,7 +130,7 @@ if (canvas) {
   const LINK = 130;
   const drawStatic = () => {
     ctx.clearRect(0, 0, w, h);
-    ctx.strokeStyle = "rgba(183,255,42,0.5)";
+    ctx.strokeStyle = `rgba(${GREEN_RGB},0.5)`;
     ctx.beginPath();
     ctx.moveTo(0, h * 0.7);
     ctx.lineTo(w, h * 0.3);
@@ -154,8 +159,8 @@ if (canvas) {
         if (dist < LINK * LINK) {
           const alpha = (1 - Math.sqrt(dist) / LINK) * 0.16;
           ctx.strokeStyle = (a.green || b.green)
-            ? `rgba(183,255,42,${alpha * 1.4})`
-            : `rgba(245,247,245,${alpha})`;
+            ? `rgba(${GREEN_RGB},${alpha * 1.4})`
+            : `rgba(${FG_RGB},${alpha})`;
           ctx.beginPath();
           ctx.moveTo(a.x + ox, a.y + oy);
           ctx.lineTo(b.x + ox, b.y + oy);
@@ -165,7 +170,7 @@ if (canvas) {
     }
     for (let i = 0; i < points.length; i += 1) {
       const p = points[i];
-      ctx.fillStyle = p.green ? "rgba(183,255,42,0.9)" : "rgba(245,247,245,0.45)";
+      ctx.fillStyle = p.green ? `rgba(${GREEN_RGB},0.9)` : `rgba(${FG_RGB},0.45)`;
       ctx.beginPath();
       ctx.arc(p.x + ox, p.y + oy, p.r, 0, Math.PI * 2);
       ctx.fill();
@@ -1014,7 +1019,7 @@ if (mindCanvas) {
     });
   };
 
-  const ACC = "183, 255, 42";
+  const ACC = LIGHT_THEME ? "78, 122, 0" : "183, 255, 42";
   const draw = () => {
     ctx.clearRect(0, 0, W, H);
     const hl = hovered ? new Set([hovered.id, ...(neighbors[hovered.id] || [])]) : null;
@@ -1022,7 +1027,7 @@ if (mindCanvas) {
     LINKS.forEach(([ai, bi]) => {
       const a = nodeById[ai], b = nodeById[bi];
       const lit = hl && hl.has(ai) && hl.has(bi) && (ai === hovered.id || bi === hovered.id);
-      ctx.strokeStyle = lit ? `rgba(${ACC}, 0.75)` : hl ? "rgba(245,247,250,0.05)" : "rgba(245,247,250,0.14)";
+      ctx.strokeStyle = lit ? `rgba(${ACC}, 0.75)` : hl ? `rgba(${FG_RGB},0.06)` : `rgba(${FG_RGB},0.2)`;
       ctx.lineWidth = lit ? 1.6 : 1;
       ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
     });
@@ -1039,7 +1044,7 @@ if (mindCanvas) {
       ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
       ctx.fillStyle = accNode
         ? `rgba(${ACC}, ${isHl ? 0.95 : 0.25})`
-        : `rgba(245, 247, 250, ${isHl ? 0.85 : 0.2})`;
+        : `rgba(${FG_RGB}, ${isHl ? 0.85 : 0.2})`;
       ctx.fill();
       // ラベル
       const fs = isCore ? 13.5 : n.type === "h" ? 12 : n.type === "n" ? 9.5 : 10.5;
@@ -1047,7 +1052,7 @@ if (mindCanvas) {
       ctx.textAlign = "center";
       ctx.fillStyle = accNode
         ? `rgba(${ACC}, ${isHl ? 1 : 0.25})`
-        : `rgba(200, 208, 232, ${isHl ? 0.9 : 0.18})`;
+        : `rgba(${FG2_RGB}, ${isHl ? 0.95 : 0.25})`;
       ctx.fillText(n.label, n.x, n.y + r + fs + 2);
     });
   };

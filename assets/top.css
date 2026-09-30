@@ -338,3 +338,9 @@ img{max-width:100%}
 .go-detail.on-dark a{background:transparent;color:#fff;border-color:var(--lime)}
 .go-detail.on-dark a:hover{background:var(--lime);color:var(--ink)}
 .more{align-items:start}
+
+/* 日本語の見出しは文節の途中で改行しない（<wbr> は fix_breaks で挿入） */
+h1,h2,h3,h4{word-break:keep-all;overflow-wrap:anywhere}
+@media (max-width:420px){.hero h1{font-size:30px}}
+.cta-box .spark{width:56px;opacity:.7}
+@media (max-width:760px){.cta-box .spark{display:none}}

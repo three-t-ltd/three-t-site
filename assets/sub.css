@@ -190,3 +190,6 @@ td.us .mt-bars i.on { background: #4E7A00; }
 .v2-btn { display: inline-flex; align-items: center; gap: .5em; font-family: var(--display); font-weight: 700; text-decoration: none; border-radius: 999px; padding: .9em 1.8em; background: #B7FF2A; color: #14204A; box-shadow: 0 5px 0 #14204A; transition: transform .2s, box-shadow .2s; }
 .v2-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 #14204A; }
 .v2-btn:focus-visible { outline: 3px solid #2B62BD; outline-offset: 3px; }
+
+/* 日本語の見出しは文節の途中で改行しない（<wbr> は fix_breaks で挿入） */
+h1,h2,h3,h4{word-break:keep-all;overflow-wrap:anywhere}
