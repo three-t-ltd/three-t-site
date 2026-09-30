@@ -44,8 +44,8 @@ body .company-table a { color: #2B62BD; }
 .section-index, .eyebrow { font-size: 12px; letter-spacing: .14em; }
 .service-arrow { font-size: 18px; }
 /* 1周目：横スクロール区間を短く、読んでいないカードも読める濃さに／セクションの余白をそろえる */
-.story { height: 240vh; }
-.story-panel { opacity: .72; }
+
+.story-panel { opacity: .9; }
 .section { padding-block: clamp(72px, 9vw, 120px); }
 /* 1周目：記事の図解はスマホで縮めすぎない（図だけ横にスクロール） */
 @media (max-width: 640px) {
@@ -105,7 +105,7 @@ body .col-note a { text-decoration: underline; text-underline-offset: 3px; }
 /* 4周目 */
 .service-icon { display: block; height: 48px; }
 .service-card .line-icon, .problem-card .line-icon { height: 44px; }
-.story { height: 200vh; }
+
 .story + .section { padding-top: 24px; }
 @media (min-width: 761px) { .section p, .subpage-hero p, .subpage-body p, .column-article p, .story-panel p, .problem-card p, .service-card p { font-size: 16px; line-height: 1.9; } }
 /* 記事：本文とタイトルの幅・左端をそろえ、1行の長さを読みやすく（約40字） */
@@ -139,7 +139,7 @@ main:has(.column-toc) .subpage-hero .container, main:has(.column-toc) .subpage-b
 .company-table dt { background: #EAF3FF; color: #14204A; font-weight: 700; }
 .company-table dd { color: #14204A; }
 /* 横スクロール区間はさらに短く */
-.story { height: 170vh; }
+@media (min-width: 1024px) { .story { height: 170vh; } }
 .service-graphic .core-tri { width: 100%; max-width: 220px; height: auto; margin: 8px auto; display: block; }
 .service-graphic { display: block; }
 .ba-after .ba-dot { background: #FFFFFF; color: #14204A; border-color: #FFFFFF; }
