@@ -20,3 +20,6 @@ h1, h2, h3, .section-title, .contact-title, .subpage-hero h1 { font-family: "Zen
 .site-footer .logo span { color: #B7FF2A; }
 .footer-giant span { color: rgba(233, 237, 244, 0.06); -webkit-text-stroke: 0; }
 .mobile-fixed-cta { background: #B7FF2A; color: #14204A; }
+
+/* 日本語の見出しは文節の途中で改行しない（<wbr> は fix_breaks で挿入） */
+h1,h2,h3,h4{word-break:keep-all;overflow-wrap:anywhere}
