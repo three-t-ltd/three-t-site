@@ -188,7 +188,7 @@ const contactSection = document.getElementById("contact");
 
 const onScroll = () => {
   const y = window.scrollY;
-  header.classList.toggle("is-solid", y > 40);
+  if (header) header.classList.toggle("is-solid", y > 40);
   const max = document.documentElement.scrollHeight - window.innerHeight;
   if (progressFill && max > 0) progressFill.style.width = `${(y / max) * 100}%`;
   if (mobileCta) {
@@ -204,6 +204,7 @@ window.addEventListener("scroll", onScroll, { passive: true });
 /* ---------- mobile menu ---------- */
 const menuButton = document.querySelector(".menu-button");
 const mobileNav = document.querySelector(".mobile-nav");
+if (menuButton && mobileNav) {
 menuButton.addEventListener("click", () => {
   const isOpen = menuButton.getAttribute("aria-expanded") === "true";
   menuButton.setAttribute("aria-expanded", String(!isOpen));
@@ -216,6 +217,7 @@ mobileNav.querySelectorAll("a").forEach((link) => {
     document.body.classList.remove("menu-open");
   });
 });
+}
 
 /* ---------- reveal on scroll ---------- */
 const io = new IntersectionObserver((entries) => {

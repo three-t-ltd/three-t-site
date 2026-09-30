@@ -23,3 +23,23 @@ h1, h2, h3, .section-title, .contact-title, .subpage-hero h1 { font-family: "Zen
 
 /* 日本語の見出しは文節の途中で改行しない（<wbr> は fix_breaks で挿入） */
 h1,h2,h3,h4{word-break:keep-all;overflow-wrap:anywhere}
+/* アクセシビリティ（コントラスト・リンクの見分け） */
+.column-meta time, .subpage-body .idx, .flow-steps .fs-node b { color: #4E7A00; }
+.column-article p a, .col-body p a, .subpage-body p a, .subpage-body li a, .step-block p a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.footer-giant { display: none; }
+.site-header .logo small { color: #535D84; }
+/* コラム各ページ内の <style> にあるライム色の文字（明るい背景では読めない）を濃い色に */
+body .checklist li::before, body .choose-cards .cc b, body .col-card .cc-more, body .col-card .cc-tag,
+body .column-article h2 .idx, body .column-faq summary::after, body .column-meta time, body .column-table td.best,
+body .column-toc p, body .flow-steps .fs-node b, body .read-next span, body .step-block .step-tag { color: #4E7A00; }
+body .col-note a, body .column-related a, body .column-article a, body .read-next a:hover { color: #2B62BD; }
+body .column-article a.button-primary { color: #14204A; }
+body .company-table a { color: #2B62BD; }
+/* 1周目：文字組の段階（h1 > h2 > h3）と英字ラベルの最小サイズ */
+.subpage-main { padding-top: 0; }
+.subpage-hero { padding-top: clamp(40px, 6vw, 72px); }
+.subpage-hero h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 900; }
+.section h2, .section-head h2, .story h2 { font-size: clamp(28px, 3.8vw, 46px); line-height: 1.3; }
+.contact .contact-title { font-size: clamp(26px, 3.4vw, 40px); }
+.section-index, .eyebrow { font-size: 12px; letter-spacing: .14em; }
+.service-arrow { font-size: 18px; }

@@ -12,7 +12,7 @@
   --blue-deep:#2B62BD;
   --line:#CFDDF2;
   --display:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;
-  --body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+  --body:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -33,15 +33,6 @@ p{margin:0}
 .draft{background:var(--ink);color:var(--paper);font-size:12px;text-align:center;padding:6px 16px;letter-spacing:.05em}
 
 /* ヘッダー */
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(234,243,255,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font-family:var(--display);font-weight:900;font-size:22px;text-decoration:none}
-.logo span{color:var(--lime-deep)}
-header nav{display:flex;gap:22px;font-family:var(--display);font-weight:700;font-size:14px}
-header nav a{text-decoration:none}
-header nav a:hover{color:var(--blue-deep)}
-header .btn{padding:.55em 1.2em;font-size:14px;box-shadow:0 3px 0 var(--ink)}
-@media (max-width:760px){header .wrap{height:auto;flex-wrap:wrap;padding-block:8px;row-gap:4px}header nav{order:3;width:100%;overflow-x:auto;gap:14px;padding-bottom:4px;padding-right:28px;white-space:nowrap;scrollbar-width:none;font-size:13px;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}header nav::-webkit-scrollbar{display:none}header nav a{flex:none}}
 
 /* ヒーロー */
 .hero{padding-block:48px 0;text-align:center}
@@ -163,7 +154,7 @@ section{padding-block:88px}
 .cta-box ul{list-style:none;margin:0;padding:0;display:flex;gap:10px 20px;flex-wrap:wrap;justify-content:center;font-size:14px;font-weight:700}
 .cta-box ul li::before{content:"✓ "}
 .cta-box .spark{position:absolute;width:90px;opacity:.9}
-footer{text-align:center;font-size:13px;color:var(--ink-sub);padding-block:0 40px}
+
 
 
 /* 机（4マス） */
@@ -189,7 +180,7 @@ footer{text-align:center;font-size:13px;color:var(--ink-sub);padding-block:0 40p
 @keyframes done{0%,68%{opacity:0;transform:scale(.3) rotate(-20deg);animation-timing-function:cubic-bezier(.34,1.8,.64,1)}75%,90%{opacity:1;transform:none}95%,100%{opacity:0;transform:scale(.9)}}
 .steam{animation:steam 2.4s ease-in-out infinite}
 @keyframes steam{50%{transform:translateY(-6px);opacity:.4}}
-.desk-lead{margin:28px auto 0;max-width:34em;text-align:center;font-size:clamp(15px,2vw,18px);font-weight:500}
+.desk-lead{margin:28px auto 0;max-width:34em;text-align:center;font-size:clamp(15px,2vw,18px);font-weight:700}
 .imp{margin-top:32px;text-align:center;display:grid;gap:12px}
 .imp ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
 .imp li{font-family:var(--display);font-weight:700;font-size:14px;background:#FFF4C9;border:2px solid var(--sun);border-radius:999px;padding:.35em 1em}
@@ -344,3 +335,9 @@ h1,h2,h3,h4{word-break:keep-all;overflow-wrap:anywhere}
 @media (max-width:420px){.hero h1{font-size:30px}}
 .cta-box .spark{width:56px;opacity:.7}
 @media (max-width:760px){.cta-box .spark{display:none}}
+
+/* 1周目：noteの写真を紺×ライムの色調にそろえる（触れると元の色） */
+.blog-list a{position:relative}
+.blog-list img{filter:grayscale(1) contrast(1.08) brightness(1.04);transition:filter .4s}
+.blog-list a:hover img,.blog-list a:focus-visible img{filter:none}
+.blog-list li a{background:transparent}

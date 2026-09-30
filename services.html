@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S663Q942EZ"></script>
+  <!-- Google tag (gtag.js)：表示が終わってから読み込む（計測は同じ） -->
+  <script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-S663Q942EZ";document.head.appendChild(s);},1500);});</script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -32,7 +32,7 @@
   <meta name="twitter:title" content="サービス｜No.3代行・経営計画・DX推進・AI活用・採用支援｜three.T">
   <meta name="twitter:description" content="three.Tのサービス一覧。No.3代行を中心に、経営計画策定・DX推進・AI活用・営業支援・採用支援・新規事業立上げ・補助金支援・チームコンサルティングまで、売上・仕組み・人の3領域を横断して支援します。相談から実行までの流れも掲載。">
   <meta name="twitter:image" content="https://three-t-ltd.com/assets/ogp.png">
-  <link rel="stylesheet" href="/assets/styles-light.css">
+  <link rel="stylesheet" href="/assets/site.bundle.css">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -75,11 +75,7 @@
   ]
 }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
-  <link rel="stylesheet" href="/assets/light.css">
-  <link rel="stylesheet" href="/assets/sub.css">
+  <link rel="preload" href="/assets/fonts/ZenMaruGothic-Black.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"><i id="scroll-progress-fill"></i></div>
@@ -87,20 +83,22 @@
   <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
   <div class="page-noise" aria-hidden="true"></div>
 
-  <header class="site-header is-solid" id="site-header">
-    <a class="logo" href="/" aria-label="three.T トップへ">three<span>.</span>T<small>NO.3 PARTNER</small></a>
-    <nav class="desktop-nav" aria-label="メインナビゲーション">
-      <a href="/no3.html" data-hover>No.3代行とは</a>
-      <a href="/services.html" data-hover>サービス</a>
-      <a href="/services.html#process" data-hover>支援の流れ</a>
-      <a href="/no3.html#book" data-hover>書籍</a>
-      <a href="/no3.html#profile" data-hover>プロフィール</a>
-      <a href="/column/" data-hover>コラム</a>
-      <a href="/#faq" data-hover>FAQ</a>
-    </nav>
-    <a class="button button-small button-primary header-cta magnetic" href="/contact.html" data-hover>話を聞いてみる <span>↗</span></a>
-    <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span></button>
-    <nav class="mobile-nav" aria-label="モバイルナビゲーション">
+  <header class="gh" id="site-header">
+    <div class="gh-in">
+      <a class="gh-logo" href="/">three<span>.</span>T</a>
+      <nav class="gh-nav" aria-label="メインナビゲーション">
+        <a href="/no3.html">No.3代行とは</a>
+        <a href="/services.html">サービス</a>
+        <a href="/services.html#process">支援の流れ</a>
+        <a href="/no3.html#book">書籍</a>
+        <a href="/no3.html#profile">プロフィール</a>
+        <a href="/column/">コラム</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <a class="gh-cta" href="/contact.html">話を聞いてみる <span aria-hidden="true">→</span></a>
+      <button class="gh-menu" type="button" aria-expanded="false" aria-controls="gh-drawer"><span class="sr">メニューを開く</span><i></i><i></i></button>
+    </div>  </header>
+  <nav class="gh-drawer" id="gh-drawer" aria-label="メニュー" hidden>
       <a href="/no3.html">No.3代行とは</a>
       <a href="/services.html">サービス</a>
       <a href="/services.html#process">支援の流れ</a>
@@ -108,9 +106,8 @@
       <a href="/no3.html#profile">プロフィール</a>
       <a href="/column/">コラム</a>
       <a href="/#faq">FAQ</a>
-      <a class="button button-primary" href="/contact.html">話を聞いてみる <span>↗</span></a>
+      <a class="gh-drawer-cta" href="/contact.html">話を聞いてみる</a>
     </nav>
-  </header>
 
   <main class="subpage-main">
     <section class="subpage-hero">
@@ -121,21 +118,6 @@
         <p class="section-index">SERVICES</p>
         <h1>サービス</h1>
         <p>No.3代行を中心に、9つのメニューで会社を前へ進めます。相談から実行、仕組み化までの流れもあわせてご覧ください。</p>
-      </div>
-    </section>
-
-    <!-- ============ 3つの領域（図解） ============ -->
-    <section class="v2 v2-areas" aria-label="支援の3領域">
-      <div class="v2-wrap">
-        <div class="v2-head">
-          <p class="v2-eyebrow">できること</p>
-          <h2><span class="ph">売上・<wbr>仕組み・人。</span><span class="ph">3つの<wbr>領域を<wbr>横断して<wbr>動く。</span></h2>
-        </div>
-        <div class="v2-three">
-          <div class="v2-card area"><svg viewBox="0 0 300 120" aria-hidden="true"><path d="M20 100 H280" class="s-rule"/><rect x="50" y="70" width="36" height="30" rx="6" fill="#8EC5FF"/><rect x="110" y="50" width="36" height="50" rx="6" fill="#3F7FD6"/><rect x="170" y="28" width="36" height="72" rx="6" fill="#14204A"/><path class="grow" d="M40 64 L120 40 L180 22 L250 8" stroke="#B7FF2A" stroke-width="6" fill="none" stroke-linecap="round"/></svg><h3>売上</h3><p>営業の型、提案資料、案件の管理を整えて、売れる流れをつくる。</p></div>
-          <div class="v2-card area"><svg viewBox="0 0 300 120" aria-hidden="true"><g class="gear"><circle cx="110" cy="60" r="34" fill="none" stroke="#14204A" stroke-width="12" stroke-dasharray="14 9"/></g><circle cx="110" cy="60" r="14" fill="#B7FF2A"/><circle cx="186" cy="44" r="22" fill="none" stroke="#3F7FD6" stroke-width="10" stroke-dasharray="10 7"/><circle cx="186" cy="44" r="8" fill="#FFD447"/><rect x="170" y="78" width="70" height="30" rx="8" fill="#FFFFFF" stroke="#14204A" stroke-width="3"/><text x="205" y="99" text-anchor="middle" font-size="15" font-weight="900" fill="#14204A">AI</text></svg><h3>仕組み・DX</h3><p>業務を見える化し、ツールやAIを現場に定着させる。</p></div>
-          <div class="v2-card area"><svg viewBox="0 0 300 120" aria-hidden="true"><circle cx="100" cy="46" r="16" fill="#FFE1C6" stroke="#14204A" stroke-width="3"/><rect x="80" y="64" width="40" height="44" rx="16" fill="#14204A"/><circle cx="150" cy="40" r="16" fill="#FFE1C6" stroke="#14204A" stroke-width="3"/><rect x="130" y="58" width="40" height="50" rx="16" fill="#B7FF2A" stroke="#14204A" stroke-width="3"/><circle cx="200" cy="46" r="16" fill="#FFE1C6" stroke="#14204A" stroke-width="3"/><rect x="180" y="64" width="40" height="44" rx="16" fill="#3F7FD6"/></svg><h3>人材</h3><p>採用の設計から、チームで戦える状態づくりまで。</p></div>
-        </div>
       </div>
     </section>
 
@@ -150,21 +132,31 @@
           </div>
           <p class="section-lead reveal">支援の中心は「売上」「仕組み／DX」「人材」の3領域。経営全体を見ながら最適な打ち手を実行します。カードを選ぶと詳細が開きます。</p>
         </div>
+        <!-- ============ 3つの領域（図解） ============ -->
+    <div class="v2 v2-areas v2-inline" role="group" aria-label="支援の3領域">
+      <div class="v2-wrap">
+        <div class="v2-three">
+          <div class="v2-card area"><svg viewBox="0 0 300 120" aria-hidden="true"><path d="M20 100 H280" class="s-rule"/><rect x="50" y="70" width="36" height="30" rx="6" fill="#8EC5FF"/><rect x="110" y="50" width="36" height="50" rx="6" fill="#3F7FD6"/><rect x="170" y="28" width="36" height="72" rx="6" fill="#14204A"/><path class="grow" d="M40 64 L120 40 L180 22 L250 8" stroke="#B7FF2A" stroke-width="6" fill="none" stroke-linecap="round"/></svg><h3>売上</h3><p>営業の型、提案資料、案件の管理を整えて、売れる流れをつくる。</p></div>
+          <div class="v2-card area"><svg viewBox="0 0 300 120" aria-hidden="true"><g class="gear"><circle cx="110" cy="60" r="34" fill="none" stroke="#14204A" stroke-width="12" stroke-dasharray="14 9"/></g><circle cx="110" cy="60" r="14" fill="#B7FF2A"/><circle cx="186" cy="44" r="22" fill="none" stroke="#3F7FD6" stroke-width="10" stroke-dasharray="10 7"/><circle cx="186" cy="44" r="8" fill="#FFD447"/><rect x="170" y="78" width="70" height="30" rx="8" fill="#FFFFFF" stroke="#14204A" stroke-width="3"/><text x="205" y="99" text-anchor="middle" font-size="15" font-weight="900" fill="#14204A">AI</text></svg><h3>仕組み・DX</h3><p>業務を見える化し、ツールやAIを現場に定着させる。</p></div>
+          <div class="v2-card area"><svg viewBox="0 0 300 120" aria-hidden="true"><circle cx="100" cy="46" r="16" fill="#FFE1C6" stroke="#14204A" stroke-width="3"/><rect x="80" y="64" width="40" height="44" rx="16" fill="#14204A"/><circle cx="150" cy="40" r="16" fill="#FFE1C6" stroke="#14204A" stroke-width="3"/><rect x="130" y="58" width="40" height="50" rx="16" fill="#B7FF2A" stroke="#14204A" stroke-width="3"/><circle cx="200" cy="46" r="16" fill="#FFE1C6" stroke="#14204A" stroke-width="3"/><rect x="180" y="64" width="40" height="44" rx="16" fill="#3F7FD6"/></svg><h3>人材</h3><p>採用の設計から、チームで戦える状態づくりまで。</p></div>
+        </div>
+      </div>
+    </div>
         <div class="service-grid">
           <button type="button" class="service-card tilt service-featured reveal" data-service="no3" data-hover>
-            <div class="service-top"><span class="service-index">01 / CORE</span><span class="service-arrow">↗</span></div>
+            <div class="service-top"><span class="service-index">01 / CORE</span><span class="service-arrow" aria-hidden="true">→</span></div>
             <div class="service-graphic" aria-hidden="true"><span></span><i></i><strong>NO.3</strong><i></i><span></span></div>
             <div><h3>No.3代行</h3><p>経営者の構想を整理し、プロジェクト設計、実務推進、社内調整、仕組み化まで伴走します。</p><div class="tags"><span>課題整理</span><span>実行支援</span><span>仕組み化</span></div></div>
             <span class="service-more">詳しく見る →</span>
           </button>
-          <button type="button" class="service-card tilt reveal" data-service="keikaku" data-hover><div class="service-top"><span class="service-index">02</span><span class="service-arrow">↗</span></div><div><span class="service-icon">◇</span><h3>経営計画策定</h3><p>目標を数字と行動へ落とし込み、進捗管理の仕組みをつくります。</p></div><span class="service-more">詳しく見る →</span></button>
-          <button type="button" class="service-card tilt reveal" data-service="dx" data-hover><div class="service-top"><span class="service-index">03</span><span class="service-arrow">↗</span></div><div><span class="service-icon">⌘</span><h3>DX推進</h3><p>現状業務を可視化し、ツール選定、導入、運用定着まで支援します。</p></div><span class="service-more">詳しく見る →</span></button>
-          <button type="button" class="service-card tilt reveal" data-service="ai" data-hover><div class="service-top"><span class="service-index">04</span><span class="service-arrow">↗</span></div><div><span class="service-icon">✦</span><h3>AI活用</h3><p>生成AIを日常業務に組み込み、時間短縮と品質向上を実現します。</p></div><span class="service-more">詳しく見る →</span></button>
-          <button type="button" class="service-card tilt reveal" data-service="sales" data-hover><div class="service-top"><span class="service-index">05</span><span class="service-arrow">↗</span></div><div><span class="service-icon">↗</span><h3>営業支援</h3><p>営業戦略、提案資料、案件管理、営業プロセスを改善します。</p></div><span class="service-more">詳しく見る →</span></button>
-          <button type="button" class="service-card tilt reveal" data-service="saiyo" data-hover><div class="service-top"><span class="service-index">06</span><span class="service-arrow">↗</span></div><div><span class="service-icon">◎</span><h3>採用支援</h3><p>採用要件、求人設計、母集団形成、選考フローを整えます。</p></div><span class="service-more">詳しく見る →</span></button>
-          <button type="button" class="service-card tilt reveal" data-service="shinki" data-hover><div class="service-top"><span class="service-index">07</span><span class="service-arrow">↗</span></div><div><span class="service-icon">＋</span><h3>新規事業立上げ</h3><p>アイデア整理から検証、事業設計、初期営業まで推進します。</p></div><span class="service-more">詳しく見る →</span></button>
-          <button type="button" class="service-card tilt reveal" data-service="hojokin" data-hover><div class="service-top"><span class="service-index">08</span><span class="service-arrow">↗</span></div><div><span class="service-icon">□</span><h3>補助金支援</h3><p>事業計画と投資内容を整理し、制度活用を支援します。</p></div><span class="service-more">詳しく見る →</span></button>
-          <button type="button" class="service-card tilt reveal" data-service="team" data-hover><div class="service-top"><span class="service-index">09</span><span class="service-arrow">↗</span></div><div><span class="service-icon">△</span><h3>チームコンサルティング</h3><p>組織全体を見渡し、チームでたたかえる状態をつくります。</p></div><span class="service-more">詳しく見る →</span></button>
+          <button type="button" class="service-card tilt reveal" data-service="keikaku" data-hover><div class="service-top"><span class="service-index">02</span><span class="service-arrow" aria-hidden="true">→</span></div><div><span class="service-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="9" width="34" height="32" rx="5" fill="#fff" stroke="#14204A" stroke-width="2"/><rect x="13" y="27" width="5" height="8" rx="1" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><rect x="21.5" y="22" width="5" height="13" rx="1" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><rect x="30" y="16" width="5" height="19" rx="1" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/></svg></span><h3>経営計画策定</h3><p>目標を数字と行動へ落とし込み、進捗管理の仕組みをつくります。</p></div><span class="service-more">詳しく見る →</span></button>
+          <button type="button" class="service-card tilt reveal" data-service="dx" data-hover><div class="service-top"><span class="service-index">03</span><span class="service-arrow" aria-hidden="true">→</span></div><div><span class="service-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="9" width="36" height="24" rx="4" fill="#fff" stroke="#14204A" stroke-width="2"/><path d="M18 40h12M24 33v7" stroke="#14204A" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="21" r="6" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><path d="M24 12v3M24 27v3M15 21h3M30 21h3" stroke="#14204A" stroke-width="2" stroke-linecap="round"/></svg></span><h3>DX推進</h3><p>現状業務を可視化し、ツール選定、導入、運用定着まで支援します。</p></div><span class="service-more">詳しく見る →</span></button>
+          <button type="button" class="service-card tilt reveal" data-service="ai" data-hover><div class="service-top"><span class="service-index">04</span><span class="service-arrow" aria-hidden="true">→</span></div><div><span class="service-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="15" width="30" height="24" rx="9" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><circle cx="19" cy="27" r="3" fill="#14204A"/><circle cx="29" cy="27" r="3" fill="#14204A"/><path d="M24 15V8" stroke="#14204A" stroke-width="2"/><circle cx="24" cy="7" r="3" fill="#fff" stroke="#14204A" stroke-width="2"/><path d="M20 34q4 3 8 0" stroke="#14204A" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><h3>AI活用</h3><p>生成AIを日常業務に組み込み、時間短縮と品質向上を実現します。</p></div><span class="service-more">詳しく見る →</span></button>
+          <button type="button" class="service-card tilt reveal" data-service="sales" data-hover><div class="service-top"><span class="service-index">05</span><span class="service-arrow" aria-hidden="true">→</span></div><div><span class="service-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 40h34" stroke="#14204A" stroke-width="2" stroke-linecap="round"/><path d="M9 32l10-9 7 6 13-14" stroke="#14204A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M31 14h9v9" stroke="#14204A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="23" r="3.5" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><circle cx="26" cy="29" r="3.5" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/></svg></span><h3>営業支援</h3><p>営業戦略、提案資料、案件管理、営業プロセスを改善します。</p></div><span class="service-more">詳しく見る →</span></button>
+          <button type="button" class="service-card tilt reveal" data-service="saiyo" data-hover><div class="service-top"><span class="service-index">06</span><span class="service-arrow" aria-hidden="true">→</span></div><div><span class="service-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="20" cy="16" r="7" fill="#fff" stroke="#14204A" stroke-width="2"/><path d="M7 40c0-8 6-13 13-13s13 5 13 13z" fill="#fff" stroke="#14204A" stroke-width="2" stroke-linejoin="round"/><circle cx="36" cy="30" r="8" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><path d="M36 26v8M32 30h8" stroke="#14204A" stroke-width="2" stroke-linecap="round"/></svg></span><h3>採用支援</h3><p>採用要件、求人設計、母集団形成、選考フローを整えます。</p></div><span class="service-more">詳しく見る →</span></button>
+          <button type="button" class="service-card tilt reveal" data-service="shinki" data-hover><div class="service-top"><span class="service-index">07</span><span class="service-arrow" aria-hidden="true">→</span></div><div><span class="service-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5c7 6 9 16 5 26h-10c-4-10-2-20 5-26z" fill="#fff" stroke="#14204A" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="17" r="4" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><path d="M19 27l-6 5 5 3M29 27l6 5-5 3" fill="#B7FF2A" stroke="#14204A" stroke-width="2" stroke-linejoin="round"/><path d="M21 36l-1 6M27 36l1 6M24 36v7" stroke="#14204A" stroke-width="2" stroke-linecap="round"/></svg></span><h3>新規事業立上げ</h3><p>アイデア整理から検証、事業設計、初期営業まで推進します。</p></div><span class="service-more">詳しく見る →</span></button>
+          <button type="button" class="service-card tilt reveal" data-service="hojokin" data-hover><div class="service-top"><span class="service-index">08</span><span class="service-arrow" aria-hidden="true">→</span></div><div><span class="service-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 6h20l8 8v28H10z" fill="#fff" stroke="#14204A" stroke-width="2" stroke-linejoin="round"/><path d="M30 6v8h8" fill="none" stroke="#14204A" stroke-width="2" stroke-linejoin="round"/><path d="M16 20h12M16 26h8" stroke="#14204A" stroke-width="2" stroke-linecap="round"/><circle cx="31" cy="34" r="8" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><path d="M28 30l3 4 3-4M31 34v5M28 35h6" stroke="#14204A" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>補助金支援</h3><p>事業計画と投資内容を整理し、制度活用を支援します。</p></div><span class="service-more">詳しく見る →</span></button>
+          <button type="button" class="service-card tilt reveal" data-service="team" data-hover><div class="service-top"><span class="service-index">09</span><span class="service-arrow" aria-hidden="true">→</span></div><div><span class="service-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="12" cy="17" r="5" fill="#fff" stroke="#14204A" stroke-width="2"/><circle cx="36" cy="17" r="5" fill="#fff" stroke="#14204A" stroke-width="2"/><circle cx="24" cy="14" r="6" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><path d="M3 38c0-6 4-10 9-10s9 4 9 10zM27 38c0-6 4-10 9-10s9 4 9 10z" fill="#fff" stroke="#14204A" stroke-width="2" stroke-linejoin="round"/><path d="M13 40c0-8 5-13 11-13s11 5 11 13z" fill="#B7FF2A" stroke="#14204A" stroke-width="2" stroke-linejoin="round"/></svg></span><h3>チームコンサルティング</h3><p>組織全体を見渡し、チームでたたかえる状態をつくります。</p></div><span class="service-more">詳しく見る →</span></button>
         </div>
       </div>
     </section>
@@ -208,19 +200,29 @@
 
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-giant" aria-hidden="true"><span>three.T</span></div>
-    <div class="container">
-      <div class="footer-top">
-        <div><a class="logo" href="/">three<span>.</span>T<small>NO.3 PARTNER</small></a><p>経営の「進まない」を「進む」に変える。<br><small class="footer-slogan">Total Trust with Teams</small></p></div>
-        <nav><a href="/no3.html" data-hover>No.3代行とは</a><a href="/services.html" data-hover>サービス</a><a href="/services.html#process" data-hover>支援の流れ</a><a href="/no3.html#book" data-hover>書籍</a><a href="/no3.html#profile" data-hover>プロフィール</a><a href="/#blog" data-hover>ブログ</a><a href="/column/" data-hover>コラム</a><a href="/#faq" data-hover>FAQ</a><a href="/contact.html" data-hover>お問い合わせ</a></nav>
-      </div>
-      <div class="footer-bottom"><span>© three.T LLC. All Rights Reserved.</span><span><a href="/company.html" data-hover>会社概要</a><a href="/privacy.html" data-hover>プライバシーポリシー</a></span></div>
+  <section class="gcta" aria-label="ご相談">
+    <div class="gcta-box">
+      <p class="gcta-eyebrow">LET'S MOVE FORWARD</p>
+      <h2>社長一人で、<wbr>悩まない。</h2>
+      <p>止まっている課題を整理して、次の一歩を一緒に決めます。</p>
+      <a class="gcta-btn" href="/contact.html">60分、話を聞いてみる <span aria-hidden="true">→</span></a>
+      <ul><li>初回60分無料</li><li>オンライン対応</li></ul>
+    </div>
+  </section>
+
+  <footer class="gf">
+    <div class="gf-in">
+      <a class="gf-logo" href="/">three<span>.</span>T</a>
+      <p>経営の「進まない」を「進む」に変える。</p>
+      <p class="gf-slogan">Total Trust with Teams</p>
+      <nav class="gf-nav" aria-label="フッター"><a href="/no3.html">No.3代行とは</a><a href="/services.html">サービス</a><a href="/services.html#process">支援の流れ</a><a href="/no3.html#book">書籍</a><a href="/no3.html#profile">プロフィール</a><a href="/#blog">ブログ</a><a href="/column/">コラム</a><a href="/#faq">FAQ</a><a href="/contact.html">お問い合わせ</a><a href="/company.html">会社概要</a><a href="/privacy.html">プライバシーポリシー</a></nav>
+      <p class="gf-copy">© three.T LLC. All Rights Reserved.</p>
     </div>
   </footer>
 
   <a class="mobile-fixed-cta" href="/contact.html">話を聞いてみる <span>↗</span></a>
-  <script src="/script.js"></script>
-  <script src="/assets/sub.js"></script>
+  <script src="/script.js" defer></script>
+  <script src="/assets/sub.js" defer></script>
+  <script src="/assets/chrome.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,5 @@
+/* 見出し・ボタン・ラベル用の丸ゴシック（使っている文字だけを切り出したもの。scripts/subset_fonts.py で再生成）
+   本文は OS 標準の日本語フォント（ヒラギノ／游ゴシック等）で表示し、フォントの読み込みを待たせない。
+   Zen Maru Gothic — SIL Open Font License 1.1（assets/fonts/OFL.txt） */
+@font-face { font-family: "Zen Maru Gothic"; src: url("/assets/fonts/ZenMaruGothic-Bold.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: "Zen Maru Gothic"; src: url("/assets/fonts/ZenMaruGothic-Black.woff2") format("woff2"); font-weight: 800 900; font-display: swap; }
