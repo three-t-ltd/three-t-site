@@ -72,3 +72,4 @@ body .company-table a { color: #2B62BD; }
 .problem-card .line-icon svg { width: 44px; height: 44px; display: block; }
 /* 2周目：スマホの「頭の中」の図は高さを取る */
 @media (max-width: 767px) { #mind-canvas { height: 520px; } }
+body .col-note a { text-decoration: underline; text-underline-offset: 3px; }
