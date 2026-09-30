@@ -20,3 +20,15 @@
     if (p && p !== '/' && (here === p || (p === '/column/' && here.indexOf('/column/') === 0))) a.setAttribute('aria-current', 'page');
   });
 })();
+
+(function () {
+  var fc = document.querySelector('.mobile-fixed-cta');
+  if (!fc) return;
+  if (/contact/.test(location.pathname) || document.getElementById('contact-form')) { document.body.classList.add('no-fixed-cta'); return; }
+  var band = document.querySelector('.gcta');
+  if (band && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { document.body.classList.toggle('gcta-visible', es[0].isIntersecting); }, { threshold: 0.1 }).observe(band);
+  }
+  document.addEventListener('focusin', function (e) { if (e.target.matches('input, textarea, select')) document.body.classList.add('typing'); });
+  document.addEventListener('focusout', function () { document.body.classList.remove('typing'); });
+})();

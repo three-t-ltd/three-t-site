@@ -7,7 +7,7 @@
 
 /* ヘッダー */
 .gh { position: sticky; top: 0; z-index: 60; background: rgba(234, 243, 255, .9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--c-line); }
-.gh-in { max-width: 1200px; margin: 0 auto; padding-inline: clamp(20px, 4vw, 48px); height: 64px; display: flex; align-items: center; gap: 28px; }
+.gh-in { max-width: 1144px; margin: 0 auto; padding-inline: 20px; height: 64px; display: flex; align-items: center; gap: 28px; }
 .gh-logo { font-family: var(--c-display); font-weight: 900; font-size: 23px; letter-spacing: .01em; color: var(--c-ink); text-decoration: none; margin-right: auto; line-height: 1; }
 .gh-logo span { color: var(--c-lime-deep); }
 .gh-nav { display: flex; gap: 24px; }
@@ -67,3 +67,9 @@ body.gh-open { overflow: hidden; }
 /* サービスの自作アイコン */
 .service-icon svg { width: 48px; height: 48px; display: block; }
 body.gh-open .mobile-fixed-cta { display: none !important; }
+
+.skip-link { position: absolute; left: 12px; top: -80px; z-index: 200; background: #14204A; color: #fff; font-weight: 700; padding: 10px 16px; border-radius: 8px; text-decoration: none; }
+.skip-link:focus { top: 12px; outline: 3px solid #B7FF2A; }
+body.no-fixed-cta .mobile-fixed-cta, body.gcta-visible .mobile-fixed-cta, body.typing .mobile-fixed-cta { transform: translateY(140%) !important; pointer-events: none; }
+body.no-fixed-cta { padding-bottom: 0 !important; }
+.gf-slogan { font-size: 12.5px; }

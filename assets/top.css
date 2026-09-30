@@ -20,7 +20,7 @@ body{margin:0;background:var(--sky);color:var(--ink);font-family:var(--body);fon
 a{color:inherit}
 h1,h2,h3{font-family:var(--display);font-weight:900;line-height:1.3;text-wrap:balance;margin:0}
 p{margin:0}
-.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+.wrap{max-width:1144px;margin:0 auto;padding-inline:20px}
 .eyebrow{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.14em;color:var(--blue-deep)}
 .btn{display:inline-flex;align-items:center;gap:.5em;font-family:var(--display);font-weight:700;text-decoration:none;border-radius:999px;padding:.9em 1.6em;transition:transform .2s,box-shadow .2s}
 .btn-main{background:var(--lime);color:var(--ink);box-shadow:0 5px 0 var(--ink)}
@@ -344,3 +344,24 @@ h1,h2,h3,h4{word-break:keep-all;overflow-wrap:anywhere}
 .blog-list a:hover img,.blog-list a:focus-visible img{filter:none}
 .blog-list li a{background:transparent}
 @media (max-width:560px){.desk .axis{font-size:30px}}
+
+/* 2周目：漫画は「本の中の世界」として紺の帯に */
+.manga-sec{background:var(--ink);color:#E9EDF4}
+.manga-sec .eyebrow{color:var(--lime)}
+.manga-sec .sec-head p{color:#C9D3F0}
+.manga-sec .manga img{border:2px solid #E9EDF4;box-shadow:8px 8px 0 var(--lime)}
+.manga-sec .manga figcaption{color:#E9EDF4}
+.manga-sec .manga figcaption b{color:var(--ink)}
+.manga-sec .manga-more .btn-sub{background:transparent;color:#fff;border-color:var(--lime)}
+.manga-sec .manga-more .btn-sub:hover{background:var(--lime);color:var(--ink)}
+/* 2周目：FAQの残りを畳む */
+.faq-rest:not(.open){display:none}
+.faq-toggle{justify-self:center;margin-top:6px;font-family:var(--display);font-weight:700;font-size:14px;color:var(--ink);background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:.55em 1.4em;cursor:pointer}
+.faq-toggle:hover{background:var(--lime)}
+/* 2周目：オープニングの案内文とラベルを読める大きさに */
+.intro-hint{font-size:13px;color:rgba(233,237,244,.85)}
+.ibtn{font-size:13px}
+.cl-cat{font-size:12px}
+.intro{transition:background-color .6s ease}
+.intro.sky{background:#EAF3FF}
+.intro.sky .intro-hint{color:#4A5680}

@@ -989,7 +989,8 @@ if (mindCanvas) {
         if (d2 < 1) d2 = 1;
         if (d2 > 90000) continue;
         // ラベルが横に重なりそうな距離なら、追加で引き離す
-        const f = 2600 / d2 + ((Math.abs(dy) < 22 && Math.abs(dx) < 84) ? 0.4 : 0);
+        const narrow = W < 768;
+        const f = (narrow ? 700 : 2600) / d2 + ((!narrow && Math.abs(dy) < 22 && Math.abs(dx) < 84) ? 0.4 : 0);
         const d = Math.sqrt(d2);
         dx /= d; dy /= d;
         a.vx += dx * f; a.vy += dy * f;
@@ -1056,7 +1057,11 @@ if (mindCanvas) {
       ctx.fillStyle = accNode
         ? `rgba(${ACC}, ${isHl ? 1 : 0.25})`
         : `rgba(${FG2_RGB}, ${isHl ? 0.95 : 0.25})`;
-      ctx.fillText(n.label, n.x, n.y + r + fs + 2);
+      // スマホは細かいノードのラベルを出さない（触れたノードとその周りだけ出す）
+      if (W < 768 && n.type !== "c" && n.type !== "h" && !(hovered && hl && hl.has(n.id))) return;
+      const tw = ctx.measureText(n.label).width;
+      const lx = Math.max(tw / 2 + 4, Math.min(W - tw / 2 - 4, n.x));
+      ctx.fillText(n.label, lx, n.y + r + fs + 2);
     });
   };
 

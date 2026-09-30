@@ -57,7 +57,7 @@
   var stallT; iv.addEventListener('waiting',function(){ clearTimeout(stallT); stallT=setTimeout(function(){ if(!intro.hidden) closeIntro(); },8000); });
   iv.addEventListener('playing',function(){ clearTimeout(stallT); });
   if(window.matchMedia('(pointer: coarse)').matches){ document.getElementById('introHint').textContent='タップでホームページへ'; }
-  iv.addEventListener('timeupdate',function(){ if(iv.duration) ibar.style.width=(iv.currentTime/iv.duration*100)+'%'; });
+  iv.addEventListener('timeupdate',function(){ if(iv.duration) ibar.style.width=(iv.currentTime/iv.duration*100)+'%'; intro.classList.toggle('sky', iv.currentTime>13.9); });
   intro.addEventListener('click',function(e){ if(e.target===isound) return; closeIntro(); });
   isound.addEventListener('click',function(e){
     e.stopPropagation(); iv.muted=!iv.muted; isound.classList.remove('pulse');
@@ -81,6 +81,10 @@
       li.appendChild(a); ul.appendChild(li);
     });
   }).catch(function(){});
+
+  // ===== FAQの残りを開く =====
+  var ft=document.querySelector('.faq-toggle'), fr=document.getElementById('faqRest');
+  if(ft&&fr) ft.addEventListener('click',function(){ var open=!fr.classList.contains('open'); fr.classList.toggle('open',open); ft.setAttribute('aria-expanded',String(open)); ft.textContent=open?'閉じる':'残り3問を見る'; });
 
   // ===== スクロール登場 =====
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
