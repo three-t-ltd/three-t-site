@@ -86,6 +86,7 @@
     list.slice(0,6).forEach(function(p){
       var li=document.createElement('li'), a=document.createElement('a');
       a.href=p.url; a.target='_blank'; a.rel='noopener';
+      if(p.thumb){ var th=document.createElement('span'); th.className='th'; var img=document.createElement('img'); img.src=p.thumb; img.alt=''; img.loading='lazy'; img.width=600; img.height=315; th.appendChild(img); a.appendChild(th); }
       var t=document.createElement('time'); t.textContent=p.date||''; a.appendChild(t);
       var s=document.createElement('span'); s.textContent=p.title||''; a.appendChild(s);
       li.appendChild(a); ul.appendChild(li);
