@@ -126,7 +126,7 @@ td.us .mt-bars i.on { background: #4E7A00; }
 @media (max-width: 420px) { .nflow-line q, .nflow-line small { font-size: 11.5px; } .nflow-line .n3pill { font-size: 11px; padding: 0 7px; } .nflow-line { gap: 4px; } }
 /* 「本音」のチップ：止まっているときは最終の位置（上＝社長の手前で小さく薄い／下＝社長に届いている） */
 .nflow .chip { position: absolute; top: 56px; z-index: 2; font-size: 11px; font-weight: 700; color: #FFFFFF; background: var(--ink); border-radius: 999px; padding: .1em .6em; pointer-events: none; }
-.nflow-row.bad .chip { left: calc(87.5% - 60px); transform: scale(.55); opacity: .35; }
+.nflow-row.bad .chip { left: calc(87.5% - 60px); transform: scale(.55); background: #C9D3F0; color: #14204A; }
 .nflow-row.good .chip { left: calc(87.5% - 64px); }
 .v2-filter.in .nflow-row.bad .chip { animation: chipbad 4.5s ease-in-out 2 both; }
 .v2-filter.in .nflow-row.good .chip { animation: chipgood 4.5s ease-in-out 2 both; }
@@ -134,7 +134,7 @@ td.us .mt-bars i.on { background: #4E7A00; }
   0% { left: calc(12.5% - 22px); transform: none; opacity: 1; }
   35% { left: calc(37.5% - 22px); transform: scale(.9); opacity: 1; }
   60% { left: calc(62.5% - 22px); transform: scale(.6, .5); opacity: .7; }
-  85%, 100% { left: calc(87.5% - 60px); transform: scale(.55); opacity: .35; }
+  85%, 100% { left: calc(87.5% - 60px); transform: scale(.55); opacity: 1; background: #C9D3F0; color: #14204A; }
 }
 @keyframes chipgood {
   0% { left: calc(12.5% - 22px); }
@@ -183,7 +183,7 @@ td.us .mt-bars i.on { background: #4E7A00; }
   .v2-filter.in .nflow-row.bad .chip { animation-name: chipbad-m; }
   .v2-filter.in .nflow-row.good .chip { animation-name: chipgood-m; }
 }
-@keyframes chipbad-m { 0% { left: calc(12.5% - 19px); transform: none; opacity: 1; } 35% { left: calc(37.5% - 19px); transform: scale(.9); opacity: 1; } 60% { left: calc(62.5% - 19px); transform: scale(.6, .5); opacity: .7; } 85%, 100% { left: calc(87.5% - 19px); transform: scale(.55); opacity: .35; } }
+@keyframes chipbad-m { 0% { left: calc(12.5% - 19px); transform: none; opacity: 1; } 35% { left: calc(37.5% - 19px); transform: scale(.9); opacity: 1; } 60% { left: calc(62.5% - 19px); transform: scale(.6, .5); opacity: .7; } 85%, 100% { left: calc(87.5% - 19px); transform: scale(.55); opacity: 1; background: #C9D3F0; color: #14204A; } }
 @keyframes chipgood-m { 0% { left: calc(12.5% - 19px); } 85%, 100% { left: calc(87.5% - 19px); } }
 /* 図解の終わりの相談ボタン（トップと同じ形） */
 .v2-cta { text-align: center; }
@@ -193,3 +193,9 @@ td.us .mt-bars i.on { background: #4E7A00; }
 
 /* 日本語の見出しは文節の途中で改行しない（<wbr> は fix_breaks で挿入） */
 h1,h2,h3,h4{word-break:keep-all;overflow-wrap:anywhere}
+@media (max-width: 560px) { .nflow-row.bad .chip { background: #C9D3F0; color: #14204A; } }
+.v2-inline { background: transparent; padding-block: 0 40px; }
+.v2-inline .v2-wrap { width: 100%; }
+
+/* 4周目：図解の枠も本文と同じ 1104px にそろえる */
+.v2-wrap { width: min(1104px, 100% - 40px); }

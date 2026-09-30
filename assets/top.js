@@ -24,12 +24,24 @@
   function seen(){ try{ return sessionStorage.getItem('introSeen')==='1'; }catch(e){ return false; } }
   function markSeen(){ try{ sessionStorage.setItem('introSeen','1'); }catch(e){} }
   var closing=false;
-  function closeIntro(){
+  function closeIntro(e){
+    var ended = e && e.type === 'ended';
     if(closing||intro.hidden) return; closing=true; markSeen();
-    intro.classList.add('out'); document.body.classList.remove('intro-open');
+    try{ iv.pause(); }catch(_){}
+    var sc=document.querySelector('.hero .scene'), rr=sc&&sc.getBoundingClientRect(), vw=window.innerWidth, vh=window.innerHeight;
+    if(rr && rr.top < vh-80 && rr.height > 60){
+      intro.classList.add('to-frame');
+      intro.style.transition='clip-path .75s cubic-bezier(.7,0,.2,1), opacity .35s ease .6s';
+      intro.style.clipPath='inset(0px 0px 0px 0px round 0px)'; void intro.offsetWidth;
+      intro.style.clipPath='inset('+Math.max(0,rr.top)+'px '+Math.max(0,vw-rr.right)+'px '+Math.max(0,vh-rr.bottom)+'px '+Math.max(0,rr.left)+'px round 24px)';
+      intro.style.opacity='0';
+    } else {
+      intro.classList.add(ended ? 'out-fade' : 'out-up');
+    }
+    document.body.classList.remove('intro-open');
     ['main','header','footer'].forEach(function(t){ var el=document.querySelector(t); if(el) el.inert=false; }); clearTimeout(window.__introGuard);
     hero.classList.remove('wait');
-    setTimeout(function(){ iv.pause(); intro.hidden=true; intro.classList.remove('out'); closing=false; },900);
+    setTimeout(function(){ iv.pause(); intro.hidden=true; intro.classList.remove('out-fade','out-up','to-frame'); intro.style.transition=''; intro.style.clipPath=''; intro.style.opacity=''; closing=false; },1000);
   }
   // 縦長の画面（スマホ縦持ち）では縦型、それ以外は横型
   var portrait=window.matchMedia('(max-aspect-ratio: 4/5)').matches;
@@ -56,7 +68,7 @@
   var stallT; iv.addEventListener('waiting',function(){ clearTimeout(stallT); stallT=setTimeout(function(){ if(!intro.hidden) closeIntro(); },8000); });
   iv.addEventListener('playing',function(){ clearTimeout(stallT); });
   if(window.matchMedia('(pointer: coarse)').matches){ document.getElementById('introHint').textContent='タップでホームページへ'; }
-  iv.addEventListener('timeupdate',function(){ if(iv.duration) ibar.style.width=(iv.currentTime/iv.duration*100)+'%'; });
+  iv.addEventListener('timeupdate',function(){ if(iv.duration) ibar.style.width=(iv.currentTime/iv.duration*100)+'%'; intro.classList.toggle('sky', iv.currentTime>13.9); });
   intro.addEventListener('click',function(e){ if(e.target===isound) return; closeIntro(); });
   isound.addEventListener('click',function(e){
     e.stopPropagation(); iv.muted=!iv.muted; isound.classList.remove('pulse');
@@ -74,12 +86,19 @@
     list.slice(0,6).forEach(function(p){
       var li=document.createElement('li'), a=document.createElement('a');
       a.href=p.url; a.target='_blank'; a.rel='noopener';
-      if(p.thumb){ var img=document.createElement('img'); img.src=p.thumb; img.alt=''; img.loading='lazy'; a.appendChild(img); }
       var t=document.createElement('time'); t.textContent=p.date||''; a.appendChild(t);
       var s=document.createElement('span'); s.textContent=p.title||''; a.appendChild(s);
       li.appendChild(a); ul.appendChild(li);
     });
   }).catch(function(){});
+
+  // ===== FAQの残りを開く =====
+  var ft=document.querySelector('.faq-toggle'), fr=document.getElementById('faqRest');
+  if(ft&&fr) ft.addEventListener('click',function(){ var open=!fr.classList.contains('open'); fr.classList.toggle('open',open); ft.setAttribute('aria-expanded',String(open)); ft.textContent=open?'閉じる':'残り3問を見る'; });
+
+  // ===== コラム一覧の開閉 =====
+  var ct=document.querySelector('.col-toggle'), cl=document.querySelector('.col-list-top');
+  if(ct&&cl) ct.addEventListener('click',function(){ var open=!cl.classList.contains('open'); cl.classList.toggle('open',open); ct.setAttribute('aria-expanded',String(open)); ct.textContent=open?'閉じる':'残り7本を見る'; });
 
   // ===== スクロール登場 =====
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -105,7 +124,7 @@
     var vh=window.innerHeight;
     var rio=new IntersectionObserver(function(es){
       es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.remove('pre'); rio.unobserve(e.target); } });
-    },{rootMargin:'0px 0px -8% 0px'});
+    },{rootMargin:'0px 0px 15% 0px'});
     document.querySelectorAll('.rv').forEach(function(el){
       if(el.getBoundingClientRect().top>vh){ el.classList.add('pre'); rio.observe(el); }
     });

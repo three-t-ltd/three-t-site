@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S663Q942EZ"></script>
+  <!-- Google tag (gtag.js)：表示が終わってから読み込む（計測は同じ） -->
+  <script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-S663Q942EZ";document.head.appendChild(s);},1500);});</script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -30,10 +30,8 @@
   <meta name="twitter:title" content="経営の「進まない」を「進む」に変える。｜three.T">
   <meta name="twitter:description" content="経営の伴走者・No.3として、売上・仕組み・人の課題を前進させます。初回相談無料。">
   <meta name="twitter:image" content="https://three-t-ltd.com/assets/ogp.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
-  <link rel="stylesheet" href="/assets/top.css">
+  <link rel="preload" href="/assets/fonts/ZenMaruGothic-Black.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/top.bundle.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -366,6 +364,7 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#top">本文へスキップ</a>
 <div id="intro" class="intro" hidden role="dialog" aria-modal="true" aria-label="オープニング動画。クリックでスキップします">
   <video id="introVideo" muted playsinline preload="auto"></video>
   <div class="intro-ui">
@@ -376,21 +375,32 @@
   <span class="intro-bar"><i id="introBar"></i></span>
 </div>
 
-<header>
-  <div class="wrap">
-    <a class="logo" href="#top">three<span>.</span>T</a>
-    <nav aria-label="メインナビゲーション">
+<header class="gh" id="site-header">
+    <div class="gh-in">
+      <a class="gh-logo" href="/">three<span>.</span>T</a>
+      <nav class="gh-nav" aria-label="メインナビゲーション">
+        <a href="/no3.html">No.3代行とは</a>
+        <a href="/services.html">サービス</a>
+        <a href="/services.html#process">支援の流れ</a>
+        <a href="/no3.html#book">書籍</a>
+        <a href="/no3.html#profile">プロフィール</a>
+        <a href="/column/">コラム</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <a class="gh-cta" href="/contact.html">話を聞いてみる <span aria-hidden="true">→</span></a>
+      <button class="gh-menu" type="button" aria-expanded="false" aria-controls="gh-drawer"><span class="sr">メニューを開く</span><i></i><i></i></button>
+    </div>  </header>
+  <nav class="gh-drawer" id="gh-drawer" aria-label="メニュー" hidden>
       <a href="/no3.html">No.3代行とは</a>
       <a href="/services.html">サービス</a>
       <a href="/services.html#process">支援の流れ</a>
       <a href="/no3.html#book">書籍</a>
       <a href="/no3.html#profile">プロフィール</a>
       <a href="/column/">コラム</a>
-      <a href="#faq">FAQ</a>
+      <a href="/#faq">FAQ</a>
+      <a class="gh-drawer-cta" href="/contact.html">話を聞いてみる</a>
+      <p class="gh-drawer-sub"><a href="/company.html">会社概要</a><a href="/contact.html">お問い合わせ</a><a href="/#blog">ブログ</a><a href="/privacy.html">プライバシーポリシー</a></p>
     </nav>
-    <a class="btn btn-main" href="/contact.html">話を聞いてみる</a>
-  </div>
-</header>
 
 <main id="top">
   <div class="hero">
@@ -521,12 +531,13 @@
         <text x="295" y="58" text-anchor="middle" class="axis">緊急</text>
         <text x="605" y="58" text-anchor="middle" class="axis">緊急でない</text>
         <text x="126" y="186" text-anchor="end" class="axis">重要</text>
-        <text x="126" y="378" text-anchor="end" class="axis">重要で</text>
-        <text x="126" y="402" text-anchor="end" class="axis">ない</text>
+        <text x="126" y="370" text-anchor="end" class="axis">重要で</text>
+        <text x="126" y="404" text-anchor="end" class="axis">ない</text>
         <rect x="140" y="80" width="620" height="400" rx="26" fill="#14204A"/>
         <path d="M450 80 H734 Q760 80 760 106 V280 H450Z" fill="#FFE27A"/>
         <path d="M450 80 V480 M140 280 H760" stroke="#FFFFFF" stroke-width="5"/>
         <rect x="140" y="80" width="620" height="400" rx="26" fill="none" stroke="#FFFFFF" stroke-width="5"/>
+        <rect x="474" y="304" width="262" height="152" rx="14" fill="none" stroke="#3F4C8C" stroke-width="2.5" stroke-dasharray="9 9"/>
         <!-- 緊急×重要：書類の山 -->
         <g>
           <rect x="220" y="238" width="150" height="16" rx="3" fill="#FFFFFF" stroke="#14204A" stroke-width="2"/>
@@ -766,14 +777,15 @@
             <li><a href="/column/dx-suishin-shanai-chousei.html"><span class="cl-cat">AI・DX</span><time class="cl-date" datetime="2026-09-24">2026.09.24</time><span class="cl-title">DX推進の時間が社内調整に消えるのは、異常ではありません</span></a></li>
             <li><a href="/column/chusho-kigyo-tomaru-pattern.html"><span class="cl-cat">経営・組織</span><time class="cl-date" datetime="2026-09-14">2026.09.14</time><span class="cl-title">社外のNo.3として見てきた、中小企業が止まる4つの共通パターン</span></a></li>
             <li><a href="/column/dx-suishin-tantou-inai.html"><span class="cl-cat">AI・DX</span><time class="cl-date" datetime="2026-09-01">2026.09.01</time><span class="cl-title">DXの推進担当がいない会社は、何から決めればいいのか</span></a></li>
-            <li><a href="/column/zokujinka-manual-igai.html"><span class="cl-cat">仕組み化</span><time class="cl-date" datetime="2026-08-17">2026.08.17</time><span class="cl-title">業務の属人化は、マニュアルを作っても解消しない</span></a></li>
-            <li><a href="/column/keiei-keikaku-jikkou.html"><span class="cl-cat">経営・組織</span><time class="cl-date" datetime="2026-08-07">2026.08.07</time><span class="cl-title">経営計画が「絵に描いた餅」で終わる会社と、終わらない会社</span></a></li>
-            <li><a href="/column/komon-seika-ga-denai.html"><span class="cl-cat">外部人材</span><time class="cl-date" datetime="2026-07-20">2026.07.20</time><span class="cl-title">顧問・コンサルの成果が出ないとき、何が起きているのか</span></a></li>
-            <li><a href="/column/keiei-komon-consul-chigai.html"><span class="cl-cat">外部人材</span><time class="cl-date" datetime="2026-07-20">2026.07.20</time><span class="cl-title">社外CxO・顧問・コンサル・業務委託・No.3代行は、何が違うのか</span></a></li>
-            <li><a href="/column/kengen-ijou-tejun.html"><span class="cl-cat">経営・組織</span><time class="cl-date" datetime="2026-07-20">2026.07.20</time><span class="cl-title">社長が現場から抜けられない会社の、権限移譲の実務手順</span></a></li>
-            <li><a href="/column/chusho-kigyo-keiei-sanbo.html"><span class="cl-cat">経営・組織</span><time class="cl-date" datetime="2026-07-14">2026.07.14</time><span class="cl-title">中小企業の「経営参謀」の見つけ方</span></a></li>
-            <li><a href="/column/chusho-kigyo-ai-dx-hajimekata.html"><span class="cl-cat">AI・DX</span><time class="cl-date" datetime="2026-07-13">2026.07.13</time><span class="cl-title">中小企業のAI活用・DXの始め方</span></a></li>
+            <li class="more"><a href="/column/zokujinka-manual-igai.html"><span class="cl-cat">仕組み化</span><time class="cl-date" datetime="2026-08-17">2026.08.17</time><span class="cl-title">業務の属人化は、マニュアルを作っても解消しない</span></a></li>
+            <li class="more"><a href="/column/keiei-keikaku-jikkou.html"><span class="cl-cat">経営・組織</span><time class="cl-date" datetime="2026-08-07">2026.08.07</time><span class="cl-title">経営計画が「絵に描いた餅」で終わる会社と、終わらない会社</span></a></li>
+            <li class="more"><a href="/column/komon-seika-ga-denai.html"><span class="cl-cat">外部人材</span><time class="cl-date" datetime="2026-07-20">2026.07.20</time><span class="cl-title">顧問・コンサルの成果が出ないとき、何が起きているのか</span></a></li>
+            <li class="more"><a href="/column/keiei-komon-consul-chigai.html"><span class="cl-cat">外部人材</span><time class="cl-date" datetime="2026-07-20">2026.07.20</time><span class="cl-title">社外CxO・顧問・コンサル・業務委託・No.3代行は、何が違うのか</span></a></li>
+            <li class="more"><a href="/column/kengen-ijou-tejun.html"><span class="cl-cat">経営・組織</span><time class="cl-date" datetime="2026-07-20">2026.07.20</time><span class="cl-title">社長が現場から抜けられない会社の、権限移譲の実務手順</span></a></li>
+            <li class="more"><a href="/column/chusho-kigyo-keiei-sanbo.html"><span class="cl-cat">経営・組織</span><time class="cl-date" datetime="2026-07-14">2026.07.14</time><span class="cl-title">中小企業の「経営参謀」の見つけ方</span></a></li>
+            <li class="more"><a href="/column/chusho-kigyo-ai-dx-hajimekata.html"><span class="cl-cat">AI・DX</span><time class="cl-date" datetime="2026-07-13">2026.07.13</time><span class="cl-title">中小企業のAI活用・DXの始め方</span></a></li>
           </ul>
+          <button type="button" class="col-toggle" aria-expanded="false">残り7本を見る</button>
           <a class="go" href="/column/">コラムをすべて見る →</a>
         </div>
       </div>
@@ -804,9 +816,12 @@
         <p class="faq-sub-lead">経営者からよく寄せられる問いに、No.3代行の視点で先に答えます。詳しい手順は各コラムにまとめました。</p>
         <details><summary>中小企業の「経営参謀」とは、何をする人か</summary><p>経営者の構想を、実行できる計画に翻訳する役割です。方向を決めるのは社長ですが、優先順位をつけ、誰がいつ何をするかまで分解し、進捗を管理するところを担います。確保の仕方は、社内で育てる・外部に相談する・外部に実行まで任せる、の3つです。</p><a class="faq-more" href="/column/chusho-kigyo-keiei-sanbo.html">コラムでくわしく読む →</a></details>
         <details><summary>経営顧問・経営コンサル・社外CxO・業務委託は、何が違うのか</summary><p>違いは「何に対して払うか」です。顧問は時間、コンサルタントは成果物、業務委託は作業範囲、社外CxOは特定機能の責任者という役割に対して払います。No.3代行は推進役という役割に対して払い、提案の後の実行・社内調整・仕組み化までを一体で担います。</p><a class="faq-more" href="/column/keiei-komon-consul-chigai.html">コラムでくわしく読む →</a></details>
+        <div class="faq-rest" id="faqRest">
         <details><summary>社長が現場から抜けられないとき、権限移譲は何から始めるか</summary><p>人を探す前に、業務を分けるところからです。連続した3営業日、現場の判断に入らない期間をつくると、何が止まって何が止まらないかが分かります。止まった業務のうち、発生頻度が高く判断が軽いものが、最初に渡す候補になります。</p><a class="faq-more" href="/column/kengen-ijou-tejun.html">コラムでくわしく読む →</a></details>
         <details><summary>中小企業のDX・AI活用は、なぜ進まないのか</summary><p>情報でも意欲でもなく、推進する人と時間が足りないためです。ツール選びから入ると定着しません。業務の棚卸し、優先順位づけ、小さく試す、展開、仕組み化の順で進め、旧来のやり方を止めるところまで決めると現場に残ります。</p><a class="faq-more" href="/column/chusho-kigyo-ai-dx-hajimekata.html">コラムでくわしく読む →</a></details>
         <details><summary>外部人材に頼んでも成果が出ないのは、なぜか</summary><p>多くは相手の力量ではなく、受け入れ側の設計に原因があります。窓口が社長ひとりだけ、一緒に手を動かす社員がいない、打ち合わせが月1回。このいずれかに当てはまる場合、相手を変えても結果は変わりません。</p><a class="faq-more" href="/column/komon-seika-ga-denai.html">コラムでくわしく読む →</a></details>
+        </div>
+        <button type="button" class="faq-toggle" aria-expanded="false" aria-controls="faqRest">残り3問を見る</button>
         <p class="faq-note">ここにない疑問も、初回相談で率直にお聞かせください。</p>
       </div>
     </div>
@@ -826,15 +841,16 @@
     </div>
   </section>
 </main>
-<footer class="foot">
-  <div class="wrap">
-    <a class="logo" href="/">three<span>.</span>T</a>
-    <nav aria-label="フッター">
-      <a href="/no3.html">No.3代行とは</a><a href="/services.html">サービス</a><a href="/services.html#process">支援の流れ</a><a href="/no3.html#book">書籍</a><a href="/no3.html#profile">プロフィール</a><a href="/column/">コラム</a><a href="#faq">FAQ</a><a href="/contact.html">お問い合わせ</a><a href="/company.html">会社概要</a><a href="/privacy.html">プライバシーポリシー</a>
-    </nav>
-    <p>© three.T LLC. All Rights Reserved.</p>
-  </div>
-</footer>
-<script src="/assets/top.js"></script>
+<footer class="gf">
+    <div class="gf-in">
+      <a class="gf-logo" href="/">three<span>.</span>T</a>
+      <p>経営の「進まない」を「進む」に変える。</p>
+      <p class="gf-slogan">Total Trust with Teams</p>
+      <nav class="gf-nav" aria-label="フッター"><a href="/no3.html">No.3代行とは</a><a href="/services.html">サービス</a><a href="/services.html#process">支援の流れ</a><a href="/no3.html#book">書籍</a><a href="/no3.html#profile">プロフィール</a><a href="/#blog">ブログ</a><a href="/column/">コラム</a><a href="/#faq">FAQ</a><a href="/contact.html">お問い合わせ</a><a href="/company.html">会社概要</a><a href="/privacy.html">プライバシーポリシー</a></nav>
+      <p class="gf-copy">© three.T LLC. All Rights Reserved.</p>
+    </div>
+  </footer>
+<script src="/assets/top.js" defer></script>
+  <script src="/assets/chrome.js" defer></script>
 </body>
 </html>

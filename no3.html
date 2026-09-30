@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S663Q942EZ"></script>
+  <!-- Google tag (gtag.js)：表示が終わってから読み込む（計測は同じ） -->
+  <script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-S663Q942EZ";document.head.appendChild(s);},1500);});</script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -32,7 +32,7 @@
   <meta name="twitter:title" content="No.3代行とは｜コンサルでも業務代行でもない、経営の推進役｜three.T">
   <meta name="twitter:description" content="No.3代行とは、社長（No.1）と右腕（No.2）に次ぐ3番目の推進役として、経営者の構想を整理し、現場で手を動かし、社内で回る仕組みに変える支援です。「緊急ではないが重要なこと」を前に進めます。">
   <meta name="twitter:image" content="https://three-t-ltd.com/assets/ogp.png">
-  <link rel="stylesheet" href="/assets/styles-light.css">
+  <link rel="stylesheet" href="/assets/site.bundle.css">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -75,32 +75,31 @@
   ]
 }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
-  <link rel="stylesheet" href="/assets/light.css">
-  <link rel="stylesheet" href="/assets/sub.css">
+  <link rel="preload" href="/assets/fonts/ZenMaruGothic-Black.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 <body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
   <div class="scroll-progress" aria-hidden="true"><i id="scroll-progress-fill"></i></div>
   <div class="cursor" id="cursor" aria-hidden="true"></div>
   <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
   <div class="page-noise" aria-hidden="true"></div>
 
-  <header class="site-header is-solid" id="site-header">
-    <a class="logo" href="/" aria-label="three.T トップへ">three<span>.</span>T<small>NO.3 PARTNER</small></a>
-    <nav class="desktop-nav" aria-label="メインナビゲーション">
-      <a href="/no3.html" data-hover>No.3代行とは</a>
-      <a href="/services.html" data-hover>サービス</a>
-      <a href="/services.html#process" data-hover>支援の流れ</a>
-      <a href="/no3.html#book" data-hover>書籍</a>
-      <a href="/no3.html#profile" data-hover>プロフィール</a>
-      <a href="/column/" data-hover>コラム</a>
-      <a href="/#faq" data-hover>FAQ</a>
-    </nav>
-    <a class="button button-small button-primary header-cta magnetic" href="/contact.html" data-hover>話を聞いてみる <span>↗</span></a>
-    <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span></button>
-    <nav class="mobile-nav" aria-label="モバイルナビゲーション">
+  <header class="gh" id="site-header">
+    <div class="gh-in">
+      <a class="gh-logo" href="/">three<span>.</span>T</a>
+      <nav class="gh-nav" aria-label="メインナビゲーション">
+        <a href="/no3.html">No.3代行とは</a>
+        <a href="/services.html">サービス</a>
+        <a href="/services.html#process">支援の流れ</a>
+        <a href="/no3.html#book">書籍</a>
+        <a href="/no3.html#profile">プロフィール</a>
+        <a href="/column/">コラム</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <a class="gh-cta" href="/contact.html">話を聞いてみる <span aria-hidden="true">→</span></a>
+      <button class="gh-menu" type="button" aria-expanded="false" aria-controls="gh-drawer"><span class="sr">メニューを開く</span><i></i><i></i></button>
+    </div>  </header>
+  <nav class="gh-drawer" id="gh-drawer" aria-label="メニュー" hidden>
       <a href="/no3.html">No.3代行とは</a>
       <a href="/services.html">サービス</a>
       <a href="/services.html#process">支援の流れ</a>
@@ -108,19 +107,20 @@
       <a href="/no3.html#profile">プロフィール</a>
       <a href="/column/">コラム</a>
       <a href="/#faq">FAQ</a>
-      <a class="button button-primary" href="/contact.html">話を聞いてみる <span>↗</span></a>
+      <a class="gh-drawer-cta" href="/contact.html">話を聞いてみる</a>
+      <p class="gh-drawer-sub"><a href="/company.html">会社概要</a><a href="/contact.html">お問い合わせ</a><a href="/#blog">ブログ</a><a href="/privacy.html">プライバシーポリシー</a></p>
     </nav>
-  </header>
 
-  <main class="subpage-main">
+  <main class="subpage-main" id="main">
     <section class="subpage-hero">
       <div class="container">
         <nav class="column-breadcrumb" aria-label="パンくずリスト" style="font-size:12px;color:var(--text-sub);margin-bottom:14px;">
           <a href="/" style="color:var(--text-sub);">ホーム</a> ／ No.3代行とは
         </nav>
-        <p class="section-index">NO.3 — WHAT IS NO.3?</p>
+        <p class="section-index">ABOUT</p>
         <h1>No.3代行とは</h1>
         <p>経営の伴走者・No.3として、売上・仕組み・人の課題を前進させます。<br>考えるだけでもない。手を動かすだけでもない。戦略を、現場で動く仕組みに変える。それが、No.3代行です。</p>
+        <div class="hero-art" aria-hidden="true"><svg viewBox="0 0 320 240"><rect x="20" y="40" width="280" height="170" rx="18" fill="#14204A"/><path d="M160 40 V210 M20 125 H300" stroke="#fff" stroke-width="4"/><path d="M160 40 H282 Q300 40 300 58 V125 H160Z" fill="#FFE27A"/><g fill="#fff" stroke="#14204A" stroke-width="2"><rect x="46" y="96" width="92" height="12" rx="2"/><rect x="50" y="84" width="88" height="12" rx="2"/><rect x="44" y="72" width="92" height="12" rx="2"/><rect x="50" y="60" width="86" height="12" rx="2"/></g><rect x="186" y="62" width="72" height="50" rx="6" fill="#FFD447" stroke="#14204A" stroke-width="3"/><text x="222" y="94" text-anchor="middle" font-size="16" font-weight="900" fill="#14204A">重要</text><path d="M256 70 H330 V100 H256 Q250 85 256 70Z" fill="#14204A" stroke="#fff" stroke-width="2"/><path d="M252 74 H262 Q257 85 262 96 H252 Q247 85 252 74Z" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/></svg></div>
       </div>
     </section>
 
@@ -240,43 +240,43 @@
           <p class="section-lead reveal">日々の判断と緊急対応に追われるほど、会社の未来に必要な仕事は後回しになります。問題は、やる気ではなく「推進する人」と「進む仕組み」が足りないことです。</p>
         </div>
         <div class="problem-grid">
-          <article class="glass-card tilt problem-card problem-large reveal" data-problem="stuck" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
+          <div class="glass-card tilt problem-card problem-large reveal" data-problem="stuck" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
             <span class="card-number">01</span>
-            <div class="stall-anim" aria-hidden="true"><span></span><span></span><span></span><b>→</b></div>
+            <div class="line-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><rect x="18" y="16" width="4" height="16" rx="1.5" fill="#14204A"/><rect x="26" y="16" width="4" height="16" rx="1.5" fill="#14204A"/></svg></div>
             <h3>やりたい<wbr>ことは<wbr>ある。<br>でも、<wbr>進まない。</h3>
             <p>構想が日常業務に埋もれている</p>
             <span class="problem-more">詳しく見る →</span>
-          </article>
-          <article class="glass-card tilt problem-card reveal" data-problem="migi" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
-            <span class="card-number">02</span><div class="line-icon">◇</div>
+          </div>
+          <div class="glass-card tilt problem-card reveal" data-problem="migi" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
+            <span class="card-number">02</span><div class="line-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="19" cy="17" r="7" fill="#fff" stroke="#14204A" stroke-width="2"/><path d="M6 41c0-8 6-13 13-13s13 5 13 13z" fill="#fff" stroke="#14204A" stroke-width="2" stroke-linejoin="round"/><circle cx="36" cy="13" r="9" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><path d="M33 10.5q0-3 3-3t3 3q0 2-3 3v1.5" stroke="#14204A" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="36" cy="18.6" r="1.2" fill="#14204A"/></svg></div>
             <h3>参謀役が<wbr>いない</h3><p>判断を理解し、実行まで担う人がいない</p>
             <span class="problem-more">詳しく見る →</span>
-          </article>
-          <article class="glass-card tilt problem-card reveal" data-problem="saiyo" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
-            <span class="card-number">03</span><div class="line-icon">◎</div>
+          </div>
+          <div class="glass-card tilt problem-card reveal" data-problem="saiyo" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
+            <span class="card-number">03</span><div class="line-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="20" cy="16" r="7" fill="#fff" stroke="#14204A" stroke-width="2"/><path d="M7 40c0-8 6-13 13-13s13 5 13 13z" fill="#fff" stroke="#14204A" stroke-width="2" stroke-linejoin="round"/><circle cx="36" cy="30" r="8" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><path d="M36 26v8M32 30h8" stroke="#14204A" stroke-width="2" stroke-linecap="round"/></svg></div>
             <h3>採用できない</h3><p>欲しい人材に届かず、採用活動も回らない</p>
             <span class="problem-more">詳しく見る →</span>
-          </article>
-          <article class="glass-card tilt problem-card reveal" data-problem="dx" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
-            <span class="card-number">04</span><div class="line-icon">⌘</div>
+          </div>
+          <div class="glass-card tilt problem-card reveal" data-problem="dx" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
+            <span class="card-number">04</span><div class="line-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="9" width="36" height="24" rx="4" fill="#fff" stroke="#14204A" stroke-width="2"/><path d="M18 40h12M24 33v7" stroke="#14204A" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="21" r="6" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><path d="M24 12v3M24 27v3M15 21h3M30 21h3" stroke="#14204A" stroke-width="2" stroke-linecap="round"/></svg></div>
             <h3>DXが<wbr>進まない</h3><p>ツール導入で止まり、現場に定着しない</p>
             <span class="problem-more">詳しく見る →</span>
-          </article>
-          <article class="glass-card tilt problem-card reveal" data-problem="shinki" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
-            <span class="card-number">05</span><div class="line-icon">＋</div>
+          </div>
+          <div class="glass-card tilt problem-card reveal" data-problem="shinki" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
+            <span class="card-number">05</span><div class="line-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5c7 6 9 16 5 26h-10c-4-10-2-20 5-26z" fill="#fff" stroke="#14204A" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="17" r="4" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><path d="M19 27l-6 5 5 3M29 27l6 5-5 3" fill="#B7FF2A" stroke="#14204A" stroke-width="2" stroke-linejoin="round"/><path d="M21 36l-1 6M27 36l1 6M24 36v7" stroke="#14204A" stroke-width="2" stroke-linecap="round"/></svg></div>
             <h3>新規事業を<wbr>進めたい</h3><p>既存業務が優先され、責任者も不足している</p>
             <span class="problem-more">詳しく見る →</span>
-          </article>
-          <article class="glass-card tilt problem-card problem-wide reveal" data-problem="ai" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
+          </div>
+          <div class="glass-card tilt problem-card problem-wide reveal" data-problem="ai" role="button" tabindex="0" aria-haspopup="dialog" data-hover>
             <span class="card-number">06</span>
             <div>
-              <div class="line-icon">✦</div>
+              <div class="line-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="15" width="30" height="24" rx="9" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/><circle cx="19" cy="27" r="3" fill="#14204A"/><circle cx="29" cy="27" r="3" fill="#14204A"/><path d="M24 15V8" stroke="#14204A" stroke-width="2"/><circle cx="24" cy="7" r="3" fill="#fff" stroke="#14204A" stroke-width="2"/><path d="M20 34q4 3 8 0" stroke="#14204A" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div>
               <h3>AIを<wbr>活用したい</h3>
               <p>何から始め、どう業務に組み込むか分からない</p>
               <span class="problem-more">詳しく見る →</span>
             </div>
             <div class="ai-flow" aria-hidden="true"><span>INPUT</span><i></i><strong>AI</strong><i></i><span>IMPACT</span></div>
-          </article>
+          </div>
         </div>
 
         <div class="ei-matrix reveal">
@@ -507,19 +507,29 @@
 
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-giant" aria-hidden="true"><span>three.T</span></div>
-    <div class="container">
-      <div class="footer-top">
-        <div><a class="logo" href="/">three<span>.</span>T<small>NO.3 PARTNER</small></a><p>経営の「進まない」を「進む」に変える。<br><small class="footer-slogan">Total Trust with Teams</small></p></div>
-        <nav><a href="/no3.html" data-hover>No.3代行とは</a><a href="/services.html" data-hover>サービス</a><a href="/services.html#process" data-hover>支援の流れ</a><a href="/no3.html#book" data-hover>書籍</a><a href="/no3.html#profile" data-hover>プロフィール</a><a href="/#blog" data-hover>ブログ</a><a href="/column/" data-hover>コラム</a><a href="/#faq" data-hover>FAQ</a><a href="/contact.html" data-hover>お問い合わせ</a></nav>
-      </div>
-      <div class="footer-bottom"><span>© three.T LLC. All Rights Reserved.</span><span><a href="/company.html" data-hover>会社概要</a><a href="/privacy.html" data-hover>プライバシーポリシー</a></span></div>
+  <section class="gcta" aria-label="ご相談">
+    <div class="gcta-box">
+      <p class="gcta-eyebrow">LET'S MOVE FORWARD</p>
+      <h2>社長一人で、<wbr>悩まない。</h2>
+      <p>止まっている課題を整理して、次の一歩を一緒に決めます。</p>
+      <a class="gcta-btn" href="/contact.html">60分、話を聞いてみる <span aria-hidden="true">→</span></a>
+      <ul><li>初回60分無料</li><li>オンライン対応</li></ul>
+    </div>
+  </section>
+
+  <footer class="gf">
+    <div class="gf-in">
+      <a class="gf-logo" href="/">three<span>.</span>T</a>
+      <p>経営の「進まない」を「進む」に変える。</p>
+      <p class="gf-slogan">Total Trust with Teams</p>
+      <nav class="gf-nav" aria-label="フッター"><a href="/no3.html">No.3代行とは</a><a href="/services.html">サービス</a><a href="/services.html#process">支援の流れ</a><a href="/no3.html#book">書籍</a><a href="/no3.html#profile">プロフィール</a><a href="/#blog">ブログ</a><a href="/column/">コラム</a><a href="/#faq">FAQ</a><a href="/contact.html">お問い合わせ</a><a href="/company.html">会社概要</a><a href="/privacy.html">プライバシーポリシー</a></nav>
+      <p class="gf-copy">© three.T LLC. All Rights Reserved.</p>
     </div>
   </footer>
 
-  <a class="mobile-fixed-cta" href="/contact.html">話を聞いてみる <span>↗</span></a>
-  <script src="/script.js"></script>
-  <script src="/assets/sub.js"></script>
+  <a class="mobile-fixed-cta" href="/contact.html">話を聞いてみる <span aria-hidden="true">→</span></a>
+  <script src="/script.js" defer></script>
+  <script src="/assets/sub.js" defer></script>
+  <script src="/assets/chrome.js" defer></script>
 </body>
 </html>

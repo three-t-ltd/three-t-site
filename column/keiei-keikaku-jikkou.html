@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S663Q942EZ"></script>
+  <!-- Google tag (gtag.js)：表示が終わってから読み込む（計測は同じ） -->
+  <script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-S663Q942EZ";document.head.appendChild(s);},1500);});</script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -35,7 +35,7 @@
   <meta name="twitter:title" content="経営計画が「絵に描いた餅」で終わる会社と、終わらない会社">
   <meta name="twitter:description" content="違いは計画の出来ではなく、計画を回す場の設計。会議が報告会になる3つの構造と、止まらない会議体をNo.3代行が解説。">
   <meta name="twitter:image" content="https://three-t-ltd.com/assets/ogp.png">
-  <link rel="stylesheet" href="/assets/styles-light.css">
+  <link rel="stylesheet" href="/assets/site.bundle.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -145,42 +145,42 @@
       .flow-steps .fs-node b { margin-bottom: 0; }
     }
   </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
-  <link rel="stylesheet" href="/assets/light.css">
+  <link rel="preload" href="/assets/fonts/ZenMaruGothic-Black.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 <body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
   <div class="cursor" id="cursor" aria-hidden="true"></div>
   <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
   <div class="page-noise" aria-hidden="true"></div>
 
-  <header class="site-header is-solid" id="site-header">
-    <a class="logo" href="/" aria-label="three.T トップへ">three<span>.</span>T<small>NO.3 PARTNER</small></a>
-    <nav class="desktop-nav" aria-label="メインナビゲーション">
-      <a href="/no3.html" data-hover>No.3代行とは</a>
-      <a href="/services.html" data-hover>サービス</a>
-      <a href="/services.html#process" data-hover>支援の流れ</a>
-      <a href="/no3.html#profile" data-hover>プロフィール</a>
-      <a href="/#blog" data-hover>ブログ</a>
-      <a href="/column/" data-hover>コラム</a>
-      <a href="/#faq" data-hover>FAQ</a>
-    </nav>
-    <a class="button button-small button-primary header-cta magnetic" href="/contact.html" data-hover>話を聞いてみる <span>↗</span></a>
-    <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span></button>
-    <nav class="mobile-nav" aria-label="モバイルナビゲーション">
+  <header class="gh" id="site-header">
+    <div class="gh-in">
+      <a class="gh-logo" href="/">three<span>.</span>T</a>
+      <nav class="gh-nav" aria-label="メインナビゲーション">
+        <a href="/no3.html">No.3代行とは</a>
+        <a href="/services.html">サービス</a>
+        <a href="/services.html#process">支援の流れ</a>
+        <a href="/no3.html#book">書籍</a>
+        <a href="/no3.html#profile">プロフィール</a>
+        <a href="/column/">コラム</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <a class="gh-cta" href="/contact.html">話を聞いてみる <span aria-hidden="true">→</span></a>
+      <button class="gh-menu" type="button" aria-expanded="false" aria-controls="gh-drawer"><span class="sr">メニューを開く</span><i></i><i></i></button>
+    </div>  </header>
+  <nav class="gh-drawer" id="gh-drawer" aria-label="メニュー" hidden>
       <a href="/no3.html">No.3代行とは</a>
       <a href="/services.html">サービス</a>
       <a href="/services.html#process">支援の流れ</a>
+      <a href="/no3.html#book">書籍</a>
       <a href="/no3.html#profile">プロフィール</a>
-      <a href="/#blog">ブログ</a>
       <a href="/column/">コラム</a>
       <a href="/#faq">FAQ</a>
-      <a class="button button-primary" href="/contact.html">話を聞いてみる <span>↗</span></a>
+      <a class="gh-drawer-cta" href="/contact.html">話を聞いてみる</a>
+      <p class="gh-drawer-sub"><a href="/company.html">会社概要</a><a href="/contact.html">お問い合わせ</a><a href="/#blog">ブログ</a><a href="/privacy.html">プライバシーポリシー</a></p>
     </nav>
-  </header>
 
-  <main class="subpage-main">
+  <main class="subpage-main" id="main">
     <article class="subpage-hero">
       <div class="container column-article">
         <nav class="column-breadcrumb" aria-label="パンくずリスト" style="font-size:12px;color:var(--text-sub);margin-bottom:14px;">
@@ -453,18 +453,27 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-giant" aria-hidden="true"><span>three.T</span></div>
-    <div class="container">
-      <div class="footer-top">
-        <div><a class="logo" href="/">three<span>.</span>T<small>NO.3 PARTNER</small></a><p>経営の「進まない」を「進む」に変える。<br><small class="footer-slogan">Total Trust with Teams</small></p></div>
-        <nav><a href="/no3.html" data-hover>No.3代行とは</a><a href="/services.html" data-hover>サービス</a><a href="/services.html#process" data-hover>支援の流れ</a><a href="/no3.html#profile" data-hover>プロフィール</a><a href="/#blog" data-hover>ブログ</a>
-      <a href="/column/" data-hover>コラム</a><a href="/#faq" data-hover>FAQ</a></nav>
-      </div>
-      <div class="footer-bottom"><span>© three.T LLC. All Rights Reserved.</span><span><a href="/company.html" data-hover>会社概要</a><a href="/privacy.html" data-hover>プライバシーポリシー</a></span></div>
+  <section class="gcta" aria-label="ご相談">
+    <div class="gcta-box">
+      <p class="gcta-eyebrow">LET'S MOVE FORWARD</p>
+      <h2>社長一人で、<wbr>悩まない。</h2>
+      <p>止まっている課題を整理して、次の一歩を一緒に決めます。</p>
+      <a class="gcta-btn" href="/contact.html">60分、話を聞いてみる <span aria-hidden="true">→</span></a>
+      <ul><li>初回60分無料</li><li>オンライン対応</li></ul>
+    </div>
+  </section>
+
+  <footer class="gf">
+    <div class="gf-in">
+      <a class="gf-logo" href="/">three<span>.</span>T</a>
+      <p>経営の「進まない」を「進む」に変える。</p>
+      <p class="gf-slogan">Total Trust with Teams</p>
+      <nav class="gf-nav" aria-label="フッター"><a href="/no3.html">No.3代行とは</a><a href="/services.html">サービス</a><a href="/services.html#process">支援の流れ</a><a href="/no3.html#book">書籍</a><a href="/no3.html#profile">プロフィール</a><a href="/#blog">ブログ</a><a href="/column/">コラム</a><a href="/#faq">FAQ</a><a href="/contact.html">お問い合わせ</a><a href="/company.html">会社概要</a><a href="/privacy.html">プライバシーポリシー</a></nav>
+      <p class="gf-copy">© three.T LLC. All Rights Reserved.</p>
     </div>
   </footer>
 
-  <script src="../script.js"></script>
+  <script src="../script.js" defer></script>
+  <script src="/assets/chrome.js" defer></script>
 </body>
 </html>

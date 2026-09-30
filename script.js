@@ -1,5 +1,5 @@
 /* 明るい配色（styles-light.css）のページでは、キャンバスの描画色を濃い色に切り替える */
-const LIGHT_THEME = !!document.querySelector('link[href*="styles-light"]');
+const LIGHT_THEME = !!document.querySelector('link[href*="styles-light"], link[href*="site.bundle"]');
 const FG_RGB = LIGHT_THEME ? "20,32,74" : "245,247,245";
 const FG2_RGB = LIGHT_THEME ? "74,86,128" : "200,208,232";
 const GREEN_RGB = LIGHT_THEME ? "78,122,0" : "183,255,42";
@@ -188,7 +188,7 @@ const contactSection = document.getElementById("contact");
 
 const onScroll = () => {
   const y = window.scrollY;
-  header.classList.toggle("is-solid", y > 40);
+  if (header) header.classList.toggle("is-solid", y > 40);
   const max = document.documentElement.scrollHeight - window.innerHeight;
   if (progressFill && max > 0) progressFill.style.width = `${(y / max) * 100}%`;
   if (mobileCta) {
@@ -204,6 +204,7 @@ window.addEventListener("scroll", onScroll, { passive: true });
 /* ---------- mobile menu ---------- */
 const menuButton = document.querySelector(".menu-button");
 const mobileNav = document.querySelector(".mobile-nav");
+if (menuButton && mobileNav) {
 menuButton.addEventListener("click", () => {
   const isOpen = menuButton.getAttribute("aria-expanded") === "true";
   menuButton.setAttribute("aria-expanded", String(!isOpen));
@@ -216,6 +217,7 @@ mobileNav.querySelectorAll("a").forEach((link) => {
     document.body.classList.remove("menu-open");
   });
 });
+}
 
 /* ---------- reveal on scroll ---------- */
 const io = new IntersectionObserver((entries) => {
@@ -855,7 +857,7 @@ if (form) {
       showStatus("error", "送信に失敗しました。時間をおいて再度お試しください。");
     } finally {
       submitButton.disabled = false;
-      submitButton.innerHTML = '話を聞いてみる <span>↗</span>';
+      submitButton.innerHTML = '話を聞いてみる <span aria-hidden="true">→</span>';
     }
   });
 }
@@ -986,7 +988,9 @@ if (mindCanvas) {
         let d2 = dx * dx + dy * dy;
         if (d2 < 1) d2 = 1;
         if (d2 > 90000) continue;
-        const f = 1400 / d2;
+        // ラベルが横に重なりそうな距離なら、追加で引き離す
+        const narrow = W < 768;
+        const f = (narrow ? 700 : 2600) / d2 + ((!narrow && Math.abs(dy) < 26 && Math.abs(dx) < 110) ? 0.6 : 0);
         const d = Math.sqrt(d2);
         dx /= d; dy /= d;
         a.vx += dx * f; a.vy += dy * f;
@@ -1015,7 +1019,7 @@ if (mindCanvas) {
       n.x += n.vx; n.y += n.vy;
       const pad = 26;
       n.x = Math.max(pad, Math.min(W - pad, n.x));
-      n.y = Math.max(pad, Math.min(H - pad, n.y));
+      n.y = Math.max(pad, Math.min(H - pad - 56, n.y));   // 下の操作説明の帯に隠れないように
     });
   };
 
@@ -1047,13 +1051,17 @@ if (mindCanvas) {
         : `rgba(${FG_RGB}, ${isHl ? 0.85 : 0.2})`;
       ctx.fill();
       // ラベル
-      const fs = isCore ? 13.5 : n.type === "h" ? 12 : n.type === "n" ? 9.5 : 10.5;
+      const fs = isCore ? 14 : n.type === "h" ? 13 : 12;
       ctx.font = `${isCore || n.type === "h" ? "700" : "400"} ${fs}px "Noto Sans JP", sans-serif`;
       ctx.textAlign = "center";
       ctx.fillStyle = accNode
         ? `rgba(${ACC}, ${isHl ? 1 : 0.25})`
         : `rgba(${FG2_RGB}, ${isHl ? 0.95 : 0.25})`;
-      ctx.fillText(n.label, n.x, n.y + r + fs + 2);
+      // スマホは細かいノードのラベルを出さない（触れたノードとその周りだけ出す）
+      if (W < 768 && n.type !== "c" && n.type !== "h" && !(hovered && hl && hl.has(n.id))) return;
+      const tw = ctx.measureText(n.label).width;
+      const lx = Math.max(tw / 2 + 4, Math.min(W - tw / 2 - 4, n.x));
+      ctx.fillText(n.label, lx, n.y + r + fs + 2);
     });
   };
 

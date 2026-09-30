@@ -10,15 +10,15 @@
   --glass: rgba(20, 32, 74, 1);
   --text: #14204A;
   --text-sub: #4A5680;
-  --text-muted: #6B7596;
+  --text-muted: #535D84;
   --accent: #B7FF2A;
   --accent-text: #4E7A00;
   --accent-bright: #cbff66;
   --border: rgba(20, 32, 74, 0.14);
   --error: #ff6b6b;
-  --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --font-jp: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", "Yu Gothic", "Meiryo", sans-serif;
   --font-en: "Zen Maru Gothic", "Inter", "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "Geist Mono", "SFMono-Regular", Consolas, monospace;
+  --font-mono: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", sans-serif;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-expo: cubic-bezier(0.87, 0, 0.13, 1);
 }

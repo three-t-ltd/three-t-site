@@ -1,0 +1,98 @@
+/* 全ページ共通の骨組み：ヘッダー・スマホメニュー・相談の帯・フッター（トップと下層で同じ部品） */
+.gh, .gh-drawer, .gcta, .gf {
+  --c-ink: #14204A; --c-sub: #4A5680; --c-lime: #B7FF2A; --c-lime-deep: #4E7A00; --c-sky: #EAF3FF; --c-line: #CFDDF2; --c-blue: #2B62BD;
+  --c-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif;
+}
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ヘッダー */
+.gh { position: sticky; top: 0; z-index: 60; background: rgba(234, 243, 255, .9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--c-line); }
+.gh-in { max-width: 1144px; margin: 0 auto; padding-inline: 20px; height: 64px; display: flex; align-items: center; gap: 28px; }
+.gh-logo { font-family: var(--c-display); font-weight: 900; font-size: 23px; letter-spacing: .01em; color: var(--c-ink); text-decoration: none; margin-right: auto; line-height: 1; }
+.gh-logo span { color: var(--c-lime-deep); }
+.gh-nav { display: flex; gap: 24px; }
+.gh-nav a { position: relative; font-family: var(--c-display); font-weight: 700; font-size: 14px; color: var(--c-ink); text-decoration: none; padding: 10px 0; }
+.gh-nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 3px; border-radius: 2px; background: var(--c-lime); transform: scaleX(0); transform-origin: left; transition: transform .35s cubic-bezier(.16, 1, .3, 1); }
+.gh-nav a:hover::after, .gh-nav a[aria-current="page"]::after { transform: none; }
+.gh-cta { display: inline-flex; align-items: center; gap: .4em; font-family: var(--c-display); font-weight: 700; font-size: 14px; color: var(--c-ink); text-decoration: none; background: var(--c-lime); border-radius: 999px; padding: .62em 1.3em; box-shadow: 0 3px 0 var(--c-ink); transition: transform .2s, box-shadow .2s; white-space: nowrap; }
+.gh-cta:hover { transform: translateY(-2px); box-shadow: 0 5px 0 var(--c-ink); }
+.gh-menu { display: none; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 12px; background: transparent; cursor: pointer; position: relative; }
+.gh-menu i { position: absolute; left: 11px; right: 11px; height: 2.5px; border-radius: 2px; background: var(--c-ink); transition: transform .3s cubic-bezier(.16, 1, .3, 1), top .3s; }
+.gh-menu i:first-of-type { top: 17px; } .gh-menu i:last-of-type { top: 25px; }
+.gh-menu[aria-expanded="true"] i:first-of-type { top: 21px; transform: rotate(45deg); }
+.gh-menu[aria-expanded="true"] i:last-of-type { top: 21px; transform: rotate(-45deg); }
+.gh a:focus-visible, .gh-menu:focus-visible, .gh-drawer a:focus-visible, .gcta a:focus-visible, .gf a:focus-visible { outline: 3px solid var(--c-blue); outline-offset: 3px; }
+@media (max-width: 980px) {
+  .gh-nav { display: none; }
+  .gh-menu { display: inline-grid; }
+  .gh-in { gap: 10px; height: 60px; }
+  .gh-cta { font-size: 13px; padding: .55em 1em; box-shadow: 0 2px 0 var(--c-ink); }
+}
+
+/* スマホメニュー */
+.gh-drawer { position: fixed; inset: 60px 0 0; z-index: 59; background: var(--c-sky); padding: 20px clamp(20px, 6vw, 40px) calc(32px + env(safe-area-inset-bottom, 0px)); display: grid; align-content: start; gap: 2px; overflow-y: auto; }
+.gh-drawer[hidden] { display: none; }
+.gh-drawer a { font-family: var(--c-display); font-weight: 700; font-size: 20px; color: var(--c-ink); text-decoration: none; min-height: 56px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--c-line); }
+.gh-drawer a::after { content: "→"; color: var(--c-lime-deep); }
+.gh-drawer a.gh-drawer-cta { margin-top: 20px; justify-content: center; gap: .5em; border: 0; border-radius: 999px; background: var(--c-lime); box-shadow: 0 4px 0 var(--c-ink); font-size: 17px; }
+.gh-drawer a.gh-drawer-cta::after { color: var(--c-ink); }
+body.gh-open { overflow: hidden; }
+@media (min-width: 981px) { .gh-drawer { display: none !important; } }
+
+/* 相談の帯（下層ページの締め） */
+.gcta { padding: clamp(56px, 8vw, 96px) clamp(20px, 4vw, 48px); background: var(--c-sky); }
+.gcta-box { max-width: 1104px; margin: 0 auto; background: var(--c-lime); border-radius: 40px; padding: clamp(40px, 6vw, 64px) 24px; display: grid; gap: 14px; justify-items: center; text-align: center; color: var(--c-ink); }
+.gcta-eyebrow { margin: 0; font-family: var(--c-display); font-weight: 700; font-size: 12px; letter-spacing: .16em; }
+.gcta h2 { margin: 0; font-family: var(--c-display); font-weight: 900; font-size: clamp(28px, 4.4vw, 44px); line-height: 1.3; word-break: keep-all; overflow-wrap: anywhere; }
+.gcta p { margin: 0; font-size: 15px; }
+.gcta-btn { display: inline-flex; align-items: center; gap: .5em; margin-top: 8px; font-family: var(--c-display); font-weight: 700; font-size: 16px; color: #fff; background: var(--c-ink); text-decoration: none; border-radius: 999px; padding: .95em 1.9em; box-shadow: 0 5px 0 #0A1230; transition: transform .2s, box-shadow .2s; }
+.gcta-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 #0A1230; }
+.gcta ul { list-style: none; margin: 4px 0 0; padding: 0; display: flex; gap: 8px 20px; flex-wrap: wrap; justify-content: center; font-size: 14px; font-weight: 700; }
+.gcta li::before { content: "✓ "; }
+
+/* フッター */
+.gf { background: var(--c-ink); color: #C9D3F0; padding: 48px clamp(20px, 4vw, 48px) calc(40px + env(safe-area-inset-bottom, 0px)); font-size: 13px; }
+.gf-in { max-width: 1104px; margin: 0 auto; display: grid; gap: 14px; justify-items: center; text-align: center; }
+.gf-logo { font-family: var(--c-display); font-weight: 900; font-size: 24px; color: #fff; text-decoration: none; }
+.gf-logo span { color: var(--c-lime); }
+.gf p { margin: 0; }
+.gf-slogan { font-size: 12px; letter-spacing: .14em; color: #9AA4C8; }
+.gf-nav { display: flex; flex-wrap: wrap; gap: 6px 20px; justify-content: center; margin-top: 6px; }
+.gf-nav a { color: #E9EDF4; text-decoration: none; padding: 6px 0; }
+.gf-nav a:hover { color: var(--c-lime); }
+
+/* 追従の相談ボタン（スマホ）が本文を隠さないように */
+@media (max-width: 760px) { body:has(.mobile-fixed-cta) { padding-bottom: 84px; } }
+
+/* サービスの自作アイコン */
+.service-icon svg { width: 48px; height: 48px; display: block; }
+body.gh-open .mobile-fixed-cta { display: none !important; }
+
+.skip-link { position: absolute; left: 12px; top: -80px; z-index: 200; background: #14204A; color: #fff; font-weight: 700; padding: 10px 16px; border-radius: 8px; text-decoration: none; }
+.skip-link:focus { top: 12px; outline: 3px solid #B7FF2A; }
+body.no-fixed-cta .mobile-fixed-cta, body.gcta-visible .mobile-fixed-cta, body.typing .mobile-fixed-cta { transform: translateY(140%) !important; pointer-events: none; }
+body.no-fixed-cta { padding-bottom: 0 !important; }
+.gf-slogan { font-size: 12.5px; }
+
+/* 4周目：スマホメニューの補助リンクと開く動き */
+.gh-drawer-sub { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 18px 0 0; }
+.gh-drawer .gh-drawer-sub a { font-size: 14px; min-height: 44px; border: 0; justify-content: flex-start; font-weight: 700; color: #4A5680; }
+.gh-drawer .gh-drawer-sub a::after { content: none; }
+.gh-drawer:not([hidden]) { animation: ghFade .25s ease both; }
+.gh-drawer:not([hidden]) > a { animation: ghItem .35s cubic-bezier(.16, 1, .3, 1) both; }
+.gh-drawer:not([hidden]) > a:nth-child(2) { animation-delay: .04s; } .gh-drawer:not([hidden]) > a:nth-child(3) { animation-delay: .08s; }
+.gh-drawer:not([hidden]) > a:nth-child(4) { animation-delay: .12s; } .gh-drawer:not([hidden]) > a:nth-child(5) { animation-delay: .16s; }
+.gh-drawer:not([hidden]) > a:nth-child(6) { animation-delay: .2s; } .gh-drawer:not([hidden]) > a:nth-child(7) { animation-delay: .24s; }
+.gh-drawer:not([hidden]) > a:nth-child(8) { animation-delay: .28s; }
+@keyframes ghFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ghItem { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+body.gh-open .gh-cta { visibility: hidden; }
+@media (prefers-reduced-motion: reduce) { .gh-drawer:not([hidden]), .gh-drawer:not([hidden]) > a { animation: none; } }
+
+/* 5周目：日本語の改行（見出しは行の長さをそろえ、本文は最後の1文字だけの行を避ける） */
+h1, h2, h3, summary, .lead, .desk-lead, .gcta h2 { text-wrap: balance; }
+p, li, dd, figcaption { text-wrap: pretty; }
+p, summary, li, figcaption, q { word-break: auto-phrase; }
+/* 5周目：追従ボタンは上へ戻る間は隠す */
+body.scroll-up .mobile-fixed-cta { transform: translateY(140%) !important; }
+.mobile-fixed-cta { transition: transform .3s ease-out; }
