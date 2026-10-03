@@ -120,7 +120,6 @@
         <p class="section-index">ABOUT</p>
         <h1>No.3代行とは</h1>
         <p>経営の伴走者・No.3として、売上・仕組み・人の課題を前進させます。<br>考えるだけでもない。手を動かすだけでもない。戦略を、現場で動く仕組みに変える。それが、No.3代行です。</p>
-        <div class="hero-art" aria-hidden="true"><svg viewBox="0 0 320 240"><rect x="20" y="40" width="280" height="170" rx="18" fill="#14204A"/><path d="M160 40 V210 M20 125 H300" stroke="#fff" stroke-width="4"/><path d="M160 40 H282 Q300 40 300 58 V125 H160Z" fill="#FFE27A"/><g fill="#fff" stroke="#14204A" stroke-width="2"><rect x="46" y="96" width="92" height="12" rx="2"/><rect x="50" y="84" width="88" height="12" rx="2"/><rect x="44" y="72" width="92" height="12" rx="2"/><rect x="50" y="60" width="86" height="12" rx="2"/></g><rect x="186" y="62" width="72" height="50" rx="6" fill="#FFD447" stroke="#14204A" stroke-width="3"/><text x="222" y="94" text-anchor="middle" font-size="16" font-weight="900" fill="#14204A">重要</text><path d="M256 70 H330 V100 H256 Q250 85 256 70Z" fill="#14204A" stroke="#fff" stroke-width="2"/><path d="M252 74 H262 Q257 85 262 96 H252 Q247 85 252 74Z" fill="#B7FF2A" stroke="#14204A" stroke-width="2"/></svg></div>
       </div>
     </section>
 
@@ -279,11 +278,13 @@
           </div>
         </div>
 
-        <div class="ei-matrix reveal">
-          <div class="ei-head">
+        <details class="fold" id="matrix">
+          <summary><div class="ei-head">
             <p class="ei-label">なぜ、後回しになるのか</p>
             <h3>会社の<wbr>未来を<wbr>つくる<em>「重要だが、<wbr>緊急でない」</em>が、<wbr>いつも<wbr>後回しに<wbr>なる。</h3>
-          </div>
+          </div><span class="fold-more">くわしく見る</span></summary>
+          <div class="ei-matrix reveal">
+          
           <div class="ei-plot">
             <span class="ei-corner" aria-hidden="true"></span>
             <span class="ei-colh">緊急</span>
@@ -311,16 +312,16 @@
           </div>
           <p class="ei-note">「緊急で重要」に手を取られ、会社の未来をつくる<b class="accent">右上のゾーン</b>が後回しに。<br>そこを前に進めるのが、No.3代行の役割です。</p>
         </div>
+        </details>
       </div>
     </section>
 
     <!-- ============ BEFORE / AFTER ============ -->
-    <section class="section band beforeafter" id="beforeafter">
+    <section class="section fold-sec" id="beforeafter">
       <div class="container">
-        <div class="section-head centered">
-          <p class="section-index">BEFORE → AFTER</p>
-          <h2 class="reveal-mask"><span class="w"><i>2人から<wbr>3人へ。</i></span><span class="w"><i>会社が<wbr>動き出す。</i></span></h2>
-        </div>
+        <details class="fold">
+          <summary><div class="fold-head"><p class="section-index">BEFORE → AFTER</p>
+          <h2 class="reveal-mask"><span class="w"><i>2人から<wbr>3人へ。</i></span><span class="w"><i>会社が<wbr>動き出す。</i></span></h2></div><span class="fold-more">くわしく見る</span></summary>
         <div class="ba-grid">
           <div class="ba-card ba-before reveal">
             <p class="ba-head">社長と右腕だけ</p>
@@ -337,17 +338,19 @@
           </div>
         </div>
         <p class="ba-tags reveal"><span>役割が明確に</span><span>意思決定がスムーズに</span><span>スピードと成果が加速</span></p>
+              </details>
       </div>
     </section>
 
     <!-- ============ STORY (horizontal scroll) ============ -->
-    <section class="story" id="story">
+    <section class="section fold-sec story-static" id="story">
+      <div class="container">
+        <details class="fold">
+          <summary><div class="fold-head"><p class="section-index">FROM STUCK TO SCALE</p>
+          <h2>課題を、<em>成長の<wbr>仕組み</em>に<wbr>変える。</h2></div><span class="fold-more">くわしく見る</span></summary>
+
       <div class="story-sticky">
-        <div class="story-header container">
-          <p class="section-index">FROM STUCK TO SCALE</p>
-          <h2>課題を、<em>成長の<wbr>仕組み</em>に<wbr>変える。</h2>
-        </div>
-        <div class="story-track" id="story-track">
+        <div class="story-track" id="story-track-static">
           <article class="story-panel">
             <span class="panel-bg-number" aria-hidden="true">01</span>
             <p class="step-label">STUCK</p>
@@ -380,6 +383,9 @@
           </article>
         </div>
         <div class="story-progress" aria-hidden="true"><i id="story-progress-fill"></i></div>
+      </div>
+    
+        </details>
       </div>
     </section>
 

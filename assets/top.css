@@ -409,3 +409,4 @@ h1,h2,h3,h4{word-break:keep-all;overflow-wrap:anywhere}
 .blog-list time{padding-left:22px}
 .blog-list a>span:last-child{padding-left:22px}
 @media (max-width:760px){.blog-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.faq-rest.open{display:grid;gap:12px}
