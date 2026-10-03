@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="漠然とした「ヤバい」を、60分で課題に。課題整理人による「社長の作戦会議」。初回無料。">
+<meta name="description" content="漠然とした「ヤバい」を、60分で明確な課題に。課題整理人による「社長の作戦会議」。初回無料。">
 <title>社長の作戦会議</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
 <style>
@@ -19,6 +19,7 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--board);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.4px);background-size:22px 22px;color:var(--ink);font-family:var(--body);font-weight:500;font-size:16px;line-height:1.8}
 .wrap{max-width:860px;margin:0 auto;padding-inline:20px}
+main{overflow-x:clip}
 h1,h2{font-family:var(--hand);font-weight:400;line-height:1.35;margin:0;text-wrap:balance;word-break:keep-all;overflow-wrap:anywhere}
 h1{font-size:clamp(34px,8vw,64px)}
 h2{font-size:clamp(28px,6vw,44px)}
@@ -36,9 +37,9 @@ section{padding-block:48px}
 .reel{padding-block:22px 0}
 .reel-box{position:relative;overflow:hidden;border:4px solid var(--ink);border-radius:10px;box-shadow:7px 8px 0 var(--ink);background:var(--board);aspect-ratio:16/9;max-width:100%}
 .reel-box video{display:block;width:100%;height:100%;object-fit:cover}
-.reel-ui{position:absolute;right:10px;bottom:10px;display:flex;gap:8px}
-@media (max-width:560px){ .reel-ui{right:6px;bottom:6px;gap:6px} .vbtn{font-size:11px;padding:3px 9px} }
-.reel-hint{margin-top:16px;text-align:center;font-weight:700;font-size:14px;color:var(--muted)}
+.reel-bar{margin-top:18px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 16px}
+.reel-ui{display:flex;gap:8px}
+.reel-hint{font-weight:700;font-size:14px;color:var(--muted)}
 .vbtn{font-family:var(--body);font-weight:700;font-size:13px;background:var(--ink);color:#fff;border:0;border-radius:8px;padding:6px 14px;cursor:pointer}
 
 .sticky{font-family:var(--hand);color:var(--ink);padding:14px 18px;box-shadow:3px 4px 0 rgba(0,0,0,.14);line-height:1.4}
@@ -65,13 +66,19 @@ section{padding-block:48px}
 
 .bigy{font-size:clamp(26px,6vw,38px);padding:18px 30px;transform:rotate(-3deg)}
 .down{height:34px;border-left:5px dotted var(--red)}
-.parts{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 14px;max-width:560px}
-.parts .sticky{font-size:20px;transition:transform .5s cubic-bezier(.2,1.5,.4,1),opacity .3s}
-.parts .sticky:nth-child(1){transform:rotate(-3deg)} .parts .sticky:nth-child(2){transform:rotate(2deg);transition-delay:.12s}
-.parts .sticky:nth-child(3){transform:rotate(-1deg);transition-delay:.24s} .parts .sticky:nth-child(4){transform:rotate(3deg);transition-delay:.36s}
-.parts .hit{position:relative;outline:4px solid var(--red);outline-offset:5px}
-.parts .hit i{position:absolute;right:-14px;top:-24px;font-style:normal;font-size:15px;color:#fff;background:var(--red);padding:1px 10px;border-radius:8px;transform:rotate(6deg)}
-.js .split:not(.in) .parts .sticky{transform:scale(.3);opacity:.25}
+.parts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;width:min(100%,320px)}
+.parts li{position:relative;display:flex;align-items:center;gap:14px;font-size:21px;text-align:left;transition:transform .7s cubic-bezier(.2,1.4,.4,1)}
+.parts li b{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;font-family:var(--body);font-weight:900;font-size:17px;display:grid;place-items:center;transition:opacity .4s .5s}
+.parts li:nth-child(2){transition-delay:.1s} .parts li:nth-child(3){transition-delay:.2s} .parts li:nth-child(4){transition-delay:.3s}
+.parts .hit{outline:4px solid var(--red);outline-offset:5px}
+.parts .hit i{position:absolute;right:-10px;top:-22px;font-style:normal;font-size:15px;color:#fff;background:var(--red);padding:1px 10px;border-radius:8px;transform:rotate(6deg);transition:opacity .4s .7s}
+/* 見える前は山積み（重なって傾いている） */
+.js .split:not(.in) .parts li:nth-child(1){transform:translate(-26px,96px) rotate(-13deg)}
+.js .split:not(.in) .parts li:nth-child(2){transform:translate(34px,34px) rotate(10deg)}
+.js .split:not(.in) .parts li:nth-child(3){transform:translate(-14px,-34px) rotate(-6deg)}
+.js .split:not(.in) .parts li:nth-child(4){transform:translate(22px,-100px) rotate(15deg)}
+.js .split:not(.in) .parts li b,.js .split:not(.in) .parts .hit i{opacity:0}
+.js .split:not(.in) .parts .hit{outline-color:transparent}
 .sub{font-weight:700;font-size:16px;color:var(--muted)}
 .steps{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
 .steps li{width:210px;font-family:var(--body);font-weight:700;font-size:15px}
@@ -80,7 +87,7 @@ section{padding-block:48px}
 .who{font-size:17px;font-weight:700}
 .who b{font-family:var(--hand);font-weight:400;font-size:30px}
 footer{padding-block:24px 40px;text-align:center;font-size:13px;color:var(--muted)}
-@media (prefers-reduced-motion: reduce){ .gapline,.parts .sticky{transition:none} }
+@media (prefers-reduced-motion: reduce){ .gapline,.parts li{transition:none} }
 </style>
 
 </head>
@@ -91,32 +98,35 @@ footer{padding-block:24px 40px;text-align:center;font-size:13px;color:var(--mute
 
 <section class="reel">
   <div class="reel-box">
-    <video id="reel" src="assets/sakusen-reel.mp4?v=4" poster="assets/sakusen-poster.jpg?v=4" playsinline preload="auto" aria-label="社長の作戦会議の紹介動画（20秒）"></video>
+    <video id="reel" src="assets/sakusen-reel.mp4?v=5" poster="assets/sakusen-poster.jpg?v=5" playsinline preload="auto" aria-label="社長の作戦会議の紹介動画（20秒）"></video>
+  </div>
+  <div class="reel-bar">
+    <p class="reel-hint" id="hint" hidden>画面をタップすると、音が出ます</p>
     <div class="reel-ui">
       <button class="vbtn" id="sound" type="button">音を出す</button>
       <button class="vbtn" id="again" type="button">▶ もう一度</button>
     </div>
   </div>
-  <p class="reel-hint" id="hint" hidden>画面をタップすると、音が出ます</p>
 </section>
 
 <section class="center" style="padding-block:40px 48px">
-  <h1>漠然とした<wbr><span class="nw">「ヤバい」を、</span><wbr><span class="ul">60分で課題に。</span></h1>
+  <h1>漠然とした<wbr><span class="nw">「ヤバい」を、</span><wbr><span class="ul">60分で<wbr>明確な課題に。</span></h1>
   <a class="btn" href="contact.html">作戦会議を申し込む →</a>
   <span class="note">初回無料 ・ 60分 ・ 準備いらず</span>
 </section>
 
 <section class="center split" id="split">
-  <h2><span class="nw">「なんかヤバい」を、</span><wbr><span class="nw">課題に分けます。</span></h2>
+  <h2>山積みの課題が、<wbr><span class="nw">スッキリ見える。</span></h2>
+  <p class="sub">どこから手をつけていいか、わからない。<br>そこから始めます。</p>
   <div class="sticky g bigy">なんか、ヤバい</div>
   <div class="down" aria-hidden="true"></div>
-  <div class="parts">
-    <div class="sticky p">人が採れない</div>
-    <div class="sticky p">任せられない</div>
-    <div class="sticky p hit">数字が見えない<i>まず、これ</i></div>
-    <div class="sticky p">次の柱がない</div>
-  </div>
-  <p class="why">分けると、<wbr><span class="ul">何から手をつけるか</span>が<wbr><span class="nw">見えます。</span></p>
+  <ol class="parts">
+    <li class="sticky p hit"><b>1</b>数字が見えない<i>まず、これ</i></li>
+    <li class="sticky p"><b>2</b>任せられない</li>
+    <li class="sticky p"><b>3</b>人が採れない</li>
+    <li class="sticky p"><b>4</b>次の柱がない</li>
+  </ol>
+  <p class="why"><span class="ul">どこから手をつけるか</span>が、<wbr><span class="nw">見えます。</span></p>
   <span class="tag">※ 付箋の中身は見本です</span>
 </section>
 
@@ -186,7 +196,7 @@ footer{padding-block:24px 40px;text-align:center;font-size:13px;color:var(--mute
   a.addEventListener('click',function(){ v.currentTime=0; go(); });
   var split=document.getElementById('split'),gap=document.getElementById('gap'),reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if('IntersectionObserver' in window && !reduce){
-    [split,gap].forEach(function(el){ new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){el.classList.add('in');o.disconnect();}})},{threshold:.35}).observe(el); });
+    [split,gap].forEach(function(el){ new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){el.classList.add('in');o.disconnect();}})},{threshold:.6}).observe(el); });
   } else { split.classList.add('in'); gap.classList.add('in'); }
 })();
 </script>
