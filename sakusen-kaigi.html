@@ -37,6 +37,8 @@ section{padding-block:48px}
 .reel-box video{display:block;width:100%;height:100%;object-fit:cover}
 .reel-ui{position:absolute;right:10px;bottom:10px;display:flex;gap:8px}
 @media (max-width:560px){ .reel-ui{right:6px;bottom:6px;gap:6px} .vbtn{font-size:11px;padding:3px 9px} }
+.reel-hint{position:absolute;left:10px;bottom:10px;font-family:var(--body);font-weight:700;font-size:13px;background:var(--yellow);color:var(--ink);border-radius:8px;padding:6px 12px;pointer-events:none}
+@media (max-width:560px){ .reel-hint{left:6px;bottom:auto;top:6px;font-size:11px;padding:3px 9px} }
 .vbtn{font-family:var(--body);font-weight:700;font-size:13px;background:var(--ink);color:#fff;border:0;border-radius:8px;padding:6px 14px;cursor:pointer}
 
 .sticky{font-family:var(--hand);color:var(--ink);padding:14px 18px;box-shadow:3px 4px 0 rgba(0,0,0,.14);line-height:1.4}
@@ -75,7 +77,8 @@ footer{padding-block:24px 40px;text-align:center;font-size:13px;color:var(--mute
 
 <section class="reel">
   <div class="reel-box">
-    <video id="reel" src="assets/sakusen-reel.mp4" poster="assets/sakusen-poster.jpg" muted playsinline autoplay preload="auto" aria-label="社長の作戦会議の紹介動画（15秒）"></video>
+    <video id="reel" src="assets/sakusen-reel.mp4" poster="assets/sakusen-poster.jpg" playsinline preload="auto" aria-label="社長の作戦会議の紹介動画（15秒）"></video>
+    <div class="reel-hint" id="hint" hidden>画面をタップすると、音が出ます</div>
     <div class="reel-ui">
       <button class="vbtn" id="sound" type="button">音を出す</button>
       <button class="vbtn" id="again" type="button">▶ もう一度</button>
@@ -129,7 +132,19 @@ footer{padding-block:24px 40px;text-align:center;font-size:13px;color:var(--mute
   document.documentElement.classList.add('js');
   var v=document.getElementById('reel'),s=document.getElementById('sound'),a=document.getElementById('again');
   function go(){ var p=v.play(); if(p&&p.catch)p.catch(function(){}); }
-  s.addEventListener('click',function(){ v.muted=!v.muted; s.textContent=v.muted?'音を出す':'音を消す'; if(!v.muted){v.currentTime=0;go();} });
+  var hint=document.getElementById('hint');
+  function label(){ s.textContent=v.muted?'音を出す':'音を消す'; hint.hidden=!v.muted; }
+  function unlock(e){
+    document.removeEventListener('pointerdown',unlock,true); document.removeEventListener('keydown',unlock,true);
+    if(e&&e.target&&e.target.closest&&e.target.closest('.reel-ui'))return;
+    if(v.muted){ v.muted=false; v.currentTime=0; go(); label(); }
+  }
+  /* 既定は音あり。ブラウザが音つきの自動再生を止めたら、無音で流し、最初のタップで音を出す */
+  v.muted=false;
+  var first=v.play();
+  if(first&&first.catch){ first.then(label).catch(function(){ v.muted=true; go(); label();
+    document.addEventListener('pointerdown',unlock,true); document.addEventListener('keydown',unlock,true); }); }
+  s.addEventListener('click',function(){ v.muted=!v.muted; label(); if(!v.muted){v.currentTime=0;go();} });
   a.addEventListener('click',function(){ v.currentTime=0; go(); });
   var gap=document.getElementById('gap'),reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if('IntersectionObserver' in window && !reduce){
