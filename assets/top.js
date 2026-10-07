@@ -99,7 +99,7 @@
 
   // ===== コラム一覧の開閉 =====
   var ct=document.querySelector('.col-toggle'), cl=document.querySelector('.col-list-top');
-  if(ct&&cl) ct.addEventListener('click',function(){ var open=!cl.classList.contains('open'); cl.classList.toggle('open',open); ct.setAttribute('aria-expanded',String(open)); ct.textContent=open?'閉じる':'残り7本を見る'; });
+  if(ct&&cl) ct.addEventListener('click',function(){ var open=!cl.classList.contains('open'); cl.classList.toggle('open',open); ct.setAttribute('aria-expanded',String(open)); ct.textContent=open?'閉じる':'残り8本を見る'; });
 
   // ===== スクロール登場 =====
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;

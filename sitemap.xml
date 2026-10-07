@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://three-t-ltd.com/</loc>
-    <lastmod>2026-09-27</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -26,13 +26,19 @@
   </url>
   <url>
     <loc>https://three-t-ltd.com/column/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://three-t-ltd.com/column/suishinyaku-toha.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://three-t-ltd.com/column/dx-suishin-shanai-chousei.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -44,7 +50,7 @@
   </url>
   <url>
     <loc>https://three-t-ltd.com/column/dx-suishin-tantou-inai.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
