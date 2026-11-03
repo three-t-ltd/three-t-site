@@ -16,6 +16,7 @@
 ## 主なページ
 - [トップ](https://three-t-ltd.com/): No.3代行の概要（動画・図解・漫画・FAQ）
 - [No.3代行とは](https://three-t-ltd.com/no3.html): 考え方の詳細。「緊急ではないが重要なこと」が後回しになる理由、社長・右腕・No.3の三角形、コンサル・業務代行との比較表、代表プロフィールと経歴
+- [社長の作戦会議](https://three-t-ltd.com/sakusen-kaigi.html): 初回無料・60分の相談の入口。課題整理人（代表 上津原）が、漠然とした「ヤバい」を話してもらいながら課題に分け、最初の一歩を1つ決めてロードマップを渡す。準備不要・オンライン対応
 - [サービス](https://three-t-ltd.com/services.html): 9つのサービスの詳細と、相談から実行・仕組み化までの支援の流れ
 - [お問い合わせ](https://three-t-ltd.com/contact.html): 初回60分無料の相談フォーム
 - [会社概要](https://three-t-ltd.com/company.html)

@@ -134,7 +134,7 @@
             <label><span>メールアドレス <b>必須</b></span><input type="email" name="email" autocomplete="email" required placeholder="you@example.com"><small class="field-error"></small></label>
             <label><span>電話番号 <b>任意</b></span><input type="tel" name="phone" autocomplete="tel" placeholder="090-0000-0000"><small class="field-error"></small></label>
             <label><span>従業員規模 <b>必須</b></span><select name="company_size" required><option value="">選択してください</option><option>1〜9名</option><option>10〜29名</option><option>30〜49名</option><option>50〜100名</option><option>101名以上</option></select><small class="field-error"></small></label>
-            <fieldset class="form-full"><legend>聞いてみたいテーマ <b>必須</b></legend><div class="check-grid"><label><input type="checkbox" name="topic" value="No.3代行"><span>No.3代行</span></label><label><input type="checkbox" name="topic" value="売上・営業"><span>売上・営業</span></label><label><input type="checkbox" name="topic" value="DX・仕組み化"><span>DX・仕組み化</span></label><label><input type="checkbox" name="topic" value="AI活用"><span>AI活用</span></label><label><input type="checkbox" name="topic" value="採用・人材"><span>採用・人材</span></label><label><input type="checkbox" name="topic" value="新規事業"><span>新規事業</span></label><label><input type="checkbox" name="topic" value="その他"><span>その他</span></label></div><small class="field-error"></small></fieldset>
+            <fieldset class="form-full"><legend>聞いてみたいテーマ <b>必須</b></legend><div class="check-grid"><label><input type="checkbox" name="topic" value="社長の作戦会議"><span>社長の作戦会議</span></label><label><input type="checkbox" name="topic" value="No.3代行"><span>No.3代行</span></label><label><input type="checkbox" name="topic" value="売上・営業"><span>売上・営業</span></label><label><input type="checkbox" name="topic" value="DX・仕組み化"><span>DX・仕組み化</span></label><label><input type="checkbox" name="topic" value="AI活用"><span>AI活用</span></label><label><input type="checkbox" name="topic" value="採用・人材"><span>採用・人材</span></label><label><input type="checkbox" name="topic" value="新規事業"><span>新規事業</span></label><label><input type="checkbox" name="topic" value="その他"><span>その他</span></label></div><small class="field-error"></small></fieldset>
             <label class="form-full"><span>現在のお悩み <b>必須</b></span><textarea name="message" required rows="5" placeholder="現在止まっていること、実現したいことをお聞かせください。"></textarea><small class="field-error"></small></label>
           </div>
           <label class="privacy-check"><input type="checkbox" name="privacy" required><span><a href="/privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する</span></label>
@@ -159,5 +159,6 @@
   <a class="mobile-fixed-cta" href="/contact.html">話を聞いてみる <span aria-hidden="true">→</span></a>
   <script src="/script.js" defer></script>
   <script src="/assets/chrome.js" defer></script>
+<script>(function(){if(/[?&]topic=sakusen(&|$)/.test(location.search)){var b=document.querySelector('#contact-form input[name="topic"][value="社長の作戦会議"]');if(b){b.checked=true;b.dispatchEvent(new Event("change",{bubbles:true}));}}})();</script>
 </body>
 </html>
