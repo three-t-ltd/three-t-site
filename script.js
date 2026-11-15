@@ -882,10 +882,12 @@ if (mindCanvas) {
     // No.3代行
     N("tri", "トライアングル", "l", "no3", "#about"),
     N("sanbo", "経営参謀", "l", "no3", null),
-    N("seiri", "課題整理", "l", "no3", null),
+    N("seiri", "課題整理屋", "l", "no3", null),
     N("jikko", "実行伴走", "l", "no3", null),
     N("shikumi", "仕組み化", "l", "no3", null),
     N("juyo", "緊急でないが重要", "l", "no3", "#problems"),
+    N("tsunagu", "つなぐ力", "l", "no3", null),
+    N("sukima", "経営者のスキマ", "l", "no3", null),
     // サービス
     N("dx", "DX推進", "l", "svc", "/services.html"),
     N("eigyo", "営業支援", "l", "svc", "/services.html"),
@@ -898,6 +900,8 @@ if (mindCanvas) {
     N("ttt", "Total Trust with Teams", "l", "mind", null),
     N("dot3", "3つ目の点", "l", "mind", "#about"),
     N("otona", "かっこいい大人", "l", "mind", null),
+    N("ugoku", "動きまくる", "l", "mind", null),
+    N("datsu", "脱力", "l", "mind", null),
     // 複業CEO
     N("c10", "11社を伴走", "l", "ceo", "#results"),
     N("izon", "一社に依存しない", "l", "ceo", null),
@@ -906,6 +910,7 @@ if (mindCanvas) {
     N("adp", "ADP共同運営", "l", "ai", null),
     N("gs", "Gensparkアンバサダー", "l", "ai", null),
     N("sem", "セミナー150回+", "l", "ai", null),
+    N("chiisa", "小さな効率化", "l", "ai", null),
     // 発信
     N("note", "note 毎朝更新", "l", "out", "/#blog"),
     N("book2", "書籍", "l", "out", "#book"),
@@ -922,7 +927,8 @@ if (mindCanvas) {
     if (n.type === "l") LINKS.push([n.id, n.hub, 82]);
   });
   // クロスリンク（頭の中はつながっている）
-  [["book2", "no3", 150], ["ai", "svc", 170], ["ceo", "bg", 160], ["mind", "no3", 160], ["tri", "dot3", 130], ["sem", "svc", 170]]
+  [["book2", "no3", 150], ["ai", "svc", 170], ["ceo", "bg", 160], ["mind", "no3", 160], ["tri", "dot3", 130], ["sem", "svc", 170],
+   ["chiisa", "shikumi", 150], ["tsunagu", "tri", 130], ["sukima", "juyo", 130]]
     .forEach((l) => LINKS.push(l));
 
   const nodeById = {};
