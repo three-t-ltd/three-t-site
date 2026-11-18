@@ -347,7 +347,7 @@ const SERVICE_DATA = {
       "業務フロー・役割分担の仕組み化",
       "経営者のスキマづくり（業務負荷を軽減し、戦略に集中できる環境を創る）"
     ],
-    cases: ["現在、11社の中小企業をパラレルワーク型で継続伴走中"]
+    cases: ["現在、12社の中小企業をパラレルワーク型で継続伴走中"]
   },
   keikaku: {
     index: "02",
@@ -882,7 +882,7 @@ if (mindCanvas) {
     // No.3代行
     N("tri", "トライアングル", "l", "no3", "#about"),
     N("sanbo", "経営参謀", "l", "no3", null),
-    N("seiri", "課題整理屋", "l", "no3", null),
+    N("seiri", "課題整理人", "l", "no3", null),
     N("jikko", "実行伴走", "l", "no3", null),
     N("shikumi", "仕組み化", "l", "no3", null),
     N("juyo", "緊急でないが重要", "l", "no3", "#problems"),
@@ -903,7 +903,7 @@ if (mindCanvas) {
     N("ugoku", "動きまくる", "l", "mind", null),
     N("datsu", "脱力", "l", "mind", null),
     // 複業CEO
-    N("c10", "11社を伴走", "l", "ceo", "#results"),
+    N("c10", "12社を伴走", "l", "ceo", "#results"),
     N("izon", "一社に依存しない", "l", "ceo", null),
     N("para", "パラレルワーク", "l", "ceo", null),
     // AI
